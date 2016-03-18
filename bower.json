@@ -1,0 +1,23 @@
+{
+  "name": "Farhan Khwaja",
+  "version": "0.0.0",
+  "authors": [
+    "Farhan Khwaja"
+  ],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "public/components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "^3.2.0",
+    "components-font-awesome": "~4.4.0",
+    "jquery": "~2.2.1"
+  },
+  "description": "Roommate Finder",
+  "main": "app.js",
+  "license": "MIT"
+}
