@@ -30,50 +30,210 @@ html, body {
 .text-vertical-center h1 {
     margin: 0;
     padding: 0;
-    font-size: 4.5em;
-    font-weight: 700;
+    /*font-weight: 700;*/
 }
 
-a {
-  color: #00B7FF;
+/* Footer */
+
+.footer {
+    padding: 50px 0;
+    background-color: #f7f7f7;
+    padding: 10px 0 5px;
+    color: #999;
+    border-top: 1px solid #ff656c;
+    /*position: fixed;*/
+    bottom: 0;
+    width: 100%;
+    z-index: 100;
+    height: 120px;
 }
 
-#locationField, #controls {
+.form-signin
+{
+    padding: 15px;
+    margin: 0 auto;
+}
+.form-signin .form-signin-heading, .form-signin .checkbox
+{
+    margin-bottom: 10px;
+}
+.form-signin .checkbox
+{
+    font-weight: normal;
+}
+.form-signin .form-control
+{
     position: relative;
-    width: 100%;
+    font-size: 16px;
+    height: auto;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.form-signin .form-control:focus
+{
+    z-index: 2;
+}
+.form-signin  > input[type="text"]
+{
+    margin-bottom: -1px;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+.form-signin > input[type="password"]
+{
+    margin-bottom: 10px;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+}
+.account-wall
+{
+    margin-top: 50px;
+    padding: 40px 0px 20px 0px;
+    background-color: #f7f7f7;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+}
+.login-title
+{
+    color: #555;
+    font-size: 18px;
+    font-weight: 400;
+    display: block;
+}
+.profile-img
+{
+    width: 96px;
+    height: 96px;
+    margin: 0 auto 10px;
+    display: block;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+}
+.need-help
+{
+    margin-top: 10px;
+}
+.new-account
+{
+    display: block;
+    margin-top: 10px;
+    color: #ff656c;
 }
 
-#autocomplete {
-    position: absolute;
-    top: 0px;
-    left: 0px;
-    width: 100%;
+.new-account a:hover {
+    text-decoration: none;
+    color: #D6D6D6;
 }
 
-.label {
-    text-align: right;
+.logo {
+    width: 213px;
+    height: 36px;
+    background: url('http://i.imgur.com/fd8Lcso.png') no-repeat;
+    margin: 30px auto;
+}
+
+.login-block {
+    width: 100%;
+    /*min-height: 200px;*/
+    padding: 20px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    border: 1px solid #ff656c;
+    border-top: 5px solid #ff656c;
+    margin: 0 auto;
+}
+
+.login-block h1 {
+    text-align: center;
+    color: #000;
+    font-size: 18px;
+    text-transform: uppercase;
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+.login-block input {
+    width: 100%;
+    height: 42px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+    font-size: 14px;
+    font-family: Montserrat;
+    padding: 0 20px 0 50px;
+    outline: none;
+}
+
+.login-block input#email {
+    /*background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;*/
+    background-size: 16px 80px;
+}
+
+.login-block input#email:focus {
+    /*background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;*/
+    background-size: 16px 80px;`
+}
+
+.login-block input#password {
+    /*background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;*/
+    background-size: 16px 80px;
+}
+
+.login-block input#password:focus {
+    /*background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;*/
+    background-size: 16px 80px;
+}
+
+.login-block input:active, .login-block input:focus {
+    border: 1px solid #ff656c;
+}
+
+.login-block button {
+    width: 100%;
+    height: 40px;
+    background: #ff656c;
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 1px solid #e15960;
+    color: #fff;
     font-weight: bold;
-    width: 100px;
-    color: #303030;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-family: Montserrat;
+    outline: none;
+    cursor: pointer;
 }
 
-#address {
-    border: 1px solid #000090;
-    background-color: #f0f0ff;
+.login-block button:hover {
+    background: #ff7b81;
+}
+
+.box {
+    max-width: 400px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    /* bring your own prefixes */
+    transform: translate(-50%, -80%);
+}
+
+#map, .angular-google-map-container { 
+    min-height: 500px; 
     width: 100%;
-    padding-right: 2px;
 }
 
-#address td {
-    font-size: 10pt;
+.filter-options {
+    float: left;
+    background: #fff;
+    min-height: 20%;
+    /*margin-bottom: 50px;*/
 }
 
-
-#locationField {
-    height: 20px;
-    margin-bottom: 2px;
-}
-
-.angular-google-map-container {
- height: 100%; 
+.maps {
+    padding: 0;
 }

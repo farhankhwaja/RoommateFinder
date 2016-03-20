@@ -33,6 +33,9 @@ module.exports = function(app) {
 	app.route('/signout')
 		.get(users.logout);
 
+	app.route('/query/')
+		.post(users.searchUser);
+
 	app.get('/oauth/facebook', passport.authenticate('facebook', {
 		failureRedirect: '/login',
 		scope:['email']

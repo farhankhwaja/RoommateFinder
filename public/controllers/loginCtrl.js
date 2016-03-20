@@ -5,7 +5,6 @@ angular.module('RoommateFinder')
     // This object will be filled by the form
 
     $scope.login = function (email, password) {
-      console.log(email, password);
       UserService.signIn(email, password).success(function(data) {
         // $scope.user = data;
         $location.path("/");

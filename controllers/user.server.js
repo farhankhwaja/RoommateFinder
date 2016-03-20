@@ -139,15 +139,6 @@ exports.update = function(req, res, next) {
 			res.json(user);
 		}
 	});
-
-	User.findByIdAndUpdate(req.user.id, {$set : { updated_at : dateTime.getTime() }}, function(err, user) {
-		if (err) {
-			return next(err);
-		}
-		else {
-			res.json(user);
-		}
-	});
 };
 
 exports.delete = function(req, res, next) {
@@ -161,15 +152,30 @@ exports.delete = function(req, res, next) {
 	});
 };
 
-exports.renderProfile = function(req, res) {
-        // if user is authenticated in the session, carry on 
-    if (req.isAuthenticated())
-        res.render('profile', {
-        	title: 'Profile page',
-            user : req.user, // get the user out of session and pass to template
-            messages: ""
-        });
+exports.searchUser = function(req, res){
 
-    // if they aren't redirect them to the home page
-    res.redirect('/');
-    };
+	//Grab all search terms
+	var distance = req.body.distance;
+	var male = req.body.male;
+	var female = req.body.female;
+	var lat = req.body.location[1];
+	var lng = req.body.location[0];
+
+	var query = User.find({});
+
+	if(distance){
+		query = query.where('location').near({center: {type: 'Point', coordinates: [lng, lat]},
+			maxDistance: distance * 1609.34, spherical: true});
+	}
+
+	if(male || female){
+		query.or([{'gender': male}, {'gender': female}]);
+	}
+
+	query.exec(function(err, users){
+		if(err)
+			res.send(err);
+		else
+			res.json(users);
+	});
+};

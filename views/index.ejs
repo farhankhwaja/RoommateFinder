@@ -2,6 +2,7 @@
 <html ng-app="app">
   <head>
     <title><%= title %></title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
 	<link rel="stylesheet" href="/components/components-font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="/stylesheets/style.css" />
@@ -9,10 +10,7 @@
   </head>
   <body ng-cloak>
     <ng-view></ng-view>
-    <!-- Libraries -->
-    <p class="text-center text-muted">© Copyright 2016 Roommate Finder</p>
-
-
+   <!-- Libraries -->
 	<script src="/components/jquery/dist/jquery.js"></script>
 	<script src="/components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src='/components/lodash/dist/lodash.min.js'></script>
@@ -25,7 +23,7 @@
 	<script src="/components/angular-touch/angular-touch.js"></script>
 	<script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="/components/angular-ui-router/release/angular-ui-router.js"></script>
-	<script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyDp7z3EFQ6nAPqLEZPrhH--RVcOc-nRUoY&libraries=places'></script>
+	<script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyDp7z3EFQ6nAPqLEZPrhH--RVcOc-nRUoY'></script>
 	<script src='/components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
 	<script src='/components/angular-google-maps/dist/angular-google-maps.min.js'></script>
 
@@ -36,6 +34,8 @@
 	<script src="/controllers/profileCtrl.js"></script>
 	<script src="/controllers/mainCtrl.js"></script>
 	<script src="/javascripts/userService.js"></script>
+	<script src="/javascripts/gservice.js"></script>
+	<script src="/controllers/queryCtrl.js"></script>
 	<script src="/javascripts/autocomplete.js"></script>
   </body>
 </html>

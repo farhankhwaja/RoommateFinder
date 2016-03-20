@@ -1,0 +1,97 @@
+<div class="wrapper">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="container-fluid">
+
+            <div class="row">
+                <a class="navbar-brand navbar-left" href="#">
+                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                    Roommate Finder
+                </a>
+                <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
+                    <li><a href="#/login" class="btn">Login</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a ng-click="logOut()" class="btn btn-default">Logout</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="container-fluid">
+         <div class="row">
+            <div class="col-xs-12 col-sm-3 col-lg-2 filter-options">
+                <h3>Filter By</h3>
+                <div class="list-group">
+                    <form role="form">
+                        <div class="form-group">
+                            <label for="objName">Object Name:</label>
+                            <input type="text" class="form-control" id="usr">
+                        </div>                      
+                        <label for="catgory">Category:</label>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="DeepSky">DeepSky</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Solar System">Solar System</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Constellations">Constellations</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Photographer">Photographer</label>
+                        </div>
+                        ...
+                        <div class="checkbox">
+                            <i class="fa fa-plus-circle fa-x"></i>&nbsp;&nbsp;&nbsp;<span>More</span>
+                        </div>
+
+                        <label for="catgory">Photographer:</label>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Option1">Option 1</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Option2">Option 2</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Option 3">Option 3</label>
+                        </div>
+                        <div class="checkbox">
+                            <label><input type="checkbox" value="Option 4">Option 4</label>
+                        </div>
+                        ...
+                        <div class="checkbox">
+                            <i class="fa fa-plus-circle fa-x"></i>&nbsp;&nbsp;&nbsp;<span>More</span>
+                        </div>
+                    </form>
+                </div>  
+            </div> 
+            <div class="col-lg-10 col-sm-9 maps">
+                <div id="map"></div>
+                <!-- <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
+            </div>
+        </div>
+    </div>
+</div>
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                    </li>
+                </ul>
+                <hr class="small linesmall">
+                <p class="text-muted">Copyright &copy;2016 RoommateFinder</p>
+            </div>
+        </div>
+    </div>
+</footer>

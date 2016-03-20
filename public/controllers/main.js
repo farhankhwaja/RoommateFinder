@@ -76,6 +76,10 @@ angular.module('RoommateFinder')
       .when('/profile', {
         templateUrl: '/views/profile.html',
         controller: 'ProfileCtrl'
+     })
+      .when('/search', {
+        templateUrl: '/views/search.html',
+        controller: 'queryCtrl'
      });
       // .otherwise({
       //   redirectTo: '/'

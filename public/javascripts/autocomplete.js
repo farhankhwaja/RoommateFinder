@@ -164,7 +164,7 @@ angular.module('google.places', [])
                                 if (status == google.maps.places.PlacesServiceStatus.OK) {
                                     $scope.$apply(function () {
                                         $scope.model = place;
-                                        $scope.location = [place.geometry.location.lat(), place.geometry.location.lng()];
+                                        $scope.location = [place.geometry.location.lng(), place.geometry.location.lat()];
                                         $scope.address = place.formatted_address;
                                         // console.log(place);
                                         $scope.$emit('g-places-autocomplete:select', place);
