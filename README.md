@@ -49,7 +49,7 @@ Make sure the above dependencies are install.
 
 1. Run <code>npm install</code>.
 2. Run <code>bower install</code>.
-3. Launch mongod in one terminal then run server.js
+3. Launch mongod in one terminal then run app.js
 ````
 mongod
 nodemon appjs
