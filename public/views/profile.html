@@ -1,0 +1,23 @@
+
+<div class="cotainer">
+    <div class="row">
+    <!-- LOCAL INFORMATION -->
+    <div class="col-sm-6">
+        <div class="well">
+            <h3><span class="fa fa-user"></span>Local</h3>
+
+                <p>
+                    <strong>id</strong>: {{ user._id }}<br>
+                    <strong>email</strong>: {{ user.email }}<br>
+                    <strong>address</strong>: {{ user.address }} <br>
+                    <strong>Name</strong>: {{ user.name }}
+                </p>
+                
+                <a href="/unlink/local" class="btn btn-default">Unlink</a>
+            <% } else { 
+                <a href="/connect/local" class="btn btn-default">Connect Local</a>
+            <% } %>
+
+        </div>
+    </div>
+</div>

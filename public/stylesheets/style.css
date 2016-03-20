@@ -73,3 +73,7 @@ a {
     height: 20px;
     margin-bottom: 2px;
 }
+
+.angular-google-map-container {
+ height: 100%; 
+}

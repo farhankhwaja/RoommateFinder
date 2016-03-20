@@ -17,17 +17,18 @@ module.exports = function() {
 					}
 					
 					// if (user) {
-	    //             	return done(null, false, {message:'That email is already taken.'});
-	    //         	} 
+					// 	return done(null, false, {message:'That email is already being used.'});
+					// }
 
 					if (!user) {
-						return done(null, false, {message: 'Unknown user'});
+						return done(null, false, {message: "This Email doesn't have an account."});
 					}
 
 					if (!user.authenticate(password)) {
 						return done(null, false, {message: 'Invalid password'});
 					}
 
+					// user.password = user.decrypt(user.password);
 					return done(null, user);
 				}
 			);

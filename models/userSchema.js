@@ -1,39 +1,62 @@
 var mongoose = require('mongoose'),
 	crypto = require('crypto'),
-	Schema = mongoose.Schema;
+	Schema = mongoose.Schema,
+	algorithm = 'aes-256-ctr',
+	algoPassword = 'd6F3Efeq';
 
 var UserSchema = new Schema({
 	name: String,
-	email: String,
-	username: {
+	email: {
 		type: String,
-		trim: true,
-		unique: true
+		unique: true,
+		index: true
+	},
+	username: {
+		type: String
 	},
 	address: String,
 	location: [Number],
 	password: String,
-	provider: String,
+	originalpassword: String,
+	provider: {
+		type: String,
+		index: true
+	},
 	providerId: String,
-	providerData: {}
-});
+    providerData: {}
+},{ timestamps: true});
 
-UserSchema.pre('save', 
+UserSchema.index({location: '2dsphere'});
+
+function encrypt(text){
+  var cipher = crypto.createCipher(algorithm,algoPassword);
+  var crypted = cipher.update(text,'utf8','hex');
+  crypted += cipher.final('hex');
+  return crypted;
+}
+
+UserSchema.pre('save',
 	function(next) {
 		if (this.password) {
-			var md5 = crypto.createHash('md5');
-			this.password = md5.update(this.password).digest('hex');
+			this.password = encrypt(this.password);
 		}
-
 		next();
 	}
 );
 
 UserSchema.methods.authenticate = function(password) {
-	var md5 = crypto.createHash('md5');
-	md5 = md5.update(password).digest('hex');
+	var cipher = crypto.createCipher(algorithm,algoPassword);
+	var crypted = cipher.update(password,'utf8','hex');
+	crypted += cipher.final('hex');
 
-	return this.password === md5;
+	return this.password === crypted;
+};
+
+UserSchema.methods.decrypt = function(text){
+  var decipher = crypto.createDecipher(algorithm,algoPassword);
+  var dec = decipher.update(text,'hex','utf8');
+  dec += decipher.final('utf8');
+  return dec;
 };
 
 UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {

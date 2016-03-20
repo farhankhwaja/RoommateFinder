@@ -1,5 +1,7 @@
 var User = require('mongoose').model('User'),
-	passport = require('passport');
+	passport = require('passport'),
+	path = require('path'),
+	dateTime = new Date();
 
 var getErrorMessage = function(err) {
 	var message = '';
@@ -23,58 +25,29 @@ var getErrorMessage = function(err) {
 	return message;
 };
 
-exports.renderLogin = function(req, res, next) {
-	// console.log(req.body);
-	if (!req.user) {
-		res.render('login', {
-			title: 'Log-in Form',
-			messages: req.flash('error') || req.flash('info')
-		});
-	}
-	else {
-		return res.redirect('/');
-	}
-};
-
-exports.renderRegister = function(req, res, next) {
-	if (!req.user) {
-		res.render('signup.ejs', {
-			title: 'Register Form',
-			messages: req.flash('error')
-		});
-	}
-	else {
-		return res.redirect('/');
-	}
-};
-
 exports.register = function(req, res, next) {
-	if (!req.user) {
-		var user = new User(req.body);
-		var message = null;
-		user.provider = 'local';
-		user.save(function(err) {
-			if (err) {
-				var message = getErrorMessage(err);
-				req.flash('error', message);
-				return res.redirect('/signup');
-			}	
-			req.login(user, function(err) {
-				if (err) 
-					return next(err);
-				
-				return res.redirect('/profile');
-			});
+	var user = new User(req.body);
+	var message = null;
+	user.provider = 'local';
+	user.save(function(err) {
+		if (err) {
+			return res.send(err);
+		}
+		req.login(user, function(err) {
+			if (err)
+				return next(err);
+			return res.redirect('/');
 		});
-	}
-	else {
-		return res.redirect('/');
-	}
+	});
 };
 
 exports.logout = function(req, res) {
-	req.logout();
-	res.redirect('/');
+	req.logOut();
+	req.session.destroy(function (err) {
+		if (err) { return next(err); }
+		// The response should indicate that the user is no longer authenticated.
+		return res.sendStatus(200);
+	});
 };
 
 exports.saveOAuthUserProfile = function(req, profile, done) {
@@ -166,6 +139,15 @@ exports.update = function(req, res, next) {
 			res.json(user);
 		}
 	});
+
+	User.findByIdAndUpdate(req.user.id, {$set : { updated_at : dateTime.getTime() }}, function(err, user) {
+		if (err) {
+			return next(err);
+		}
+		else {
+			res.json(user);
+		}
+	});
 };
 
 exports.delete = function(req, res, next) {
@@ -176,7 +158,7 @@ exports.delete = function(req, res, next) {
 		else {
 			res.json(req.user);
 		}
-	})
+	});
 };
 
 exports.renderProfile = function(req, res) {

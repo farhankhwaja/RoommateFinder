@@ -8,27 +8,42 @@ module.exports = function(app) {
 
 	app.param('userId', users.userByID);
 
-	app.route('/signup')
-		.get(users.renderRegister)
+	app.route('/register')
 		.post(users.register);
 
-	app.route('/login')
-		.get(users.renderLogin)
-		.post(passport.authenticate('local', {
-			successRedirect: '/profile',
-			failureRedirect: '/login',
-			failureFlash: true
-		}));
+	app.route('/signin')
+		.post(function(req, res, next){
+			passport.authenticate('local',
+				function(err, user, info){
+					if (err) { 
+						return next(err);
+					}else if (!user) { // Redirect if it fails
+						return res.sendStatus(500);
+					}else{
+						req.login(user, function(err) {
+							if (err) { return next(err); }
+							// Redirect if it succeeds
+							return res.status(200).json(user);
+						});
+					}
+				})(req, res, next);
+			}
+		);
 
-	app.route('/profile')
-		.get(users.renderProfile);
-
-	app.get('/logout', users.logout);
+	app.route('/signout')
+		.get(users.logout);
 
 	app.get('/oauth/facebook', passport.authenticate('facebook', {
 		failureRedirect: '/login',
 		scope:['email']
 	}));
+
+	app.get('/user/loggedin', function(req, res) {
+		if(req.isAuthenticated())
+			res.send(req.user);
+		else
+			res.send(null);
+	});
 
 	app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
 		failureRedirect: '/login',
