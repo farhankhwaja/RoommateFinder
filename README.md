@@ -20,19 +20,19 @@ Roommate Finder is a application built with MongoDb, Express.js, AngularJS and N
 
 ### The MEAN stack
 
-[MongoDB](http://www.mongodb.org/) as the database.
-[Node.js](http://nodejs.org/) as the server platform.
-[AngularJS](https://angularjs.org/) as the frontend framework.
-[Express](http://expressjs.com/) as the web framework.
+* [MongoDB](http://www.mongodb.org/) as the database.
+* [Node.js](http://nodejs.org/) as the server platform.
+* [AngularJS](https://angularjs.org/) as the frontend framework.
+* [Express](http://expressjs.com/) as the web framework.
 
 ### Additional Tools
 
-[Bower](http://bower.io/) as package manager for web
-[Bootstrap](http://getbootstrap.com/) framework for developing responsive, mobile first projects on the web.
-[Mongoose](http://mongoosejs.com/) mongodb node.js driver in charge of providing elegant mongodb object modeling for node.js
-[Passport](http://passportjs.org/) an authentication middleware for Node.js which supports authentication using a username and password, Facebook, Twitter, and more.
-[UI Bootstrap](http://angular-ui.github.io/bootstrap/) Bootstrap components written in pure AngularJS
-[Nodemon](https://github.com/remy/nodemon) Monitor for any changes in your node.js application and automatically restart the server
+* [Bower](http://bower.io/) as package manager for web
+* [Bootstrap](http://getbootstrap.com/) framework for developing responsive, mobile first projects on the web.
+* [Mongoose](http://mongoosejs.com/) mongodb node.js driver in charge of providing elegant mongodb object modeling for node.js
+* [Passport](http://passportjs.org/) an authentication middleware for Node.js which supports authentication using a username and password, Facebook, Twitter, and more.
+* [UI Bootstrap](http://angular-ui.github.io/bootstrap/) Bootstrap components written in pure AngularJS
+* [Nodemon](https://github.com/remy/nodemon) Monitor for any changes in your node.js application and automatically restart the server
 
 
 These are some of the advantages of a MEAN stack:
