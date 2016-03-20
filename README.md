@@ -2,7 +2,7 @@
 
 ## Description
 
-Roommate Finder is a application built with MongoDb, Express.js, AngularJS and NOde.js Stack. This web application recommends roommates to live with based on your preferences given.
+Roommate Finder is a application built with MongoDB, Express, AngularJS and Node.js (MEAN stack). This web application recommends roommates to live with based on your preferences given.
 
 ## Features
 
