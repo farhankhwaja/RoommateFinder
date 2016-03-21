@@ -2,7 +2,7 @@ html, body {
 	width: 100%;
 	height: 100%;
 	/*padding: 10px;*/
-	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 .searchTemplate {
@@ -33,19 +33,23 @@ html, body {
     /*font-weight: 700;*/
 }
 
+.wrapper {
+    margin-bottom: 150px;
+}
+
 /* Footer */
 
 .footer {
-    padding: 50px 0;
+    /*padding: 50px 0;*/
     background-color: #f7f7f7;
     padding: 10px 0 5px;
     color: #999;
     border-top: 1px solid #ff656c;
-    /*position: fixed;*/
+    position: fixed;
     bottom: 0;
     width: 100%;
     z-index: 100;
-    height: 120px;
+    /*height: 120px;*/
 }
 
 .form-signin
@@ -215,25 +219,38 @@ html, body {
 
 .box {
     max-width: 400px;
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    /* bring your own prefixes */
-    transform: translate(-50%, -80%);
-}
+    /*position: fixed;*/
+    margin: auto;
+    padding: 10px;
+ }
 
 #map, .angular-google-map-container { 
     min-height: 500px; 
     width: 100%;
+    margin-right: 5px;
 }
 
 .filter-options {
     float: left;
     background: #fff;
-    min-height: 20%;
-    /*margin-bottom: 50px;*/
+    /*min-height: 20%;*/
+    margin-top: 10px;
+    min-height: 100%;
 }
 
 .maps {
-    padding: 0;
+    padding: 2px;
+}
+
+.searchBox {
+    margin-left: 0;
+    margin-right: 0;
+    padding-bottom: 2px;
+    width: 50%;
+}
+
+.mapDiv {
+    padding-left: 0;
+    padding-right: 0;
+    height: 100%;
 }

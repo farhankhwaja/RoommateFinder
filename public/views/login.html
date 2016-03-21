@@ -1,9 +1,9 @@
-<div class="">
+<div class="wrapper">
     <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
 
             <div class="row">
-                <a class="navbar-brand navbar-left" href="#">
+                <a class="navbar-brand navbar-left" href="#/">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                     Roommate Finder
                 </a>
@@ -13,36 +13,38 @@
             </div>
         </div>
     </nav>
-    <section class="container">
-	    <div class="row">
-	        <div class="col-sm-4 col-xs-8 col-md-4 box">
-	            <!-- <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1> -->
-	            <div class="logo"></div>
-	            <div class="login-block">
-	                <form class="form-signin">
-	                <label for="email" class="sr-only">Email</label>
-			        <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
-			        
-			        <label for="password" class="sr-only">Password</label>
-			        <input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password">
-	                
-	                <button class="btn btn-lg btn-primary btn-block" type="submit">
-	                    Sign in</button>
-	                <!-- <label class="checkbox pull-left">
-	                    <input type="checkbox" value="remember-me">
-	                    Remember me
-	                </label>
-	                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
-	                </form>
-	            </div>
-	            <a href="#/signup" class="text-center new-account">Create an account </a>
-	        </div>
-	    </div>
-	    <div ng-show="message" class="error-alert alert-warning alert-dismissible account-wall" role="alert">
-			<p class="text-danger">
-				{{message}}
-			</p>
-		</div>
+    <section>
+        <div class="container">
+    	    <div class="row">
+    	        <div class="col-sm-4 col-md-4 col-md-offset-4">
+    	            <!-- <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1> -->
+    	            <div class="logo"></div>
+    	            <div class="login-block">
+    	                <form class="form-signin">
+    	                <label for="email" class="sr-only">Email</label>
+    			        <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
+    			        
+    			        <label for="password" class="sr-only">Password</label>
+    			        <input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password">
+    	                
+    	                <button class="btn btn-lg btn-primary btn-block" type="submit">
+    	                    Sign in</button>
+    	                <!-- <label class="checkbox pull-left">
+    	                    <input type="checkbox" value="remember-me">
+    	                    Remember me
+    	                </label>
+    	                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
+    	                </form>
+    	            </div>
+    	            <a href="#/signup" class="text-center new-account">Create an account </a>
+    	        </div>
+    	    </div>
+    	    <div ng-show="message" class="error-alert alert-warning alert-dismissible account-wall" role="alert">
+    			<p class="text-danger">
+    				{{message}}
+    			</p>
+    		</div>
+        </div>
 	</section>
 </div>
 <footer class="footer">

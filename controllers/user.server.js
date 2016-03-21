@@ -158,8 +158,8 @@ exports.searchUser = function(req, res){
 	var distance = req.body.distance;
 	var male = req.body.male;
 	var female = req.body.female;
-	var lat = req.body.location[1];
-	var lng = req.body.location[0];
+	var lat = parseFloat(req.body.latitude);
+	var lng = parseFloat(req.body.longitude);
 
 	var query = User.find({});
 

@@ -33,6 +33,7 @@ angular.module('RoommateFinder')
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = latitude;
             selectedLong = longitude;
+            //console.log("Inside GService", latitude, longitude, filteredResults);
 
             // If filtered results are provided in the refresh() call...
             if (filteredResults){
@@ -42,21 +43,23 @@ angular.module('RoommateFinder')
 
                 // Then, initialize the map -- noting that a filter was used (to mark icons yellow)
                 initialize(latitude, longitude, true);
+            }else{
+                initialize(latitude, longitude, false);
             }
 
-            // If no filter is provided in the refresh() call...
-            else {
+            // // If no filter is provided in the refresh() call...
+            // else {
 
                 // Perform an AJAX call to get all of the records in the db.
-                $http.get('/users').success(function(response){
+            //     $http.get('/users').success(function(response){
 
-                    // Then convert the results into map points
-                    locations = convertToMapPoints(response);
+            //         // Then convert the results into map points
+            //         locations = convertToMapPoints(response);
 
-                    // Then initialize the map -- noting that no filter was used.
-                    initialize(latitude, longitude, false);
-                }).error(function(){});
-            }
+            //         // Then initialize the map -- noting that no filter was used.
+            //         initialize(latitude, longitude, false);
+            //     }).error(function(){});
+            // }
         };
 
         // Private Inner Functions
@@ -73,21 +76,20 @@ angular.module('RoommateFinder')
                 var user = response[i];
 
                 // Create popup windows for each record
-                var  contentString = '<p><b>Username</b>: ' + user.username + '<br><b>Age</b>: ' + user.age + '<br>' +
-                    '<b>Gender</b>: ' + user.gender + '<br><b>Favorite Language</b>: ' + user.favlang + '</p>';
+                var  contentString = '<p><b>Username</b>: ' + user.username +'</p>';
 
                 // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
-                if (locations.length > 0){
+                if (locations){
                     locations.push(new Location(
                         new google.maps.LatLng(user.location[1], user.location[0]),
                         new google.maps.InfoWindow({
                             content: contentString,
                             maxWidth: 320
                         }),
-                        user.username,
-                        user.gender,
-                        user.age,
-                        user.favlang
+                        user.username
+                        //user.gender
+                        // user.age,
+                        // user.favlang
                     ));
                 }
             }
@@ -101,22 +103,22 @@ angular.module('RoommateFinder')
             this.message = message;
             this.username = username;
             this.gender = gender;
-            this.age = age;
-            this.favlang = favlang
+            // this.age = age;
+            // this.favlang = favlang
         };
 
         // Initializes the map
         var initialize = function(latitude, longitude, filter) {
 
             // Uses the selected lat, long as starting point
-            var myLatLng = {lat: selectedLat, lng: selectedLong};
+            var myLatLng = new google.maps.LatLng(selectedLat,selectedLong);
 
             // If map has not been created...
             if (!map){
 
                 // Create a new map and place in the index.html page
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 3,
+                    zoom: 4,
                     center: myLatLng
                 });
             }
@@ -151,7 +153,7 @@ angular.module('RoommateFinder')
             var initialLocation = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
                 position: initialLocation,
-                // animation: google.maps.Animation.BOUNCE,
+                animation: google.maps.Animation.BOUNCE,
                 map: map,
                 icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
             });

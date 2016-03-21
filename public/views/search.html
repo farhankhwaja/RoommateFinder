@@ -3,10 +3,22 @@
         <div class="container-fluid">
 
             <div class="row">
-                <a class="navbar-brand navbar-left" href="#">
+                <a class="navbar-brand navbar-left" href="#/">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
                     Roommate Finder
                 </a>
+                <form class="navbar-form navbar-left" role="search" ng-submit="queryUsers()">
+                    <div class="form-group">
+                        <input type="text" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Enter Location"/>
+                    </div>
+                    <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
+                </form>
+                <!-- <ul class="col-md-4 nav navbar input-group">
+                   <input type="text" class="form-control" placeholder="Search this site">
+                   <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                   </span>
+                </ul> -->
                 <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
                     <li><a href="#/login" class="btn">Login</a></li>
                 </ul>
@@ -19,58 +31,43 @@
             </div>
         </div>
     </nav>
-    <div class="container-fluid">
-         <div class="row">
-            <div class="col-xs-12 col-sm-3 col-lg-2 filter-options">
-                <h3>Filter By</h3>
-                <div class="list-group">
-                    <form role="form">
-                        <div class="form-group">
-                            <label for="objName">Object Name:</label>
-                            <input type="text" class="form-control" id="usr">
-                        </div>                      
-                        <label for="catgory">Category:</label>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="DeepSky">DeepSky</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Solar System">Solar System</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Constellations">Constellations</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Photographer">Photographer</label>
-                        </div>
-                        ...
-                        <div class="checkbox">
-                            <i class="fa fa-plus-circle fa-x"></i>&nbsp;&nbsp;&nbsp;<span>More</span>
-                        </div>
-
-                        <label for="catgory">Photographer:</label>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Option1">Option 1</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Option2">Option 2</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Option 3">Option 3</label>
-                        </div>
-                        <div class="checkbox">
-                            <label><input type="checkbox" value="Option 4">Option 4</label>
-                        </div>
-                        ...
-                        <div class="checkbox">
-                            <i class="fa fa-plus-circle fa-x"></i>&nbsp;&nbsp;&nbsp;<span>More</span>
-                        </div>
-                    </form>
-                </div>  
-            </div> 
-            <div class="col-lg-10 col-sm-9 maps">
-                <div id="map"></div>
-                <!-- <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
-            </div>
+    <div class="container-fluid mapDiv">
+        <div class="col-xs-12 col-sm-2 col-lg-2 filter-options">
+            <div class="list-group">
+                <form role="form">
+                    <div class="form-group">
+                        <label for="distance">Max. Distance (miles)</label>
+                        <input type="number" class="form-control" id="distance" placeholder="500" min="0" ng-model="formData.distance" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                    </div>
+                    <label>Gender</label>
+                    <div class="form-group">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="optionsRadios" id="checkmale" value="Male" ng-model="formData.male" ng-true-value = "'Male'" ng-change="queryUsers()">
+                            Male
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="optionsRadios" id="checkfemale" value="Female" ng-model="formData.female" ng-true-value="'Female'" ng-change="queryUsers()">
+                            Female
+                        </label>
+                    </div>
+                    <!-- <div class="form-group">
+                        <label for="minage">Min. Age</label>
+                        <input type="number" class="form-control" id="minage" placeholder="18" ng-model="formData.minage" min="18" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                    </div>
+                    <div class="form-group">
+                        <label for="maxage">Max Age</label>
+                        <input type="number" class="form-control" id="maxage" placeholder="80" ng-model="formData.maxage" min="18" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                    </div> -->
+                </form>
+            </div>  
+        </div> 
+        <div class="col-lg-10 col-sm-10 maps">
+             <div class="row searchBox">
+                <div class="input-group">
+                </div>
+             </div>
+            <div id="map"></div>
+            <!-- <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
         </div>
     </div>
 </div>

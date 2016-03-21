@@ -15,7 +15,10 @@ var UserSchema = new Schema({
 		type: String
 	},
 	address: String,
-	location: [Number],
+	location: {
+      type: { type: String },
+      coordinates: []
+  },
 	password: String,
 	originalpassword: String,
 	provider: {
@@ -24,9 +27,11 @@ var UserSchema = new Schema({
 	},
 	providerId: String,
     providerData: {}
-},{ timestamps: true});
+},{ 
+	timestamps: true
+	});
 
-UserSchema.index({location: '2dsphere'});
+UserSchema.index({ location: '2dsphere' });
 
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,algoPassword);
