@@ -25,7 +25,8 @@
     "angular-touch": "^1.3.0",
     "angular-bootstrap": "~0.13.4",
     "angular-ui-router": "~0.2.15",
-    "angular-google-maps": "~2.3.2"
+    "angular-google-maps": "~2.3.2",
+    "angularjs-geolocation": "~0.1.1"
   },
   "resolutions": {
     "angular": "^1.3.0"

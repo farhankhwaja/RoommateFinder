@@ -22,6 +22,7 @@ angular.module('RoommateFinder')
         var selectedLat = 39.50;
         var selectedLong = -98.35;
 
+
         // Functions
         // --------------------------------------------------------------
         // Refresh the Map with new data. Takes three parameters (lat, long, and filtering results)
@@ -76,7 +77,7 @@ angular.module('RoommateFinder')
                 var user = response[i];
 
                 // Create popup windows for each record
-                var  contentString = '<p><b>Username</b>: ' + user.username +'</p>';
+                var  contentString = '<p><b>Username</b>: ' + user.username +'<br>' +'<b>Address</b>:' + user.address +'</p>';
 
                 // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
                 if (locations){
@@ -118,7 +119,7 @@ angular.module('RoommateFinder')
 
                 // Create a new map and place in the index.html page
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 4,
+                    zoom: 15,
                     center: myLatLng
                 });
             }

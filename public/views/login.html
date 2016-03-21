@@ -1,5 +1,5 @@
 <div class="wrapper">
-    <nav class="navbar navbar-default" role="navigation">
+    <nav class="navbar navbar-default header" role="navigation">
         <div class="container-fluid">
 
             <div class="row">
@@ -20,7 +20,7 @@
     	            <!-- <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1> -->
     	            <div class="logo"></div>
     	            <div class="login-block">
-    	                <form class="form-signin">
+    	                <form class="form-signin" ng-submit="login(formData.email, formData.password)">
     	                <label for="email" class="sr-only">Email</label>
     			        <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
     			        

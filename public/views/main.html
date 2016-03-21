@@ -1,7 +1,7 @@
-<div ng-cloak>
-    <nav class="navbar navbar-default" role="navigation">
+<div class="wrapper mainWrapper" ng-cloak>
+    <nav class="navbar navbar-default header" role="navigation">
         <div class="container-fluid">
-
+        <div class="row">
             <div class="navbar-header">
                 <a class="navbar-brand" href="#/">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
@@ -21,10 +21,37 @@
                 </ul>
             </div>
         </div>
+        </div>
     </nav>
-</div>
-<div class="searchTemplate">
-    <div class="text-vertical-center">
-        
+    <div class="searchTemplate">
+        <div class="text-vertical-center">
+            <div class="input-group searchBox">
+               <input type="text" class="form-control" placeholder="Search this site">
+               <span class="input-group-btn">
+                    <button class="btn btn-default" type="button">Go!</button>
+               </span>
+            </div>
+        </div>
     </div>
 </div>
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
+                    </li>
+                </ul>
+                <hr class="small linesmall">
+                <p class="text-muted">Copyright &copy;2016 RoommateFinder</p>
+            </div>
+        </div>
+    </div>
+</footer>

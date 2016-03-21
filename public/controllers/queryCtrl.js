@@ -1,10 +1,10 @@
 'use strict';
 
 angular.module('RoommateFinder')
-    .controller('queryCtrl', function($scope, $log, $http, $rootScope, gservice, UserService ){
+    .controller('queryCtrl', function($scope, $log, $http, $rootScope, $location, gservice, UserService, geolocation){
 
         $scope.formData = {};
-        // $scope.map = { center: { latitude: 45, longitude: -73 }, zoom: 8 };
+        $scope.formData.location = []
         var queryBody = {};
 
         $http.get('/user/loggedin').then(function(data){
@@ -24,6 +24,12 @@ angular.module('RoommateFinder')
             });
         };
 
+        geolocation.getLocation().then(function(data){
+            // console.log(data.coords);
+            gservice.refresh(parseFloat(data.coords.latitude), parseFloat(data.coords.longitude), false);
+            $scope.formData.location = [parseFloat(data.coords.longitude), parseFloat(data.coords.latitude)]
+        });
+
         $scope.queryBody = {
             longitude: undefined,
             latitude: undefined,
@@ -33,7 +39,17 @@ angular.module('RoommateFinder')
             // minAge: $scope.formData.minage,
             // maxAge: $scope.formData.maxage
         };
-    // Take query parameters and incorporate into a JSON queryBody
+
+        // Get coordinates based on mouse click. When a click event is detected....
+        // $rootScope.$on("clicked", function(){
+
+        //     // Run the gservice functions associated with identifying coordinates
+        //     $scope.$apply(function(){
+        //         $scope.formData.location = [parseFloat(gservice.clickLong).toFixed(3), parseFloat(gservice.clickLat).toFixed(3)];
+        //     });
+        //     $scope.queryUsers();
+        // });
+
         $scope.queryUsers = function(){
             if($scope.formData.location){
                 $scope.queryBody.longitude = parseFloat($scope.formData.location[0]);

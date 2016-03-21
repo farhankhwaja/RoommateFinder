@@ -12,7 +12,8 @@ angular.module('RoommateFinder', [
     'ui.bootstrap.tpls',
     'ui.bootstrap',
     'uiGmapgoogle-maps',
-    'google.places']);
+    'google.places',
+    'geolocation']);
 
 angular.module('RoommateFinder')
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
