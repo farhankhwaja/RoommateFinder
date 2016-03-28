@@ -23,7 +23,7 @@ app.use(logger('dev'));
 app.all('*', function(req, res, next) {
   res.set('Access-Control-Allow-Origin', 'http://localhost');
   res.set('Access-Control-Allow-Credentials', true);
-  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT');
+  res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, OPTIONS');
   res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
   if ('OPTIONS' == req.method) return res.send(200);
   next();

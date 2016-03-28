@@ -11,7 +11,7 @@ module.exports = function() {
 		saveUninitialized: true,
 		resave: false,
 		secret: 'HGST72H7823GKOL',
-		cookie: { }
+		cookie: { maxAge: 3600000 }
 	}
 
 	app.use(bodyParser.urlencoded({
@@ -39,6 +39,8 @@ module.exports = function() {
 
 	require('../routes/index.js')(app, passport);
 	require('../routes/users.js')(app, passport);
+	require('../routes/socialLogin.js')(app, passport);
+	require('../routes/listings.js')(app, passport);
 
 	return app;
 };

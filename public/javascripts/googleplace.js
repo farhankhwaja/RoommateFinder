@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('RoommateFinder')
+angular.module('MovIn')
 	directive('googleplace', function() {
     return {
         require: 'ngModel',

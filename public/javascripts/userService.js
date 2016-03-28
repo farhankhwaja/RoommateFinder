@@ -1,8 +1,7 @@
 'use strict';
-angular.module('RoommateFinder').factory('UserService', function ($http) {
+angular.module('MovIn').factory('UserService', function ($http) {
     return {
         signIn: function(email, password) {
-            console.log("got it", email, password);
             return $http.post( '/signin', {email : email, password: password});
         },
 
@@ -12,6 +11,14 @@ angular.module('RoommateFinder').factory('UserService', function ($http) {
 
         register: function(formData) {
             return $http.post( '/register', formData);
+        },
+
+        update: function(formData) {
+            return $http.put('/users/'+ formData._id, formData);
+        },
+
+        addPlace: function(formData) {
+            return $http.put('/listing/'+formData.user_id, formData);
         }
-    }
+    };
 });

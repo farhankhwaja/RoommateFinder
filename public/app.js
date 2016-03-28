@@ -1,3 +1,3 @@
 'use strict';
 
-angular.module('app',['RoommateFinder']);
+angular.module('app',['MovIn']);

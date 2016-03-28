@@ -1,23 +1,320 @@
-
-<div class="cotainer">
-    <div class="row">
-    <!-- LOCAL INFORMATION -->
-    <div class="col-sm-6">
-        <div class="well">
-            <h3><span class="fa fa-user"></span>Local</h3>
-
-                <p>
-                    <strong>id</strong>: {{ user._id }}<br>
-                    <strong>email</strong>: {{ user.email }}<br>
-                    <strong>address</strong>: {{ user.address }} <br>
-                    <strong>Name</strong>: {{ user.name }}
+<div class="wrapper">
+    <nav class="navbar navbar-default header" role="navigation">
+        <div class="row">
+                <a class="navbar-brand navbar-left" href="#/">
+                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                    MovIn
+                </a>
+                <!-- <ul class="col-md-4 nav navbar input-group">
+                   <input type="text" class="form-control" placeholder="Search this site">
+                   <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                   </span>
+                </ul> -->
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href="#/search" class="btn">Search</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href ng-click="logOut()">Logout</a></li>
+                </ul>
+            </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                  <div class="panel panel-warning">
+                    <div class="panel-heading">
+                      <h3 class="panel-title">Your Profile</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="col-md-3 col-lg-3 " align="center">
+                            <img alt="User Pic" src="http://babyinfoforyou.com/wp-content/uploads/2014/10/avatar-300x300.png" class="img-circle img-responsive">
+                        </div>
+                        <div class=" col-md-9 col-lg-9 "> 
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Name:</td>
+                                        <td>{{user.name}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Email</td>
+                                        <td><a href="mailto:{{user.email}}">{{user.email}}</a></td>
+                                    </tr>
+                                    <tr>
+                                        <td>Age:</td>
+                                        <td>{{user.age}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Gender</td>
+                                        <td>{{user.gender}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <button class="btn btn-default btn-primary" ng-click="personal = !personal">Edit Profile</button>
+                            <button class="btn btn-default btn-primary" ng-click="aptInfo = !aptInfo">Add Listing</button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="panel panel-warning" ng-show="personal">
+                    <div class="panel-heading">
+                      <h3 class="panel-title text-center">Describe Yourself</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class="text-center col-md-11">
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.geek}">
+                                <input type="checkbox" class="profileOptions" id="geek" value="geek" name="geek" ng-model="formData.geek">
+                                <label for="geek">
+                                    <i class="fa fa-code fa-3x"></i>
+                                    <span class="desc">Geek</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.gamer}">
+                                <input type="checkbox" class="profileOptions" id="gamer" value="gamer" name="gamer" ng-model="formData.gamer">
+                                <label for="gamer">
+                                    <i class="fa fa-gamepad fa-3x"></i>
+                                    <span class="desc">Gamer</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.party}">
+                                <input type="checkbox" class="profileOptions" id="party" value="party" name="party" ng-model="formData.party">
+                                <label for="party">
+                                    <i class="fa fa-beer fa-3x"></i>
+                                    <span class="desc">Party</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.musician}">
+                                <input type="checkbox" class="profileOptions" id="musician" value="musician" name="musician" ng-model="formData.musician">
+                                <label for="musician">
+                                    <i class="fa fa-music fa-3x"></i>
+                                    <span class="desc">Musician</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.artist}">
+                                <input type="checkbox" class="profileOptions" id="artist" value="artist" name="artist" ng-model="formData.artist">
+                                <label for="artist">
+                                    <i class="fa fa-paint-brush fa-3x"></i>
+                                    <span class="desc">Artist</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.vegan}">
+                                <input type="checkbox" class="profileOptions" id="vegan" value="vegan" name="vegan" ng-model="formData.vegan">
+                                <label for="vegan">
+                                    <i class="fa fa-leaf fa-3x"></i>
+                                    <span class="desc">Vegan</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.bookworm}">
+                                <input type="checkbox" class="profileOptions" id="bookworm" value="bookworm" name="bookworm" ng-model="formData.bookworm">
+                                <label for="bookworm">
+                                    <i class="fa fa-book fa-3x"></i>
+                                    <span class="desc">Bookworm</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.athlete}">
+                                <input type="checkbox" class="profileOptions" id="athlete" value="athlete" name="athlete" ng-model="formData.athlete">
+                                <label for="athlete">
+                                    <i class="fa fa-soccer-ball-o fa-3x"></i>
+                                    <span class="desc">Athlete</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.gay}">
+                                <input type="checkbox" class="profileOptions" id="gay" value="gay" name="gay" ng-model="formData.gay">
+                                <label for="gay">
+                                    <i class="fa fa-heart fa-3x"></i>
+                                    <span class="desc">Gay&nbsp;</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.redditor}">
+                                <input type="checkbox" class="profileOptions" id="redditor" value="redditor" name="redditor" ng-model="formData.redditor">
+                                <label for="redditor">
+                                    <i class="fa fa-reddit fa-3x"></i>
+                                    <span class="desc">Redditor!</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.live_sports}">
+                                <input type="checkbox" class="profileOptions" id="live_sports" value="live_sports" name="live_sports" ng-model="formData.live_sports">
+                                <label for="live_sports">
+                                    <i class="fa fa-television fa-3x"></i>
+                                    <span class="desc">Live Sports</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.early_riser}">
+                                <input type="checkbox" class="profileOptions" id="early_riser" value="early_riser" name="early_riser" ng-model="formData.early_riser">
+                                <label for="early_riser">
+                                    <i class="fa fa-sun-o fa-3x"></i>
+                                    <span class="desc">Early Riser</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.night_owl}">
+                                <input type="checkbox" class="profileOptions" id="night_owl" value="night_owl" name="night_owl" ng-model="formData.night_owl">
+                                <label for="night_owl">
+                                    <i class="fa fa-moon-o fa-3x"></i>
+                                    <span class="desc">Night Owl</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.shopaholic}">
+                                <input type="checkbox" class="profileOptions" id="shopaholic" value="shopaholic" name="shopaholic" ng-model="formData.shopaholic">
+                                <label for="shopaholic">
+                                    <i class="fa fa-shopping-cart fa-3x"></i>
+                                    <span class="desc">Shopaholic</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.foodie}">
+                                <input type="checkbox" class="profileOptions" id="foodie" value="foodie" name="foodie" ng-model="formData.foodie">
+                                <label for="foodie">
+                                    <i class="fa fa-cutlery fa-3x"></i>
+                                    <span class="desc">Foodie</span>
+                                </label>
+                            </div>
+                            <div class="personInfo" ng-class="{highlightPersonInfo : formData.fitness}">
+                                <input type="checkbox" class="profileOptions" id="fitness" value="fitness" name="fitness" ng-model="formData.fitness">
+                                <label for="fitness">
+                                    <i class="fa fa-heartbeat fa-3x"></i>
+                                    <span class="desc">Fitness</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-primary saveBtn" ng-click="saveProfile(formData)">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div ng-show="success" class="alert alert-info col-sm-4 col-md-4 col-md-offset-4" role="alert">
+                <p class="text-danger text-center">
+                    <b>{{message}}</b>
+                    <i class="fa fa-exclamation-circle fa-2x"></i>
                 </p>
-                
-                <a href="/unlink/local" class="btn btn-default">Unlink</a>
-            <% } else { 
-                <a href="/connect/local" class="btn btn-default">Connect Local</a>
-            <% } %>
+            </div>
+            <div ng-show="error" class="alert alert-warning col-sm-4 col-md-4 col-md-offset-4" role="alert">
+                <p class="text-danger text-center">
+                    <b>{{message}}</b>
+                    <i class="fa fa-exclamation-circle fa-2x"></i>
+                </p>
+            </div>
+            <div class="panel panel-warning" ng-show="aptInfo">
+                    <div class="panel-heading">
+                      <h3 class="panel-title text-center">Property Information</h3>
+                    </div>
+                    <div class="panel-body">
+                        <!-- <div class="row">
+                            <div class="text-center col-md-4 col-md-offset-4">
+                                <div class="form-group">
+                                    <label for="propertyType" class="sr-only">Property Type:</label>
+                                    <div class="input-group-addon">
+                                        <label class="radio-inline optionsRadios">
+                                            <input type="radio" value="apt" name="apt" id="apt" ng-model="listingData.type" ng-required="!listingData.type"><i class="fa fa-building fa-2x"></i> Apartment
+                                        </label>
+                                        <label class="radio-inline optionsRadios">
+                                            <input type="radio" value="house" name="house" id="house" ng-model="listingData.type" ng-required="!listingData.type"><i class="fa fa-home fa-2x"></i> House
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                        <div class="row">
+                            <div class="col-md-6 col-md-offset-3">
+                                <div class="form-group">
+                                    <label for="address" class="sr-only">Address</label>
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-map-marker"></i>
+                                        </div>
+                                        <input type="text" name="address" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="listingData.address" location="listingData.location" placeholder="Address"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                      <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label for="type" class="sr-only">Type of Listing</label>
+                                <div class="input-group-addon">
+                                    <!-- <div class="input-group-addon"> -->
+                                    <!-- <label class="radio-inline control-label">Type of Listing: </label> -->
+                                    <label class="radio-inline optionsRadios">
+                                        <input type="radio" value="subLease" name="subLease" id="subLease" ng-model="listingData.isFor" ng-required="!listingData.isFor"><i class="fa fa-hotel fa-2x"></i> Sub-Lease
+                                    </label>
+                                    <label class="radio-inline optionsRadios">
+                                        <input type="radio" value="lease" name="lease" id="lease" ng-model="listingData.isFor" ng-required="!listingData.isFor"><i class="fa fa-home fa-2x"></i> Lease
+                                    </label>
+                                </div>
+                            </div>
 
+                            <div class="form-group">
+                                <label for="firstname" class="sr-only">Rent</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-dollar"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="listingData.rent" placeholder="Rent Per Month"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firstname" class="sr-only">Number oF Rooms</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-puzzle-piece"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="listingData.no_rooms" placeholder="Number oF Rooms"/>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="firstname" class="sr-only">Baths Available</label>
+                                <div class="input-group">
+                                    <div class="input-group-addon">
+                                        <i class="fa fa-puzzle-piece"></i>
+                                    </div>
+                                    <input type="text" class="form-control" ng-model="listingData.baths" placeholder="Number oF Bathrooms"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            
+                        </div>
+                        <div class="col-md-1">
+                            <button class="btn btn-primary" ng-click="saveListing(listingData)">Save</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+                <!-- <div class="form-group">
+                            <label for="password" class="sr-only">Address</label>
+                            <div class="input-group">
+                                <div class="input-group-addon">
+                                    <i class="fa fa-map-marker fa-2x"></i>
+                                </div>
+                                    <input type="text" col="10" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Address"/>
+                            </div>
+                        </div> -->
+                            <!-- <input type="file" ngf-select="uploadFiles($files)" multiple accept="image/*">
+                            <br>
+                            <br>Files:
+                            <ul>
+                                <li ng-repeat="f in files" style="font:smaller">
+                                    {{f.name}}
+                                </li>
+                            </ul>
+                            <progressbar class="progress-striped active tab-progress tab-content-progress" value="getProgress('collect.twitter')" type="success" ng-show="progress >= 0" >{{progress}}%</progressbar>
+                            <div ng-show="message" class="error-alert alert-warning error-box col-sm-4 col-md-4 col-md-offset-4" role="alert">
+                                <p class="text-danger text-center">
+                                    <i class="fa fa-exclamation-circle fa-2x"></i>
+                                    <b>{{message}}</b>
+                                </p>
+                            </div> -->
+                            <!-- <a href="/unlink/local" class="btn btn-default">Unlink</a> 
+                            <a href="/connect/local" class="btn btn-default">Connect Local</a> -->
         </div>
-    </div>
+    </section>
 </div>

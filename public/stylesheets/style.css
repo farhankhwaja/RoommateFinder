@@ -10,7 +10,7 @@ html, body {
 	display: table;
     position: relative;
     width: 100%;
-    height: 100%;
+    min-height: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
@@ -38,13 +38,25 @@ html, body {
     padding: 0;
 }
 
-.wrapper {
+.mapwrapper {
     margin-bottom: 150px;
-    height: 77%;
+    height: 76%;
 }
 
 .mainWrapper {
-    height: 78%;
+    /*margin-bottom: 150px;*/
+    height: 100%;
+    overflow: auto;
+}
+
+.loginWrapper {
+    margin-bottom: 150px;
+    overflow: auto;
+}
+
+.wrapper {
+    margin-bottom: 150px;
+    overflow: auto;
 }
 /* Footer */
 
@@ -150,7 +162,7 @@ html, body {
 }
 
 .login-block {
-    width: 100%;
+    /*width: 100%;*/
     /*min-height: 200px;*/
     padding: 20px;
     background: #f7f7f7;
@@ -170,36 +182,12 @@ html, body {
 }
 
 .login-block input {
-    width: 100%;
-    height: 42px;
     box-sizing: border-box;
     border-radius: 5px;
     border: 1px solid #ccc;
     margin-bottom: 20px;
-    font-size: 14px;
-    font-family: Montserrat;
     padding: 0 20px 0 50px;
     outline: none;
-}
-
-.login-block input#email {
-    /*background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px top no-repeat;*/
-    background-size: 16px 80px;
-}
-
-.login-block input#email:focus {
-    /*background: #fff url('http://i.imgur.com/u0XmBmv.png') 20px bottom no-repeat;*/
-    background-size: 16px 80px;`
-}
-
-.login-block input#password {
-    /*background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px top no-repeat;*/
-    background-size: 16px 80px;
-}
-
-.login-block input#password:focus {
-    /*background: #fff url('http://i.imgur.com/Qf83FTt.png') 20px bottom no-repeat;*/
-    background-size: 16px 80px;
 }
 
 .login-block input:active, .login-block input:focus {
@@ -207,17 +195,7 @@ html, body {
 }
 
 .login-block button {
-    width: 100%;
-    height: 40px;
-    background: #ff656c;
-    box-sizing: border-box;
-    border-radius: 5px;
-    border: 1px solid #e15960;
-    color: #fff;
-    font-weight: bold;
-    text-transform: uppercase;
-    font-size: 14px;
-    font-family: Montserrat;
+    border: 1px solid #ff656c;
     outline: none;
     cursor: pointer;
 }
@@ -267,4 +245,121 @@ html, body {
     padding-left: 0;
     padding-right: 0;
     height: 100%;
+}
+
+.error-box {
+    margin-top: 10px;
+    padding: 10px;
+    background: #f7f7f7;
+    border-radius: 5px;
+    border: 1px solid #D0021B;
+    border-top: 5px solid #D0021B;
+}
+
+.toppad {
+    margin-top:20px;
+}
+
+@media (min-height: 1024px) {
+  /*.container {
+    max-width: 730px;
+  }*/
+
+  /* Remove the padding we set earlier */
+  .mainWrapper {
+    min-height: 93%;
+  }
+}
+
+.labels {
+    color: red;
+    background-color: white;
+    font-family: "Lucida Grande", "Arial", sans-serif;
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    /*width: 40px;*/
+    border: 1px solid #ff656c;
+    white-space: nowrap;
+}
+
+.infoBox {
+    height: 30px;
+    padding: 1px;
+}
+
+.personInfo {
+    height: auto;
+    width: 90px;
+    background-color: #D6D6D6;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    /*border: 1px solid #ff656c;*/
+    cursor: pointer;
+}
+
+.personInfo > * {
+    cursor: pointer;
+}
+
+.personInfo:hover {
+    background-color: #D6C7A5;
+}
+
+/*.personInfo:active {
+    background-color: #000;
+}*/
+
+#radiomale, #radiofemale {
+    display: none;
+}
+
+#radiomale:checked + i.fa {
+    color: #ff656c;
+}
+
+#radiofemale:checked + i.fa {
+    color: #ff656c;
+}
+
+.personInfo input[type="checkbox"] {
+    display: none;
+}
+
+.desc {
+    padding-top: 5px;
+}
+
+input:checked + label {
+    color: #fff;
+}
+
+.highlightPersonInfo {
+    height: auto;
+    width: 90px;
+    background-color: #ff656c;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    /*border: 1px solid #ff656c;*/
+    cursor: pointer;
+}
+
+.highlightPersonInfo > * {
+    cursor: pointer;   
+}
+
+.saveBtn {
+    vertical-align: middle;
+}
+
+.optionsRadios > input {
+    display: none;
+}
+
+.optionsRadios > input:checked + i.fa {
+    color: #ff656c;
 }

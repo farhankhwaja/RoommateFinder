@@ -14,24 +14,53 @@ var UserSchema = new Schema({
 	username: {
 		type: String
 	},
-	address: String,
-	location: {
-      type: { type: String },
-      coordinates: []
-  },
+	gender : {
+		type: String
+	},
+	age: {
+		type: Number
+	},
 	password: String,
 	originalpassword: String,
-	provider: {
-		type: String,
-		index: true
+	provider: String,
+    geek: Number,
+	gamer: Number,
+	gay: Number,
+	vegan: Number,
+	fitness: Number,
+	athlete: Number,
+	artist: Number,
+	early_riser: Number,
+	night_owl: Number,
+	foodie: Number,
+	live_sports: Number,
+	bookworm: Number,
+	musician: Number,
+	party: Number,
+	redditor: Number,
+	shopaholic: Number,
+	isVerified: {
+		type: Number,
+		default: 0
 	},
-	providerId: String,
-    providerData: {}
-},{ 
+    twitter: {},
+    facebook: {},
+    google: {},
+    tumblr: {},
+    img_url: String,
+    profileImg_url: String,
+    search: [String]
+},{
 	timestamps: true
 	});
 
-UserSchema.index({ location: '2dsphere' });
+
+// Define Index
+UserSchema.set('autoIndex', process.env.NODE_ENV == 'development' ? true : false);
+UserSchema.index({ 'twitter.id': 1 });
+UserSchema.index({ 'facebook.id': 1 });
+UserSchema.index({ 'google.id': 1 });
+UserSchema.index({ search: 1 });
 
 function encrypt(text){
   var cipher = crypto.createCipher(algorithm,algoPassword);
@@ -85,5 +114,6 @@ UserSchema.statics.findUniqueUsername = function(username, suffix, callback) {
 		}
 	);
 };
+
 
 mongoose.model('User', UserSchema);

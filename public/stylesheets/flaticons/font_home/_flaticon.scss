@@ -1,0 +1,373 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 19/02/2016 14:43
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-architecture:before { content: "\f100"; }
+.flaticon-armchair-frontal:before { content: "\f101"; }
+.flaticon-audio-equipment:before { content: "\f102"; }
+.flaticon-bath-of-bubbles:before { content: "\f103"; }
+.flaticon-bathroom-sink:before { content: "\f104"; }
+.flaticon-beater:before { content: "\f105"; }
+.flaticon-bed-profile:before { content: "\f106"; }
+.flaticon-big-blood-drop:before { content: "\f107"; }
+.flaticon-big-house-with-car-garage:before { content: "\f108"; }
+.flaticon-big-refrigerator:before { content: "\f109"; }
+.flaticon-bird-home-with-small-hole:before { content: "\f10a"; }
+.flaticon-black-house:before { content: "\f10b"; }
+.flaticon-black-plug-head:before { content: "\f10c"; }
+.flaticon-blank-house:before { content: "\f10d"; }
+.flaticon-bottle-alcohol-wine:before { content: "\f10e"; }
+.flaticon-boudoir-dressing-table:before { content: "\f10f"; }
+.flaticon-broom-and-dustpan:before { content: "\f110"; }
+.flaticon-bulb-off:before { content: "\f111"; }
+.flaticon-buy-a-house:before { content: "\f112"; }
+.flaticon-cable-plug-male:before { content: "\f113"; }
+.flaticon-call-telephone-conversation:before { content: "\f114"; }
+.flaticon-chair-seat:before { content: "\f115"; }
+.flaticon-chapel-construction:before { content: "\f116"; }
+.flaticon-cleaning-kit:before { content: "\f117"; }
+.flaticon-coffee-machine:before { content: "\f118"; }
+.flaticon-coffee-pot:before { content: "\f119"; }
+.flaticon-commercial-buldings:before { content: "\f11a"; }
+.flaticon-computer-and-monitor:before { content: "\f11b"; }
+.flaticon-computer-energy:before { content: "\f11c"; }
+.flaticon-console-controller:before { content: "\f11d"; }
+.flaticon-cook-tools:before { content: "\f11e"; }
+.flaticon-cup-of-hot-chocolate:before { content: "\f11f"; }
+.flaticon-cupboard:before { content: "\f120"; }
+.flaticon-cute-tiny-house:before { content: "\f121"; }
+.flaticon-cutting-board-and-knife:before { content: "\f122"; }
+.flaticon-domestic-coffee-machine:before { content: "\f123"; }
+.flaticon-drill-making-hole:before { content: "\f124"; }
+.flaticon-electric-iron:before { content: "\f125"; }
+.flaticon-electric-sewing-machine:before { content: "\f126"; }
+.flaticon-file-cabinet:before { content: "\f127"; }
+.flaticon-floor-fan:before { content: "\f128"; }
+.flaticon-food-weight:before { content: "\f129"; }
+.flaticon-fork-and-knife:before { content: "\f12a"; }
+.flaticon-garden-barbecue:before { content: "\f12b"; }
+.flaticon-geometric-house:before { content: "\f12c"; }
+.flaticon-grater:before { content: "\f12d"; }
+.flaticon-hair-dryer:before { content: "\f12e"; }
+.flaticon-hand-holding-house:before { content: "\f12f"; }
+.flaticon-hanger:before { content: "\f130"; }
+.flaticon-home:before { content: "\f131"; }
+.flaticon-home-1:before { content: "\f132"; }
+.flaticon-home-2:before { content: "\f133"; }
+.flaticon-home-3:before { content: "\f134"; }
+.flaticon-home-4:before { content: "\f135"; }
+.flaticon-home-5:before { content: "\f136"; }
+.flaticon-home-6:before { content: "\f137"; }
+.flaticon-home-7:before { content: "\f138"; }
+.flaticon-home-8:before { content: "\f139"; }
+.flaticon-home-cinema:before { content: "\f13a"; }
+.flaticon-home-construction:before { content: "\f13b"; }
+.flaticon-home-facade:before { content: "\f13c"; }
+.flaticon-home-facade-1:before { content: "\f13d"; }
+.flaticon-home-interior-symbol-of-a-single-sofa-in-a-house-outline:before { content: "\f13e"; }
+.flaticon-home-key:before { content: "\f13f"; }
+.flaticon-home-love:before { content: "\f140"; }
+.flaticon-home-page:before { content: "\f141"; }
+.flaticon-home-pixelated:before { content: "\f142"; }
+.flaticon-home-security:before { content: "\f143"; }
+.flaticon-home-web-symbol:before { content: "\f144"; }
+.flaticon-home-with-a-heart:before { content: "\f145"; }
+.flaticon-home-with-chimney:before { content: "\f146"; }
+.flaticon-home-with-vehicle-on-a-black-square:before { content: "\f147"; }
+.flaticon-hot-soup-bowl:before { content: "\f148"; }
+.flaticon-house:before { content: "\f149"; }
+.flaticon-house-1:before { content: "\f14a"; }
+.flaticon-house-2:before { content: "\f14b"; }
+.flaticon-house-3:before { content: "\f14c"; }
+.flaticon-house-4:before { content: "\f14d"; }
+.flaticon-house-5:before { content: "\f14e"; }
+.flaticon-house-6:before { content: "\f14f"; }
+.flaticon-house-front:before { content: "\f150"; }
+.flaticon-house-key-sign:before { content: "\f151"; }
+.flaticon-house-key-square-button:before { content: "\f152"; }
+.flaticon-house-keychain:before { content: "\f153"; }
+.flaticon-house-keys-in-hand:before { content: "\f154"; }
+.flaticon-house-search-button:before { content: "\f155"; }
+.flaticon-house-searcher:before { content: "\f156"; }
+.flaticon-house-with-big-door:before { content: "\f157"; }
+.flaticon-house-with-door:before { content: "\f158"; }
+.flaticon-house-with-garage-inside-a-square:before { content: "\f159"; }
+.flaticon-house-with-lock-outline-on-a-circular-black-background:before { content: "\f15a"; }
+.flaticon-house-with-path-and-sun:before { content: "\f15b"; }
+.flaticon-houses:before { content: "\f15c"; }
+.flaticon-kettle:before { content: "\f15d"; }
+.flaticon-kettle-1:before { content: "\f15e"; }
+.flaticon-keychain-with-key:before { content: "\f15f"; }
+.flaticon-keyhole:before { content: "\f160"; }
+.flaticon-kid-bed:before { content: "\f161"; }
+.flaticon-kitchen-mixer:before { content: "\f162"; }
+.flaticon-kitchen-oven:before { content: "\f163"; }
+.flaticon-lamp:before { content: "\f164"; }
+.flaticon-laundry-basket:before { content: "\f165"; }
+.flaticon-love-house:before { content: "\f166"; }
+.flaticon-man-cleaning:before { content: "\f167"; }
+.flaticon-mansion:before { content: "\f168"; }
+.flaticon-mansion-1:before { content: "\f169"; }
+.flaticon-mansion-inside-a-square:before { content: "\f16a"; }
+.flaticon-microwave:before { content: "\f16b"; }
+.flaticon-microwave-oven:before { content: "\f16c"; }
+.flaticon-mortgage:before { content: "\f16d"; }
+.flaticon-office-chair-with-wheels:before { content: "\f16e"; }
+.flaticon-old-bathtub:before { content: "\f16f"; }
+.flaticon-old-key:before { content: "\f170"; }
+.flaticon-old-television:before { content: "\f171"; }
+.flaticon-old-typical-phone:before { content: "\f172"; }
+.flaticon-old-washing-machine:before { content: "\f173"; }
+.flaticon-open-dustbin:before { content: "\f174"; }
+.flaticon-open-hands-and-a-home:before { content: "\f175"; }
+.flaticon-open-key:before { content: "\f176"; }
+.flaticon-painting-roller:before { content: "\f177"; }
+.flaticon-pot-with-handles:before { content: "\f178"; }
+.flaticon-record-player:before { content: "\f179"; }
+.flaticon-rectangle-with-rounded-bottom:before { content: "\f17a"; }
+.flaticon-retro-radio-transistor:before { content: "\f17b"; }
+.flaticon-rolling-pin:before { content: "\f17c"; }
+.flaticon-searching-for-home:before { content: "\f17d"; }
+.flaticon-shower:before { content: "\f17e"; }
+.flaticon-sleeping-in-bed:before { content: "\f17f"; }
+.flaticon-small-house:before { content: "\f180"; }
+.flaticon-small-stand-table:before { content: "\f181"; }
+.flaticon-spiral-light-bulb:before { content: "\f182"; }
+.flaticon-spoon-and-fork-crossed:before { content: "\f183"; }
+.flaticon-study-desk:before { content: "\f184"; }
+.flaticon-sun-house-garden:before { content: "\f185"; }
+.flaticon-table-lamp:before { content: "\f186"; }
+.flaticon-table-lamp-1:before { content: "\f187"; }
+.flaticon-table-with-2-chairs:before { content: "\f188"; }
+.flaticon-tall-house:before { content: "\f189"; }
+.flaticon-tap:before { content: "\f18a"; }
+.flaticon-thin-screwdriver:before { content: "\f18b"; }
+.flaticon-time-alarm-clock:before { content: "\f18c"; }
+.flaticon-toaster:before { content: "\f18d"; }
+.flaticon-toaster-1:before { content: "\f18e"; }
+.flaticon-toilet:before { content: "\f18f"; }
+.flaticon-toilet-paper:before { content: "\f190"; }
+.flaticon-tv-and-post-it:before { content: "\f191"; }
+.flaticon-tv-on-drawer:before { content: "\f192"; }
+.flaticon-two-buildings:before { content: "\f193"; }
+.flaticon-two-buildings-1:before { content: "\f194"; }
+.flaticon-two-place-couch:before { content: "\f195"; }
+.flaticon-vacuum-cleaner:before { content: "\f196"; }
+.flaticon-vacuum-cleaner-1:before { content: "\f197"; }
+.flaticon-vacuum-cleaner-2:before { content: "\f198"; }
+.flaticon-vacuum-cleaner-machine:before { content: "\f199"; }
+.flaticon-vintage-armchair:before { content: "\f19a"; }
+.flaticon-vintage-light-bulb:before { content: "\f19b"; }
+.flaticon-vintage-old-key:before { content: "\f19c"; }
+.flaticon-vintage-teapot:before { content: "\f19d"; }
+.flaticon-water-tap-profile:before { content: "\f19e"; }
+.flaticon-water-tap-with-drop:before { content: "\f19f"; }
+.flaticon-web-page-home:before { content: "\f1a0"; }
+.flaticon-web-site-house:before { content: "\f1a1"; }
+.flaticon-white-house:before { content: "\f1a2"; }
+.flaticon-wide-tv:before { content: "\f1a3"; }
+.flaticon-wireless-telephone-station:before { content: "\f1a4"; }
+.flaticon-wool-gloves:before { content: "\f1a5"; }
+.flaticon-wrench-and-hammer:before { content: "\f1a6"; }
+    
+    $font-Flaticon-architecture: "\f100";
+    $font-Flaticon-armchair-frontal: "\f101";
+    $font-Flaticon-audio-equipment: "\f102";
+    $font-Flaticon-bath-of-bubbles: "\f103";
+    $font-Flaticon-bathroom-sink: "\f104";
+    $font-Flaticon-beater: "\f105";
+    $font-Flaticon-bed-profile: "\f106";
+    $font-Flaticon-big-blood-drop: "\f107";
+    $font-Flaticon-big-house-with-car-garage: "\f108";
+    $font-Flaticon-big-refrigerator: "\f109";
+    $font-Flaticon-bird-home-with-small-hole: "\f10a";
+    $font-Flaticon-black-house: "\f10b";
+    $font-Flaticon-black-plug-head: "\f10c";
+    $font-Flaticon-blank-house: "\f10d";
+    $font-Flaticon-bottle-alcohol-wine: "\f10e";
+    $font-Flaticon-boudoir-dressing-table: "\f10f";
+    $font-Flaticon-broom-and-dustpan: "\f110";
+    $font-Flaticon-bulb-off: "\f111";
+    $font-Flaticon-buy-a-house: "\f112";
+    $font-Flaticon-cable-plug-male: "\f113";
+    $font-Flaticon-call-telephone-conversation: "\f114";
+    $font-Flaticon-chair-seat: "\f115";
+    $font-Flaticon-chapel-construction: "\f116";
+    $font-Flaticon-cleaning-kit: "\f117";
+    $font-Flaticon-coffee-machine: "\f118";
+    $font-Flaticon-coffee-pot: "\f119";
+    $font-Flaticon-commercial-buldings: "\f11a";
+    $font-Flaticon-computer-and-monitor: "\f11b";
+    $font-Flaticon-computer-energy: "\f11c";
+    $font-Flaticon-console-controller: "\f11d";
+    $font-Flaticon-cook-tools: "\f11e";
+    $font-Flaticon-cup-of-hot-chocolate: "\f11f";
+    $font-Flaticon-cupboard: "\f120";
+    $font-Flaticon-cute-tiny-house: "\f121";
+    $font-Flaticon-cutting-board-and-knife: "\f122";
+    $font-Flaticon-domestic-coffee-machine: "\f123";
+    $font-Flaticon-drill-making-hole: "\f124";
+    $font-Flaticon-electric-iron: "\f125";
+    $font-Flaticon-electric-sewing-machine: "\f126";
+    $font-Flaticon-file-cabinet: "\f127";
+    $font-Flaticon-floor-fan: "\f128";
+    $font-Flaticon-food-weight: "\f129";
+    $font-Flaticon-fork-and-knife: "\f12a";
+    $font-Flaticon-garden-barbecue: "\f12b";
+    $font-Flaticon-geometric-house: "\f12c";
+    $font-Flaticon-grater: "\f12d";
+    $font-Flaticon-hair-dryer: "\f12e";
+    $font-Flaticon-hand-holding-house: "\f12f";
+    $font-Flaticon-hanger: "\f130";
+    $font-Flaticon-home: "\f131";
+    $font-Flaticon-home-1: "\f132";
+    $font-Flaticon-home-2: "\f133";
+    $font-Flaticon-home-3: "\f134";
+    $font-Flaticon-home-4: "\f135";
+    $font-Flaticon-home-5: "\f136";
+    $font-Flaticon-home-6: "\f137";
+    $font-Flaticon-home-7: "\f138";
+    $font-Flaticon-home-8: "\f139";
+    $font-Flaticon-home-cinema: "\f13a";
+    $font-Flaticon-home-construction: "\f13b";
+    $font-Flaticon-home-facade: "\f13c";
+    $font-Flaticon-home-facade-1: "\f13d";
+    $font-Flaticon-home-interior-symbol-of-a-single-sofa-in-a-house-outline: "\f13e";
+    $font-Flaticon-home-key: "\f13f";
+    $font-Flaticon-home-love: "\f140";
+    $font-Flaticon-home-page: "\f141";
+    $font-Flaticon-home-pixelated: "\f142";
+    $font-Flaticon-home-security: "\f143";
+    $font-Flaticon-home-web-symbol: "\f144";
+    $font-Flaticon-home-with-a-heart: "\f145";
+    $font-Flaticon-home-with-chimney: "\f146";
+    $font-Flaticon-home-with-vehicle-on-a-black-square: "\f147";
+    $font-Flaticon-hot-soup-bowl: "\f148";
+    $font-Flaticon-house: "\f149";
+    $font-Flaticon-house-1: "\f14a";
+    $font-Flaticon-house-2: "\f14b";
+    $font-Flaticon-house-3: "\f14c";
+    $font-Flaticon-house-4: "\f14d";
+    $font-Flaticon-house-5: "\f14e";
+    $font-Flaticon-house-6: "\f14f";
+    $font-Flaticon-house-front: "\f150";
+    $font-Flaticon-house-key-sign: "\f151";
+    $font-Flaticon-house-key-square-button: "\f152";
+    $font-Flaticon-house-keychain: "\f153";
+    $font-Flaticon-house-keys-in-hand: "\f154";
+    $font-Flaticon-house-search-button: "\f155";
+    $font-Flaticon-house-searcher: "\f156";
+    $font-Flaticon-house-with-big-door: "\f157";
+    $font-Flaticon-house-with-door: "\f158";
+    $font-Flaticon-house-with-garage-inside-a-square: "\f159";
+    $font-Flaticon-house-with-lock-outline-on-a-circular-black-background: "\f15a";
+    $font-Flaticon-house-with-path-and-sun: "\f15b";
+    $font-Flaticon-houses: "\f15c";
+    $font-Flaticon-kettle: "\f15d";
+    $font-Flaticon-kettle-1: "\f15e";
+    $font-Flaticon-keychain-with-key: "\f15f";
+    $font-Flaticon-keyhole: "\f160";
+    $font-Flaticon-kid-bed: "\f161";
+    $font-Flaticon-kitchen-mixer: "\f162";
+    $font-Flaticon-kitchen-oven: "\f163";
+    $font-Flaticon-lamp: "\f164";
+    $font-Flaticon-laundry-basket: "\f165";
+    $font-Flaticon-love-house: "\f166";
+    $font-Flaticon-man-cleaning: "\f167";
+    $font-Flaticon-mansion: "\f168";
+    $font-Flaticon-mansion-1: "\f169";
+    $font-Flaticon-mansion-inside-a-square: "\f16a";
+    $font-Flaticon-microwave: "\f16b";
+    $font-Flaticon-microwave-oven: "\f16c";
+    $font-Flaticon-mortgage: "\f16d";
+    $font-Flaticon-office-chair-with-wheels: "\f16e";
+    $font-Flaticon-old-bathtub: "\f16f";
+    $font-Flaticon-old-key: "\f170";
+    $font-Flaticon-old-television: "\f171";
+    $font-Flaticon-old-typical-phone: "\f172";
+    $font-Flaticon-old-washing-machine: "\f173";
+    $font-Flaticon-open-dustbin: "\f174";
+    $font-Flaticon-open-hands-and-a-home: "\f175";
+    $font-Flaticon-open-key: "\f176";
+    $font-Flaticon-painting-roller: "\f177";
+    $font-Flaticon-pot-with-handles: "\f178";
+    $font-Flaticon-record-player: "\f179";
+    $font-Flaticon-rectangle-with-rounded-bottom: "\f17a";
+    $font-Flaticon-retro-radio-transistor: "\f17b";
+    $font-Flaticon-rolling-pin: "\f17c";
+    $font-Flaticon-searching-for-home: "\f17d";
+    $font-Flaticon-shower: "\f17e";
+    $font-Flaticon-sleeping-in-bed: "\f17f";
+    $font-Flaticon-small-house: "\f180";
+    $font-Flaticon-small-stand-table: "\f181";
+    $font-Flaticon-spiral-light-bulb: "\f182";
+    $font-Flaticon-spoon-and-fork-crossed: "\f183";
+    $font-Flaticon-study-desk: "\f184";
+    $font-Flaticon-sun-house-garden: "\f185";
+    $font-Flaticon-table-lamp: "\f186";
+    $font-Flaticon-table-lamp-1: "\f187";
+    $font-Flaticon-table-with-2-chairs: "\f188";
+    $font-Flaticon-tall-house: "\f189";
+    $font-Flaticon-tap: "\f18a";
+    $font-Flaticon-thin-screwdriver: "\f18b";
+    $font-Flaticon-time-alarm-clock: "\f18c";
+    $font-Flaticon-toaster: "\f18d";
+    $font-Flaticon-toaster-1: "\f18e";
+    $font-Flaticon-toilet: "\f18f";
+    $font-Flaticon-toilet-paper: "\f190";
+    $font-Flaticon-tv-and-post-it: "\f191";
+    $font-Flaticon-tv-on-drawer: "\f192";
+    $font-Flaticon-two-buildings: "\f193";
+    $font-Flaticon-two-buildings-1: "\f194";
+    $font-Flaticon-two-place-couch: "\f195";
+    $font-Flaticon-vacuum-cleaner: "\f196";
+    $font-Flaticon-vacuum-cleaner-1: "\f197";
+    $font-Flaticon-vacuum-cleaner-2: "\f198";
+    $font-Flaticon-vacuum-cleaner-machine: "\f199";
+    $font-Flaticon-vintage-armchair: "\f19a";
+    $font-Flaticon-vintage-light-bulb: "\f19b";
+    $font-Flaticon-vintage-old-key: "\f19c";
+    $font-Flaticon-vintage-teapot: "\f19d";
+    $font-Flaticon-water-tap-profile: "\f19e";
+    $font-Flaticon-water-tap-with-drop: "\f19f";
+    $font-Flaticon-web-page-home: "\f1a0";
+    $font-Flaticon-web-site-house: "\f1a1";
+    $font-Flaticon-white-house: "\f1a2";
+    $font-Flaticon-wide-tv: "\f1a3";
+    $font-Flaticon-wireless-telephone-station: "\f1a4";
+    $font-Flaticon-wool-gloves: "\f1a5";
+    $font-Flaticon-wrench-and-hammer: "\f1a6";

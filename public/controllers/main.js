@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('RoommateFinder', [
+angular.module('MovIn', [
     'ngRoute',
     'ngResource',
     'ngAnimate',
@@ -11,55 +11,13 @@ angular.module('RoommateFinder', [
     'ui.router',
     'ui.bootstrap.tpls',
     'ui.bootstrap',
-    'uiGmapgoogle-maps',
+    'ui.bootstrap.datepicker',
     'google.places',
-    'geolocation']);
+    'geolocation',
+    'ngFileUpload']);
 
-angular.module('RoommateFinder')
+angular.module('MovIn')
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
-
-    //================================================
-    // Check if the user is connected
-    //================================================
-    var checkLoggedin = function($q, $timeout, $http, $location, $rootScope){
-      // Initialize a new promise
-      var deferred = $q.defer();
-
-      // Make an AJAX call to check if the user is logged in
-      $http.get('/user/loggedin').success(function(user){
-        // Authenticated
-        if (user !== '0'){
-          /*$timeout(deferred.resolve, 0);*/
-          deferred.resolve();
-
-        // Not Authenticated
-        }else {
-          $rootScope.message = 'You need to log in.';
-          //$timeout(function(){deferred.reject();}, 0);
-          deferred.reject();
-        }
-      });
-
-      return deferred.promise;
-    };
-    //================================================
-    
-    //================================================
-    // Add an interceptor for AJAX errors
-    //================================================
-    $httpProvider.interceptors.push(function($q, $location) {
-      return {
-        response: function(response) {
-          // do something on success
-          return response;
-        },
-        responseError: function(response) {
-          if (response.status === 401)
-            $location.url('/login');
-          return $q.reject(response);
-        }
-      };
-    });
 
     $routeProvider
       .when('/', {

@@ -1,7 +1,7 @@
 var User = require('mongoose').model('User'),
+	AptInfo = require('mongoose').model('AptInfo'),
 	passport = require('passport'),
-	path = require('path'),
-	dateTime = new Date();
+	path = require('path');
 
 var getErrorMessage = function(err) {
 	var message = '';
@@ -26,22 +26,28 @@ var getErrorMessage = function(err) {
 };
 
 exports.register = function(req, res, next) {
+	// console.log("Register");
 	var user = new User(req.body);
+	// console.log("User", user);
 	var message = null;
 	user.provider = 'local';
 	user.save(function(err) {
 		if (err) {
 			return res.send(err);
 		}
+		
 		req.login(user, function(err) {
 			if (err)
 				return next(err);
-			return res.redirect('/');
+			return res.json(user);
 		});
 	});
+
+
 };
 
 exports.logout = function(req, res) {
+	console.log(req.session);
 	req.logOut();
 	req.session.destroy(function (err) {
 		if (err) { return next(err); }
@@ -85,20 +91,6 @@ exports.saveOAuthUserProfile = function(req, profile, done) {
 	);
 };
 
-
-
-exports.create = function(req, res, next) {	
-	var user = new User(req.body);
-	user.save(function(err) {
-		if (err) {
-			return next(err);
-		}
-		else {
-			res.json(user);
-		}
-	});
-};
-
 exports.list = function(req, res, next) {
 	User.find({}, function(err, users) {
 		if (err) {
@@ -117,7 +109,7 @@ exports.read = function(req, res) {
 exports.userByID = function(req, res, next, id) {
 	User.findOne({
 			_id: id
-		}, 
+		},
 		function(err, user) {
 			if (err) {
 				return next(err);
@@ -153,7 +145,7 @@ exports.delete = function(req, res, next) {
 };
 
 exports.searchUser = function(req, res){
-
+	console.log("Search Invoked");
 	//Grab all search terms
 	var distance = req.body.distance;
 	var male = req.body.male;
@@ -161,21 +153,69 @@ exports.searchUser = function(req, res){
 	var lat = parseFloat(req.body.latitude);
 	var lng = parseFloat(req.body.longitude);
 
-	var query = User.find({});
+	var result = {
+		users: {},
+		aptInfo : {}
+	};
+
+	var query = AptInfo.find({})
+				.populate('user_id');
 
 	if(distance){
 		query = query.where('location').near({center: {type: 'Point', coordinates: [lng, lat]},
 			maxDistance: distance * 1609.34, spherical: true});
 	}
 
-	if(male || female){
-		query.or([{'gender': male}, {'gender': female}]);
-	}
-
-	query.exec(function(err, users){
+	query.exec(function(err, apt){
 		if(err)
 			res.send(err);
 		else
-			res.json(users);
+			res.json(apt);
+	});
+};
+
+exports.createListing = function(req, res, next) {
+	var apt = new AptInfo(req.body);
+	apt.save(function(err) {
+		if (err) {
+			return next(err);
+		}
+		else {
+			res.sendStatus(200);
+		}
+	});
+};
+
+exports.updateListing = function(req, res, next) {
+	AptInfo.findOneAndUpdate({user_id: req.body.user_id}, req.body, {upsert: true}, function(err, apt) {
+		if (err) {
+			console.log("Error");
+			return next(err);
+		}
+		else {
+			res.json(apt);
+		}
+	});
+};
+
+exports.readListing = function(req, res) {
+	console.log("request",req.user);
+	AptInfo.findOne({user_id: req.user.id}, function(err, apt){
+		if(err) {
+			return next(err);
+		}else{
+			res.json(apt);
+		}
+	});
+};
+
+exports.deleteListing = function(req, res, next) {
+	AptInfo.findOneAndRemove({user_id: req.user.id}, function(err, apt) {
+		if (err) {
+			return next(err);
+		}
+		else {
+			res.status(200);
+		}
 	});
 };

@@ -1,19 +1,20 @@
 'use strict';
 
-angular.module('RoommateFinder')
+angular.module('MovIn')
   .controller('LoginCtrl', function($scope, $rootScope, $http, $location, $window, UserService, $timeout) {
     // This object will be filled by the form
 
     $scope.login = function (email, password) {
       UserService.signIn(email, password).success(function(data) {
         // $scope.user = data;
-        $location.path("/");
-      }).error(function(status, data) {
-        $scope.message = "Login Failed!";
-        $timeout(function () {
-          $scope.message = null;
-        }, 3000);
-        console.log(data);
+        if(data.success){
+          $location.path("/");
+        }else{
+          $scope.message = data.message;
+          $timeout(function () {
+            $scope.message = null;
+          }, 3000);
+        }
       });
     };
 

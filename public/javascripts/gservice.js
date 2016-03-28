@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('RoommateFinder')
+angular.module('MovIn')
     .factory('gservice', function($rootScope, $http){
 
         // Initialize Variables
@@ -26,7 +26,7 @@ angular.module('RoommateFinder')
         // Functions
         // --------------------------------------------------------------
         // Refresh the Map with new data. Takes three parameters (lat, long, and filtering results)
-        googleMapService.refresh = function(latitude, longitude, filteredResults){
+        googleMapService.refresh = function(latitude, longitude, filteredResults, distance){
 
             // Clears the holding array of locations
             locations = [];
@@ -34,8 +34,7 @@ angular.module('RoommateFinder')
             // Set the selected lat and long equal to the ones provided on the refresh() call
             selectedLat = latitude;
             selectedLong = longitude;
-            //console.log("Inside GService", latitude, longitude, filteredResults);
-
+            
             // If filtered results are provided in the refresh() call...
             if (filteredResults){
 
@@ -43,9 +42,9 @@ angular.module('RoommateFinder')
                 locations = convertToMapPoints(filteredResults);
 
                 // Then, initialize the map -- noting that a filter was used (to mark icons yellow)
-                initialize(latitude, longitude, true);
+                initialize(latitude, longitude, true, distance);
             }else{
-                initialize(latitude, longitude, false);
+                initialize(latitude, longitude, false, distance||1);
             }
 
             // // If no filter is provided in the refresh() call...
@@ -74,15 +73,17 @@ angular.module('RoommateFinder')
 
             // Loop through all of the JSON entries provided in the response
             for(var i= 0; i < response.length; i++) {
-                var user = response[i];
+                var aptInfo = response[i];
+                for(var j= 0; j < response[i].user_id.length; j++) {
+                    var user = response[i].user_id[j];
 
-                // Create popup windows for each record
-                var  contentString = '<p><b>Username</b>: ' + user.username +'<br>' +'<b>Address</b>:' + user.address +'</p>';
+                    // Create popup windows for each record
+                    var  contentString = '<p><b>Username</b>: ' + user.name +'<br>' +'<b>Address</b>:' + aptInfo.address +'</p>';
 
-                // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
-                if (locations){
+                    // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
+                    // if (locations){
                     locations.push(new Location(
-                        new google.maps.LatLng(user.location[1], user.location[0]),
+                        new google.maps.LatLng(aptInfo.location.coordinates[1], aptInfo.location.coordinates[0]),
                         new google.maps.InfoWindow({
                             content: contentString,
                             maxWidth: 320
@@ -109,7 +110,7 @@ angular.module('RoommateFinder')
         };
 
         // Initializes the map
-        var initialize = function(latitude, longitude, filter) {
+        var initialize = function(latitude, longitude, filter, distance) {
 
             // Uses the selected lat, long as starting point
             var myLatLng = new google.maps.LatLng(selectedLat,selectedLong);
@@ -119,8 +120,9 @@ angular.module('RoommateFinder')
 
                 // Create a new map and place in the index.html page
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 15,
-                    center: myLatLng
+                    zoom: 12,
+                    center: myLatLng,
+                    mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
             }
 
@@ -148,44 +150,57 @@ angular.module('RoommateFinder')
                     currentSelectedMarker = n;
                     n.message.open(map, marker);
                 });
+
+                // google.maps.event.addListener(marker, 'mouseout', function(e){
+
+                //     currentSelectedMarker = n;
+                //     n.message.close();
+                // });
             });
 
             // Set initial location as a bouncing red marker
             var initialLocation = new google.maps.LatLng(latitude, longitude);
             var marker = new google.maps.Marker({
                 position: initialLocation,
-                animation: google.maps.Animation.BOUNCE,
-                map: map,
-                icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+                // animation: google.maps.Animation.BOUNCE,
+                icon: ''
             });
+
+            var circle = new google.maps.Circle({
+                map: map,
+                radius: 1609 * parseFloat(distance),    // 10 miles in metres
+                fillColor: '#AA0000',
+                strokeColor: "#ff656c"
+            });
+            circle.bindTo('center', marker, 'position');
             lastMarker = marker;
 
             // Function for moving to a selected location
             map.panTo(new google.maps.LatLng(latitude, longitude));
 
             // Clicking on the Map moves the bouncing red marker
-            google.maps.event.addListener(map, 'click', function(e){
-                var marker = new google.maps.Marker({
-                    position: e.latLng,
-                    // animation: google.maps.Animation.BOUNCE,
-                    map: map,
-                    icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
-                });
+            // google.maps.event.addListener(map, 'click', function(e){
+            //     var marker = new google.maps.Marker({
+            //         position: e.latLng,
+            //         // animation: google.maps.Animation.BOUNCE,
+            //         map: map,
+            //         icon: 'http://maps.google.com/mapfiles/ms/icons/red-dot.png'
+            //     });
 
-                // When a new spot is selected, delete the old red bouncing marker
-                if(lastMarker){
-                    lastMarker.setMap(null);
-                }
+            //     // When a new spot is selected, delete the old red bouncing marker
+            //     if(lastMarker){
+            //         lastMarker.setMap(null);
+            //     }
 
-                // Create a new red bouncing marker and move to it
-                lastMarker = marker;
-                map.panTo(marker.position);
+            //     // Create a new red bouncing marker and move to it
+            //     lastMarker = marker;
+            //     map.panTo(marker.position);
 
-                // Update Broadcasted Variable (lets the panels know to change their lat, long values)
-                googleMapService.clickLat = marker.getPosition().lat();
-                googleMapService.clickLong = marker.getPosition().lng();
-                $rootScope.$broadcast("clicked");
-            });
+            //     // Update Broadcasted Variable (lets the panels know to change their lat, long values)
+            //     googleMapService.clickLat = marker.getPosition().lat();
+            //     googleMapService.clickLong = marker.getPosition().lng();
+            //     $rootScope.$broadcast("clicked");
+            // });
         };
 
         // Refresh the page upon window load. Use the initial latitude and longitude

@@ -2,9 +2,7 @@ var users = require('../controllers/user.server'),
 	passport = require('passport');
 
 module.exports = function(app) {
-	app.route('/users').post(users.create).get(users.list);
-
-	app.route('/users/:userId').get(users.read).put(users.update).delete(users.delete);
+	app.route('/users/:userId').put(users.update).delete(users.delete);
 
 	app.param('userId', users.userByID);
 
@@ -15,15 +13,15 @@ module.exports = function(app) {
 		.post(function(req, res, next){
 			passport.authenticate('local',
 				function(err, user, info){
-					if (err) { 
+					if (err) {
 						return next(err);
 					}else if (!user) { // Redirect if it fails
-						return res.sendStatus(500);
+						return res.status(200).json({success: false, message: "User Not Found"});
 					}else{
 						req.login(user, function(err) {
 							if (err) { return next(err); }
 							// Redirect if it succeeds
-							return res.status(200).json(user);
+							return res.status(200).json({success: true});
 						});
 					}
 				})(req, res, next);
@@ -42,35 +40,12 @@ module.exports = function(app) {
 	}));
 
 	app.get('/user/loggedin', function(req, res) {
-		if(req.isAuthenticated())
+		if(req.isAuthenticated()){
 			res.send(req.user);
-		else
+		}else{
 			res.send(null);
+		}
 	});
-
-	app.get('/oauth/facebook/callback', passport.authenticate('facebook', {
-		failureRedirect: '/login',
-		successRedirect: '/profile',
-		scope:['email']
-	}));
-
-	app.get('/oauth/twitter', passport.authenticate('twitter', {
-		failureRedirect: '/login'
-	}));
-
-	app.get('/oauth/twitter/callback', passport.authenticate('twitter', {
-		failureRedirect: '/login',
-		successRedirect: '/profile'
-	}));
-
-	app.get('/unlink/local', isLoggedIn, function(req, res) {
-        var user            = req.user;
-        user.email    = undefined;
-        user.password = undefined;
-        user.save(function(err) {
-            res.redirect('/profile');
-        });
-    });
 };
 
 function isLoggedIn(req, res, next) {

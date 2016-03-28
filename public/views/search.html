@@ -1,32 +1,29 @@
-<div class="wrapper">
+<div class="mapwrapper">
     <nav class="navbar navbar-default header" role="navigation">
         <div class="container-fluid">
 
             <div class="row">
                 <a class="navbar-brand navbar-left" href="#/">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    Roommate Finder
+                    MovIn
                 </a>
                 <form class="navbar-form navbar-left" role="search" ng-submit="queryUsers()">
-                    <div class="form-group">
+                    <div class="input-group">
                         <input type="text" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Enter Location"/>
                     </div>
                     <button type="submit" class="btn btn-default"><i class="fa fa-search"></i></button>
                 </form>
-                <!-- <ul class="col-md-4 nav navbar input-group">
-                   <input type="text" class="form-control" placeholder="Search this site">
-                   <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                   </span>
-                </ul> -->
                 <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
-                    <li><a href="#/login" class="btn">Login</a></li>
+                    <li><a href="#/login" class="btn" alt="Login">Login</i></a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
+                    <li><a href="#/register" class="btn" alt="Register">Register</i></a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
                     <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
                 </ul>
                 <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
-                    <li><a ng-click="logOut()" class="btn btn-default">Logout</a></li>
+                    <li><a href ng-click="logOut()">Logout</a></li>
                 </ul>
             </div>
         </div>
@@ -37,7 +34,7 @@
                 <form role="form">
                     <div class="form-group">
                         <label for="distance">Max. Distance (miles)</label>
-                        <input type="number" class="form-control" id="distance" placeholder="500" min="0" ng-model="formData.distance" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                        <input type="number" class="form-control" id="distance" placeholder="1" min="0" ng-model="formData.distance" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
                     </div>
                     <label>Gender</label>
                     <div class="form-group">
@@ -62,29 +59,8 @@
             </div>  
         </div> 
         <div class="col-lg-10 col-sm-10 maps">
-            <div id="map"></div>
+            <div id="map" class="container"></div>
             <!-- <ui-gmap-google-map center='map.center' zoom='map.zoom'></ui-gmap-google-map> -->
         </div>
     </div>
 </div>
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                    </li>
-                </ul>
-                <hr class="small linesmall">
-                <p class="text-muted">Copyright &copy;2016 RoommateFinder</p>
-            </div>
-        </div>
-    </div>
-</footer>

@@ -1,32 +1,61 @@
-<div class="wrapper">
+<div class="mainWrapper">
     <nav class="navbar navbar-default header" role="navigation">
         <div class="container-fluid">
 
             <div class="row">
                 <a class="navbar-brand navbar-left" href="#/">
                     <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    Roommate Finder
+                    MovIn
                 </a>
                 <ul class="nav navbar-nav pull-right">
                     <li><a href="#/login" class="btn">Login</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right">
+                    <li><a href="#/search" class="btn" alt="Search">Search</i></a></li>
                 </ul>
             </div>
         </div>
     </nav>
     <section>
-		<div class="container">
-		<!-- Creates Main Panel -->
-			<form class="form-signin" ng-submit="register(formData)" novalidate>	
-				<div class="row">
-					<div class="col-sm-6 col-md-6">
+		<div class="container">	
+			<form class="form-signin" ng-submit="register(formData)" name="userForm">		
+				<div class="col-sm-6 col-md-5 col-md-offset-4 ">
+					<div class="login-block">
+						<div class="page-header text-center">
+							<h1>SIGN UP!!</h1>
+						</div>
 			        	<div class="form-group">
 				        	<label for="firstname" class="sr-only">Name</label>
 				        	<div class="input-group">
 		                        <div class="input-group-addon">
 						        	<i class="fa fa-user fa-2x"></i>
 						        </div>
-						        <input type="text" id="firstname" ng-model="formData.name" class="form-control" placeholder="Name" required autofocus>
+						        <input type="text" id="firstname" ng-model="formData.name" class="form-control" name="name" placeholder="Name" required autofocus>
 					    	</div>
+					    </div>
+
+					    <div class="form-group">
+					        <label for="DOB" class="sr-only">Date of Birth</label>
+						    <div class="input-group">
+		                        <div class="input-group-addon">
+									<i class="fa fa-calendar fa-lg"></i>
+								</div>
+								<input type="text" class="form-control" datepicker-popup="MM-dd-yyyy" show-button-bar="false" ng-model="dob" is-open="dobToggle" show-weeks="false" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Date of Birth" ng-click="dobOpen($event)" name="dob" required/>
+							</div>
+						</div>
+
+						<div class="form-group">
+					        <label for="gender" class="sr-only">Gender</label>
+					        <div class="input-group-addon">
+		                        <!-- <div class="input-group-addon"> -->
+						        <label class="radio-inline control-label">Gender</label>
+						        <label class="radio-inline">
+						        	<input type="radio" name="optionsRadios" id="radiomale" value="Male" name="male" ng-model="formData.gender"><i class="fa fa-male fa-2x"></i>
+						    	</label>
+						    	<label class="radio-inline">
+						        	<input type="radio" name="optionsRadios" id="radiofemale" value="Female" name="female" ng-model="formData.gender"><i class="fa fa-female fa-2x"></i>
+						        </label>
+					        </div>
 					    </div>
 
 					    <div class="form-group">
@@ -35,7 +64,10 @@
 		                        <div class="input-group-addon">
 							        <i class="fa fa-envelope fa-2x"></i>
 							    </div>
-							        <input type="email" id="email" ng-model="formData.email" class="form-control" placeholder="E-mail" required>
+						        <input type="email" id="email" ng-model="formData.email" class="form-control" name="email" placeholder="E-mail"  required>
+							</div>
+							<div class="alert alert-info infoBox" ng-show="(userForm.email.$dirty && userForm.email.$invalid) && !userForm.email.$valid">
+								<strong>Student's please enter, <i class="fa fa-university fa-2x">.edu</i> email.</strong>
 							</div>
 						</div>
 				        
@@ -45,117 +77,18 @@
 		                        <div class="input-group-addon">
 							        <i class="fa fa-barcode fa-2x"></i>
 							    </div>
-					        		<input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password" required>
+					        		<input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password" ng-minlength="6" name="password" required>
 					        </div>
-					    </div>
-				        
-				        <div class="form-group">
-				        	<label for="password" class="sr-only">address</label>
-							<div class="input-group">
-		                        <div class="input-group-addon">
-							        <i class="fa fa-map-marker fa-2x"></i>
-							    </div>
-							    	<input type="text" col="10" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Address"/>
+					        <div class="alert alert-info infoBox" ng-show="(userForm.password.$dirty && userForm.password.$invalid) && !userForm.password.$valid">
+								<strong>Minimum Password Length <i>6</i>.</strong>
 							</div>
-						</div>
-						
-						<div class="form-group ">
-					        <label for="gender" class="sr-only">Gender</label>
-					        <div class="input-group col-sm-3">
-		                        <div class="input-group-addon">
-							        <label class="radio control-label">Gender</label>
-							        <i class="fa fa-male fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-							        <i class="fa fa-female fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-							    </div>
-					        </div>
 					    </div>
 
-<!-- 					    <div class="form-group ">
-					        <label for="gender" class="sr-only">Gender</label>
-					        <div class="input-group col-sm-3">
-		                        <div class="input-group-addon">
-							        <label class="radio control-label">Gender</label>
-							        <i class="fa fa-male fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-							        <i class="fa fa-female fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-							    </div>
-					        </div>
-					    </div>
-
-					    <div class="form-group ">
-					        <label for="gender" class="sr-only">Gender</label>
-					        <div class="input-group col-sm-3">
-		                        <div class="input-group-addon">
-							        <label class="radio control-label">Gender</label>
-							        <i class="fa fa-male fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-							        <i class="fa fa-female fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-							    </div>
-					        </div>
-					    </div> -->
-					</div>
-					<!-- <div class="col-sm-6 col-md-6">
-			        	<div class="form-group">
-				        	<label for="firstname" class="sr-only">Name</label>
-				        	<div class="input-group">
-		                        <div class="input-group-addon">
-						        	<i class="fa fa-user fa-2x"></i>
-						        </div>
-						        <input type="text" id="firstname" ng-model="formData.name" class="form-control" placeholder="Name" required autofocus>
-					    	</div>
-					    </div>
-
-					    <div class="form-group">
-					        <label for="email" class="sr-only">E-mail</label>
-					        <div class="input-group">
-		                        <div class="input-group-addon">
-							        <i class="fa fa-envelope fa-2x"></i>
-							    </div>
-							        <input type="email" id="email" ng-model="formData.email" class="form-control" placeholder="E-mail" required>
+						<div class="row col-md-offset-4">
+							<div class="input-group col-md-6" >
+								<button class="btn btn-lg btn-primary btn-block" type="submit">Sign-Up</button>
 							</div>
 						</div>
-				        
-				        <div class="form-group">
-					        <label for="password" class="sr-only">Password</label>
-					        <div class="input-group">
-		                        <div class="input-group-addon">
-							        <i class="fa fa-barcode fa-2x"></i>
-							    </div>
-					        		<input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password" required>
-					        </div>
-					    </div>
-				        
-				        <div class="form-group">
-				        	<label for="password" class="sr-only">address</label>
-							<div class="input-group">
-		                        <div class="input-group-addon">
-							        <i class="fa fa-map-marker fa-2x"></i>
-							    </div>
-							    	<input type="text" col="10" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Address"/>
-							</div>
-						</div>
-						
-						<div class="form-group ">
-					        <label for="gender" class="sr-only">Gender</label>
-					        <div class="input-group col-sm-3">
-		                        <div class="input-group-addon">
-							        <label class="radio control-label">Gender</label>
-							        <i class="fa fa-male fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiomale" value="Male" ng-model="formData.gender">
-							        <i class="fa fa-female fa-2x"></i>
-							        <input type="radio" name="optionsRadios" id="radiofemale" value="Female" ng-model="formData.gender">
-							    </div>
-					        </div>
-					    </div>
-					</div>
-				</div> -->
-				<div class="row text-vertical-center">
-					<div class="input-group col-sm-3">
-						<button class="btn btn-lg btn-primary btn-block" type="submit">Sign-Up</button>
 					</div>
 				</div>
 	      	</form>
@@ -169,24 +102,3 @@
 		</div>
 	</section>
 </div>
-<footer class="footer">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook fa-fw fa-3x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter fa-fw fa-3x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble fa-fw fa-3x"></i></a>
-                    </li>
-                </ul>
-                <hr class="small linesmall">
-                <p class="text-muted">Copyright &copy;2016 RoommateFinder</p>
-            </div>
-        </div>
-    </div>
-</footer>

@@ -11,6 +11,7 @@ module.exports = function() {
 		}
   });
 	require('../models/userSchema');
+	require('../models/aptInfo');
 
 	return db;
 };

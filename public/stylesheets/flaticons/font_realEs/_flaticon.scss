@@ -1,0 +1,119 @@
+    /*
+    Flaticon icon font: Flaticon
+    Creation date: 18/03/2016 11:07
+    */
+
+    @font-face {
+  font-family: "Flaticon";
+  src: url("./Flaticon.eot");
+  src: url("./Flaticon.eot?#iefix") format("embedded-opentype"),
+       url("./Flaticon.woff") format("woff"),
+       url("./Flaticon.ttf") format("truetype"),
+       url("./Flaticon.svg#Flaticon") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: "Flaticon";
+    src: url("./Flaticon.svg#Flaticon") format("svg");
+  }
+}
+
+    .fi:before{
+        display: inline-block;
+  font-family: "Flaticon";
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  line-height: 1;
+  text-decoration: inherit;
+  text-rendering: optimizeLegibility;
+  text-transform: none;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased;
+    }
+
+    .flaticon-air-conditioner:before { content: "\f100"; }
+.flaticon-amount:before { content: "\f101"; }
+.flaticon-bathtub:before { content: "\f102"; }
+.flaticon-blueprint:before { content: "\f103"; }
+.flaticon-box:before { content: "\f104"; }
+.flaticon-briefcase:before { content: "\f105"; }
+.flaticon-calculator:before { content: "\f106"; }
+.flaticon-camera:before { content: "\f107"; }
+.flaticon-check:before { content: "\f108"; }
+.flaticon-coin:before { content: "\f109"; }
+.flaticon-contract:before { content: "\f10a"; }
+.flaticon-directions:before { content: "\f10b"; }
+.flaticon-duplex:before { content: "\f10c"; }
+.flaticon-fall:before { content: "\f10d"; }
+.flaticon-fence:before { content: "\f10e"; }
+.flaticon-flat:before { content: "\f10f"; }
+.flaticon-garage:before { content: "\f110"; }
+.flaticon-hammer:before { content: "\f111"; }
+.flaticon-home:before { content: "\f112"; }
+.flaticon-house:before { content: "\f113"; }
+.flaticon-house-1:before { content: "\f114"; }
+.flaticon-house-2:before { content: "\f115"; }
+.flaticon-house-3:before { content: "\f116"; }
+.flaticon-house-4:before { content: "\f117"; }
+.flaticon-house-5:before { content: "\f118"; }
+.flaticon-houses:before { content: "\f119"; }
+.flaticon-investment:before { content: "\f11a"; }
+.flaticon-key:before { content: "\f11b"; }
+.flaticon-location:before { content: "\f11c"; }
+.flaticon-mansion:before { content: "\f11d"; }
+.flaticon-mobile-phone:before { content: "\f11e"; }
+.flaticon-new:before { content: "\f11f"; }
+.flaticon-prize:before { content: "\f120"; }
+.flaticon-real-estate:before { content: "\f121"; }
+.flaticon-real-estate-1:before { content: "\f122"; }
+.flaticon-rent:before { content: "\f123"; }
+.flaticon-screen:before { content: "\f124"; }
+.flaticon-signature:before { content: "\f125"; }
+.flaticon-sold:before { content: "\f126"; }
+.flaticon-truck:before { content: "\f127"; }
+    
+    $font-Flaticon-air-conditioner: "\f100";
+    $font-Flaticon-amount: "\f101";
+    $font-Flaticon-bathtub: "\f102";
+    $font-Flaticon-blueprint: "\f103";
+    $font-Flaticon-box: "\f104";
+    $font-Flaticon-briefcase: "\f105";
+    $font-Flaticon-calculator: "\f106";
+    $font-Flaticon-camera: "\f107";
+    $font-Flaticon-check: "\f108";
+    $font-Flaticon-coin: "\f109";
+    $font-Flaticon-contract: "\f10a";
+    $font-Flaticon-directions: "\f10b";
+    $font-Flaticon-duplex: "\f10c";
+    $font-Flaticon-fall: "\f10d";
+    $font-Flaticon-fence: "\f10e";
+    $font-Flaticon-flat: "\f10f";
+    $font-Flaticon-garage: "\f110";
+    $font-Flaticon-hammer: "\f111";
+    $font-Flaticon-home: "\f112";
+    $font-Flaticon-house: "\f113";
+    $font-Flaticon-house-1: "\f114";
+    $font-Flaticon-house-2: "\f115";
+    $font-Flaticon-house-3: "\f116";
+    $font-Flaticon-house-4: "\f117";
+    $font-Flaticon-house-5: "\f118";
+    $font-Flaticon-houses: "\f119";
+    $font-Flaticon-investment: "\f11a";
+    $font-Flaticon-key: "\f11b";
+    $font-Flaticon-location: "\f11c";
+    $font-Flaticon-mansion: "\f11d";
+    $font-Flaticon-mobile-phone: "\f11e";
+    $font-Flaticon-new: "\f11f";
+    $font-Flaticon-prize: "\f120";
+    $font-Flaticon-real-estate: "\f121";
+    $font-Flaticon-real-estate-1: "\f122";
+    $font-Flaticon-rent: "\f123";
+    $font-Flaticon-screen: "\f124";
+    $font-Flaticon-signature: "\f125";
+    $font-Flaticon-sold: "\f126";
+    $font-Flaticon-truck: "\f127";
