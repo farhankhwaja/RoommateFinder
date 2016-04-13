@@ -1,6 +1,6 @@
 exports.render = function(req, res) {
     res.render('index', {
-    	title: 'Roommate Finder',
+    	title: 'MovIn',
     	user: req.user ? req.user.username : ''
     });
 };

@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('MovIn')
-  .controller('ProfileCtrl', function($scope, $rootScope, $http, $location, UserService, Upload, $timeout, $route) {
+  .controller('ListingInfo', function($scope, $rootScope, $http, $location, UserService, Upload, $timeout, $route) {
     
     var placeSearch, autocomplete;
     $scope.formData = {};
@@ -19,24 +19,8 @@ angular.module('MovIn')
         // console.log("received Data",loggedin);
             if(data.data){ 
                 $scope.user = data.data;
-                $scope.formData._id = $scope.user._id;
-                $scope.formData.geek = $scope.user.geek;
-                $scope.formData.gamer = $scope.user.gamer;
-                $scope.formData.party = $scope.user.party;
-                $scope.formData.musician = $scope.user.musician;
-                $scope.formData.artist = $scope.user.artist;
-                $scope.formData.vegan = $scope.user.vegan;
-                $scope.formData.bookworm = $scope.user.bookworm;
-                $scope.formData.athlete = $scope.user.athlete;
-                $scope.formData.gay = $scope.user.gay;
-                $scope.formData.redditor = $scope.user.redditor;
-                $scope.formData.live_sports = $scope.user.live_sports;
-                $scope.formData.early_riser = $scope.user.early_riser;
-                $scope.formData.night_owl = $scope.user.night_owl;
-                $scope.formData.shopaholic = $scope.user.shopaholic;
-                
-                $scope.listingData.user_id = $scope.user._id;
-                $http.get('/listing').then(function(data){
+                $scope.loc_id = $location.path().split('/')[2];
+                $http.get('/listing/'+$scope.loc_id).then(function(data){
                     $scope.place = data.data.address;
                     $scope.listingData.type = data.data.type;
                     $scope.listingData.isFor = data.data.isFor;
@@ -58,34 +42,12 @@ angular.module('MovIn')
                     $scope.listingData.guys_only = data.data.guys_only;
                     $scope.listingData.girls_only =  data.girls_only;
                     $scope.listingData.utilities_included = data.data.utilities_included;
-                })
+                });
             }else{
             $location.path('login');
         }
         });
     };
-
-    $scope.saveProfile = function (formdata) {
-		UserService.update(formdata).success(function(data) {
-			console.log("Received Data", data);
-			$scope.user = data;
-            $scope.message = "Profile Information Updated";
-            $scope.success = true;
-            $timeout(function () {
-            $scope.success = false;
-          }, 3000);
-		}).error(function(status, data) {
-			console.log(status);
-			console.log(data);
-            $scope.error = true;
-            $scope.message = "Profile Information Failed. Please try again.";
-            $timeout(function () {
-            $scope.error = false;
-          }, 3000);
-		});
-        $scope.personal = !$scope.personal; 
-    };
-
     $scope.uploadFiles = function (files) {
         $scope.files = files;
         if (files && files.length) {
@@ -121,28 +83,6 @@ angular.module('MovIn')
             console.log(status);
             console.log(data);
         });
-    };
-
-    $scope.saveListing = function (formdata) {
-        UserService.addPlace(formdata).success(function(data) {
-            // console.log("Received Data", data);
-            $scope.listingData = data;
-            $scope.message = "Property Information Added";
-            $scope.success = true;
-            $timeout(function () {
-            $scope.success = false;
-          }, 3000);
-        }).error(function(status, data) {
-            console.log(status);
-            console.log(data);
-            $scope.error = true;
-            $scope.message = "Property Information Failed. Please try again.";
-            $timeout(function () {
-            $scope.error = false;
-          }, 3000);
-        });
-        console.log(formdata);
-        $scope.aptInfo = !$scope.aptInfo; 
     };
     $scope.init();
   });

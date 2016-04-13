@@ -12,6 +12,7 @@ angular.module('MovIn')
 
         // Array of locations obtained from API calls
         var locations = [];
+        var clicked = false;
         var icon = null;
 
         // Variables we'll use to help us pan to the right spot
@@ -70,29 +71,31 @@ angular.module('MovIn')
 
             // Clear the locations holder
             var locations = [];
-
             // Loop through all of the JSON entries provided in the response
             for(var i= 0; i < response.length; i++) {
                 var aptInfo = response[i];
-                for(var j= 0; j < response[i].user_id.length; j++) {
-                    var user = response[i].user_id[j];
+                if(response[i].user_id){
+                    for(var j= 0; j < response[i].user_id.length; j++) {
+                        var user = response[i].user_id[j];
 
-                    // Create popup windows for each record
-                    var  contentString = '<p><b>Username</b>: ' + user.name +'<br>' +'<b>Address</b>:' + aptInfo.address +'</p>';
+                        // Create popup windows for each record
+                        var  contentString = '<b>$' + response[i].rent +'</b> <br> <b>'+ response[i].no_rooms + 'bd, ' + response[i].baths + 'ba </b>' +
+                                '<br>' + '<a href="#/viewListing/' + response[i]._id +'">' + 'Click Here' +'</a>';
 
-                    // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
-                    // if (locations){
-                    locations.push(new Location(
-                        new google.maps.LatLng(aptInfo.location.coordinates[1], aptInfo.location.coordinates[0]),
-                        new google.maps.InfoWindow({
-                            content: contentString,
-                            maxWidth: 320
-                        }),
-                        user.username
-                        //user.gender
-                        // user.age,
-                        // user.favlang
-                    ));
+                        // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
+                        // if (locations){
+                        locations.push(new Location(
+                            new google.maps.LatLng(aptInfo.location.coordinates[1], aptInfo.location.coordinates[0]),
+                            new google.maps.InfoWindow({
+                                content: contentString,
+                                maxWidth: 320
+                            }),
+                            user.username
+                            //user.gender
+                            // user.age,
+                            // user.favlang
+                        ));
+                    }
                 }
             }
             // location is now an array populated with records in Google Maps format
@@ -120,7 +123,7 @@ angular.module('MovIn')
 
                 // Create a new map and place in the index.html page
                 var map = new google.maps.Map(document.getElementById('map'), {
-                    zoom: 12,
+                    zoom: 14,
                     center: myLatLng,
                     mapTypeId: google.maps.MapTypeId.ROADMAP
                 });
@@ -139,7 +142,7 @@ angular.module('MovIn')
                var marker = new google.maps.Marker({
                    position: n.latlon,
                    map: map,
-                   title: "Big Map",
+                   title: n.username,
                    icon: icon,
                });
 
@@ -147,15 +150,16 @@ angular.module('MovIn')
                 google.maps.event.addListener(marker, 'click', function(e){
 
                     // When clicked, open the selected marker's message
-                    currentSelectedMarker = n;
-                    n.message.open(map, marker);
+                    if(!clicked){
+                        currentSelectedMarker = n;
+                        n.message.open(map, marker);
+                        clicked = true;
+                    }else{
+                        currentSelectedMarker = n;
+                        n.message.close();
+                        clicked = false;
+                    }
                 });
-
-                // google.maps.event.addListener(marker, 'mouseout', function(e){
-
-                //     currentSelectedMarker = n;
-                //     n.message.close();
-                // });
             });
 
             // Set initial location as a bouncing red marker

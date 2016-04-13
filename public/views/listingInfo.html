@@ -1,0 +1,86 @@
+<div class="header">
+    <nav class="navbar navbar-default" role="navigation">
+        <div class="row">
+                <a class="navbar-brand navbar-left" href="#/">
+                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                    MovIn
+                </a>
+                <!-- <ul class="col-md-4 nav navbar input-group">
+                   <input type="text" class="form-control" placeholder="Search this site">
+                   <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">Go!</button>
+                   </span>
+                </ul> -->
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href ng-click="logOut()">Logout</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href="#/search" class="btn">Search</a></li>
+                </ul>
+                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                    <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
+                </ul>
+                
+                
+            </div>
+    </nav>
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
+                  <div class="panel panel-warning">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Listing Details</h3>
+                    </div>
+                    <div class="panel-body">
+                      <div class="row">
+                        <div class=" col-md-11 col-lg-11 "> 
+                            <table class="table table-user-information">
+                                <tbody>
+                                    <tr>
+                                        <td>Address:</td>
+                                        <td>{{place}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Rent</td>
+                                        <td>${{listingData.rent}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Number of Rooms:</td>
+                                        <td>{{listingData.no_rooms}}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Baths Available</td>
+                                        <td>{{listingData.baths}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted">Copyright &copy;2016 MovIn</p>
+            </div>
+        </div>
+    </div>
+</footer>

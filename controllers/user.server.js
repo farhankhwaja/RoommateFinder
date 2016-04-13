@@ -47,7 +47,6 @@ exports.register = function(req, res, next) {
 };
 
 exports.logout = function(req, res) {
-	console.log(req.session);
 	req.logOut();
 	req.session.destroy(function (err) {
 		if (err) { return next(err); }
@@ -145,21 +144,30 @@ exports.delete = function(req, res, next) {
 };
 
 exports.searchUser = function(req, res){
-	console.log("Search Invoked");
+
 	//Grab all search terms
 	var distance = req.body.distance;
-	var male = req.body.male;
-	var female = req.body.female;
+	var	female = req.body.female;
+	var	male = req.body.male;
+
 	var lat = parseFloat(req.body.latitude);
 	var lng = parseFloat(req.body.longitude);
 
+	console.log(male, female);
 	var result = {
 		users: {},
 		aptInfo : {}
 	};
 
-	var query = AptInfo.find({})
-				.populate('user_id');
+	var query = AptInfo.find()
+				.populate({
+					path: 'user_id',
+					match: {
+						gender : {
+							$in: [male, female]
+						}
+					}
+				});
 
 	if(distance){
 		query = query.where('location').near({center: {type: 'Point', coordinates: [lng, lat]},
@@ -189,7 +197,7 @@ exports.createListing = function(req, res, next) {
 exports.updateListing = function(req, res, next) {
 	AptInfo.findOneAndUpdate({user_id: req.body.user_id}, req.body, {upsert: true}, function(err, apt) {
 		if (err) {
-			console.log("Error");
+			// console.log("Error");
 			return next(err);
 		}
 		else {
@@ -199,8 +207,8 @@ exports.updateListing = function(req, res, next) {
 };
 
 exports.readListing = function(req, res) {
-	console.log("request",req.user);
-	AptInfo.findOne({user_id: req.user.id}, function(err, apt){
+	// console.log("request",req);
+	AptInfo.findOne({_id: req.params.id}, function(err, apt){
 		if(err) {
 			return next(err);
 		}else{

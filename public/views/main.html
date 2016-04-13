@@ -1,5 +1,5 @@
-<div class="mainWrapper" ng-cloak>
-    <nav class="navbar navbar-default header" role="navigation">
+<header class="mainHeader">
+    <nav class="navbar navbar-default" role="navigation">
         <div class="container-fluid">
         <div class="row">
             <div class="navbar-header">
@@ -26,13 +26,8 @@
     </nav>
     <div class="searchTemplate">
         <div class="text-vertical-center">
-            <!-- <div class="input-group searchBox">
-               <input type="text" class="form-control" placeholder="Search this site">
-               <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-               </span>
-            </div> -->
-            <form class="form-search" role="search" ng-submit="queryUsers()">
+            <h1 class="searchTitle">Find a Place & MovIn!</h1>
+            <form class="shadow col-xs-8 col-md-7 col-lg-6 col-xs-offset-2 col-md-offset-3" role="search" ng-submit="queryUsers()">
                 <div class="input-group searchBox">
                     <input type="text" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="formData.address" location="formData.location" placeholder="Enter Location"/>
                     <span class="input-group-btn">
@@ -42,4 +37,24 @@
             </form>
         </div>
     </div>
-</div>
+</header>
+<footer class="mainFooter">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
+                    </li>
+                </ul>
+                <p class="text-muted">Copyright &copy;2016 MovIn</p>
+            </div>
+        </div>
+    </div>
+</footer>

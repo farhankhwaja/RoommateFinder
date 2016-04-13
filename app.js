@@ -12,7 +12,7 @@ var db = mongoose(),
 
 // Define a middleware function to be used for every secured routes
 var auth = function(req, res, next){
-  if (!req.isAuthenticated()) 
+  if (!req.isAuthenticated())
     res.send(401);
   else
     next();
@@ -24,7 +24,7 @@ app.all('*', function(req, res, next) {
   res.set('Access-Control-Allow-Origin', 'http://localhost');
   res.set('Access-Control-Allow-Credentials', true);
   res.set('Access-Control-Allow-Methods', 'GET, POST, DELETE, PUT, OPTIONS');
-  res.set('Access-Control-Allow-Headers', 'X-Requested-With, Content-Type, Authorization');
+  res.set('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Authorization, Accept');
   if ('OPTIONS' == req.method) return res.send(200);
   next();
 });

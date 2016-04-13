@@ -39,8 +39,14 @@ angular.module('MovIn')
       .when('/search', {
         templateUrl: '/views/search.html',
         controller: 'queryCtrl'
+     })
+      .when('/viewListing/:id', {
+        templateUrl: '/views/listinginfo.html',
+        controller: 'ListingInfo'
      });
       // .otherwise({
       //   redirectTo: '/'
        // });
+
+
   });

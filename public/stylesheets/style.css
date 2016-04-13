@@ -2,19 +2,34 @@ html, body {
 	width: 100%;
 	height: 100%;
 	/*padding: 10px;*/
-	font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
+	font: 13px;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .searchTemplate {
-	background: url(/images/body-bg.jpg) no-repeat center center scroll;
 	display: table;
     position: relative;
+    height: 100%;
     width: 100%;
-    min-height: 100%;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     background-size: cover;
     -o-background-size: cover;
+}
+
+.shadow {
+    opacity: 1;
+    border: 10px solid #fff;
+    border-radius: 15px;
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.searchTitle {
+    font-weight: bold;
+    font-size: 55px;
+    color: #000;
+    padding-bottom: 10px;
 }
 
 .navbar {
@@ -33,9 +48,27 @@ html, body {
     /*font-weight: 700;*/
 }
 
-.header {
-    border-bottom: 1px solid #ff656c;
-    padding: 0;
+.mainHeader {
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: url(/images/body-bg.jpg) no-repeat center center scroll;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
+}
+
+.header{
+    display: table;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
 .mapwrapper {
@@ -46,16 +79,16 @@ html, body {
 .mainWrapper {
     /*margin-bottom: 150px;*/
     height: 100%;
-    overflow: auto;
+    /*overflow: auto;*/
 }
 
 .loginWrapper {
-    margin-bottom: 150px;
+    /*margin-bottom: 150px;*/
     overflow: auto;
 }
 
 .wrapper {
-    margin-bottom: 150px;
+    /*margin-bottom: 150px;*/
     overflow: auto;
 }
 /* Footer */
@@ -63,14 +96,18 @@ html, body {
 .footer {
     /*padding: 50px 0;*/
     background-color: #f7f7f7;
-    padding: 10px 0 5px;
-    color: #999;
-    border-top: 1px solid #ff656c;
-    position: fixed;
-    bottom: 0;
+    padding: 5px 0;
     width: 100%;
-    z-index: 100;
-    /*height: 120px;*/
+    /*border-top: 1px solid #ff656c;*/
+    position: fixed;
+    bottom: 0; 
+    overflow: auto;
+}
+
+.mainFooter {
+    background-color: #f7f7f7;
+    padding: 10px 0;
+    width: 100%;
 }
 
 .form-signin
@@ -124,9 +161,12 @@ html, body {
 .login-title
 {
     color: #555;
-    font-size: 18px;
     font-weight: 400;
     display: block;
+}
+
+.loginLine {
+    width: 80%;
 }
 .profile-img
 {
@@ -234,11 +274,8 @@ html, body {
 }
 
 .searchBox {
-    margin-left: 0;
-    margin-right: 0;
-    padding-bottom: 2px;
-    width: 80%;
-    display: inline-table;
+    padding-left: 0;
+    padding-right: 0;
 }
 
 .mapDiv {
@@ -260,14 +297,9 @@ html, body {
     margin-top:20px;
 }
 
-@media (min-height: 1024px) {
-  /*.container {
-    max-width: 730px;
-  }*/
-
-  /* Remove the padding we set earlier */
-  .mainWrapper {
-    min-height: 93%;
+@media (max-height: 778px) {
+  .mapDiv{
+    height: 83%;
   }
 }
 
@@ -291,7 +323,7 @@ html, body {
 .personInfo {
     height: auto;
     width: 90px;
-    background-color: #D6D6D6;
+    background-color: #fff;
     border-radius: 10px;
     display: inline-block;
     padding: 10px;
@@ -362,4 +394,10 @@ input:checked + label {
 
 .optionsRadios > input:checked + i.fa {
     color: #ff656c;
+}
+
+.dropdownBtn {
+    background: #fff;
+    color: #ff656c;
+    border: 1px solid #ff656c;
 }

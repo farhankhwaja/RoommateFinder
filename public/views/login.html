@@ -1,53 +1,72 @@
-<div class="loginWrapper">
-    <nav class="navbar navbar-default header" role="navigation">
-        <div class="container-fluid">
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
 
-            <div class="row">
-                <a class="navbar-brand navbar-left" href="#/">
-                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    MovIn
-                </a>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#/signup" class="btn" alt="Register">Register</i></a></li>
+        <div class="row">
+            <a class="navbar-brand navbar-left" href="#/">
+                <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                MovIn
+            </a>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#/signup" class="btn" alt="Register">Register</i></a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right">
+                <li><a href="#/search" class="btn" alt="Search">Search</i></a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<section>
+    <div class="container">
+	    <div class="row">
+	        <div class="col-sm-4 col-md-4 col-md-offset-4">
+	            <h1 class="text-center login-title">Login to MovIn</h1>
+                <hr class="loginLine"/>
+	            <div class="login-block">
+	                <form class="form-signin" ng-submit="login(formData.email, formData.password)">
+	                <label for="email" class="sr-only">Email</label>
+			        <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
+			        
+			        <label for="password" class="sr-only">Password</label>
+			        <input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password">
+	                
+	                <button class="btn btn-lg btn-primary btn-block" type="submit">
+	                    Login</button>
+	                <!-- <label class="checkbox pull-left">
+	                    <input type="checkbox" value="remember-me">
+	                    Remember me
+	                </label>
+	                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
+	                </form>
+	            </div>
+	            <a href="#/signup" class="text-center new-account">Create an account </a>
+	        </div>
+	    </div>
+	    <div ng-show="message" class="error-alert alert-warning error-box col-sm-4 col-md-4 col-md-offset-4" role="alert">
+			<p class="text-danger text-center">
+                <i class="fa fa-exclamation-circle fa-2x"></i>
+				<b>{{message}}</b>
+			</p>
+		</div>
+    </div>
+</section>
+<footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
+                    </li>
                 </ul>
-                <ul class="nav navbar-nav pull-right">
-                    <li><a href="#/search" class="btn" alt="Search">Search</i></a></li>
-                </ul>
+                <p class="text-muted">Copyright &copy;2016 MovIn</p>
             </div>
         </div>
-    </nav>
-    <section>
-        <div class="container">
-    	    <div class="row">
-    	        <div class="col-sm-4 col-md-4 col-md-offset-4">
-    	            <!-- <h1 class="text-center login-title">Sign in to continue to Bootsnipp</h1> -->
-    	            <div class="logo"></div>
-    	            <div class="login-block">
-    	                <form class="form-signin" ng-submit="login(formData.email, formData.password)">
-    	                <label for="email" class="sr-only">Email</label>
-    			        <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
-    			        
-    			        <label for="password" class="sr-only">Password</label>
-    			        <input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password">
-    	                
-    	                <button class="btn btn-lg btn-primary btn-block" type="submit">
-    	                    Sign in</button>
-    	                <!-- <label class="checkbox pull-left">
-    	                    <input type="checkbox" value="remember-me">
-    	                    Remember me
-    	                </label>
-    	                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span> -->
-    	                </form>
-    	            </div>
-    	            <a href="#/signup" class="text-center new-account">Create an account </a>
-    	        </div>
-    	    </div>
-    	    <div ng-show="message" class="error-alert alert-warning error-box col-sm-4 col-md-4 col-md-offset-4" role="alert">
-    			<p class="text-danger text-center">
-                    <i class="fa fa-exclamation-circle fa-2x"></i>
-    				<b>{{message}}</b>
-    			</p>
-    		</div>
-        </div>
-	</section>
-</div>
+    </div>
+</footer>
+

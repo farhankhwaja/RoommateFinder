@@ -27,11 +27,15 @@ angular.module('MovIn')
             if($scope.mainPgSrch.location){
                 gservice.refresh(parseFloat($scope.mainPgSrch.location.coordinates[1]), parseFloat($scope.mainPgSrch.location.coordinates[0]), false, $scope.formData.distance);
                 $scope.formData.location = {type: 'Point', coordinates:[parseFloat($scope.mainPgSrch.location.coordinates[0]), parseFloat($scope.mainPgSrch.location.coordinates[1])]};
+                $scope.queryBody.male = 'Male';
+                $scope.queryBody.female = 'Female';
                 $scope.queryUsers();
             }else{
                 geolocation.getLocation().then(function(data){
                     gservice.refresh(parseFloat(data.coords.latitude), parseFloat(data.coords.longitude), false, $scope.formData.distance);
                     $scope.formData.location = {type: 'Point', coordinates:[parseFloat(data.coords.longitude), parseFloat(data.coords.latitude)]};
+                    $scope.queryBody.male = 'Male';
+                    $scope.queryBody.female = 'Female';
                     $scope.queryUsers();
                 });
             }
