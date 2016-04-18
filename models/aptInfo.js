@@ -32,7 +32,23 @@ var AptInfo = new Schema ({
     smoking: Number,
     guys_only: Number,
     girls_only: Number,
-    utilities_included: Number
+    utilities_included: Number,
+    img_url: [String],
+    geek: Number,
+    gamer: Number,
+    vegan: Number,
+    fitness: Number,
+    athlete: Number,
+    artist: Number,
+    early_riser: Number,
+    night_owl: Number,
+    foodie: Number,
+    live_sports: Number,
+    bookworm: Number,
+    musician: Number,
+    party: Number,
+    redditor: Number,
+    shopaholic: Number
   });
 
 AptInfo.set('autoIndex', process.env.NODE_ENV == 'development' ? true : false);

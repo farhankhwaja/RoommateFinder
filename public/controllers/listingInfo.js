@@ -7,6 +7,9 @@ angular.module('MovIn')
     $scope.formData = {};
     $scope.listingData = {};
     $scope.place = null;
+    $scope.myInterval = 5000;
+    $scope.noWrapSlides = false;
+    $scope.active = 0;
     $scope.error = false;
     $scope.success = false;
     $scope.showModal = false;
@@ -41,7 +44,8 @@ angular.module('MovIn')
                     $scope.listingData.pet_friendly = data.data.pet_friendly;
                     $scope.listingData.smoking = data.data.smoking;
                     $scope.listingData.guys_only = data.data.guys_only;
-                    $scope.listingData.girls_only =  data.girls_only;
+                    $scope.listingData.girls_only =  data.data.girls_only;
+                    $scope.listingData.img_url =  data.data.img_url;
                     $scope.listingData.utilities_included = data.data.utilities_included;
                 });
             }else{
@@ -50,6 +54,7 @@ angular.module('MovIn')
         }
         });
     };
+
     $scope.uploadFiles = function (files) {
         $scope.files = files;
         if (files && files.length) {

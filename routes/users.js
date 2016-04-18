@@ -34,6 +34,9 @@ module.exports = function(app) {
 	app.route('/query/')
 		.post(users.searchUser);
 
+	app.route('/smartSearch')
+		.post(users.smartSearch);
+
 	app.get('/oauth/facebook', passport.authenticate('facebook', {
 		failureRedirect: '/login',
 		scope:['email']

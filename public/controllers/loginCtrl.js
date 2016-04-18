@@ -11,7 +11,7 @@ angular.module('MovIn')
           if($rootScope.nextPath){
             $location.path($rootScope.nextPath);
           }else{
-            $location.path("/");
+            $location.path("search");
           }
         }else{
           $scope.message = data.message;

@@ -1,12 +1,13 @@
 'use strict';
 
 angular.module('MovIn')
-  .controller('ProfileCtrl', function($scope, $rootScope, $http, $location, UserService, Upload, $timeout, $route) {
+  .controller('ProfileCtrl', function($scope, $rootScope, $http, $location, UserService, Upload, $timeout, $route, $window) {
     
     var placeSearch, autocomplete;
     $scope.formData = {};
     $scope.listingData = {};
     $scope.place = null;
+    $scope.files = null;
     $scope.error = false;
     $scope.success = false;
     $scope.autocompleteOptions = {
@@ -37,39 +38,54 @@ angular.module('MovIn')
                 
                 $scope.listingData.user_id = $scope.user._id;
                 $http.get('/listing').then(function(data){
-                    console.log(data);
-                    $scope.place = data.data.address;
-
-                    $scope.listingData.type = data.data.type;
-                    $scope.listingData.isFor = data.data.isFor;
-                    $scope.listingData.rent = data.data.rent;
-                    $scope.listingData.pool = data.data.pool;
-                    $scope.listingData.rooftop = data.data.rooftop;
-                    $scope.listingData.laundry = data.data.laundry;
-                    $scope.listingData.ac_heater = data.data.ac_heater;
-                    $scope.listingData.no_rooms = data.data.no_rooms;
-                    $scope.listingData.sq_ft = data.data.sq_ft;
-                    $scope.listingData.baths = data.data.baths;
-                    $scope.listingData.fridge = data.data.fridge;
-                    $scope.listingData.microwave = data.data.microwave;
-                    $scope.listingData.floor = data.data.floor;
-                    $scope.listingData.beds = data.data.beds;
-                    $scope.listingData.parking_area = data.data.parking_area;
-                    $scope.listingData.pet_friendly = data.data.pet_friendly;
-                    $scope.listingData.smoking = data.data.smoking;
-                    $scope.listingData.guys_only = data.data.guys_only;
-                    $scope.listingData.girls_only =  data.girls_only;
-                    $scope.listingData.utilities_included = data.data.utilities_included;
-                })
+                    if(data.data){
+                        // console.log(data);
+                        $scope.place = data.data.address;
+                        
+                        $scope.listingData.isFor = data.data.isFor;
+                        $scope.listingData.rent = data.data.rent;
+                        $scope.listingData.pool = data.data.pool;
+                        $scope.listingData.rooftop = data.data.rooftop;
+                        $scope.listingData.laundry = data.data.laundry;
+                        $scope.listingData.ac_heater = data.data.ac_heater;
+                        $scope.listingData.no_rooms = data.data.no_rooms;
+                        $scope.listingData.sq_ft = data.data.sq_ft;
+                        $scope.listingData.baths = data.data.baths;
+                        $scope.listingData.fridge = data.data.fridge;
+                        $scope.listingData.microwave = data.data.microwave;
+                        $scope.listingData.floor = data.data.floor;
+                        $scope.listingData.beds = data.data.beds;
+                        $scope.listingData.parking_area = data.data.parking_area;
+                        $scope.listingData.pet_friendly = data.data.pet_friendly;
+                        $scope.listingData.smoking = data.data.smoking;
+                        $scope.listingData.guys_only = data.data.guys_only;
+                        $scope.listingData.girls_only =  data.girls_only;
+                        $scope.listingData.utilities_included = data.data.utilities_included;
+                        $scope.listingData.img_url =  data.data.img_url;
+                        $scope.listingData.geek = $scope.user.geek;
+                        $scope.listingData.gamer = $scope.user.gamer;
+                        $scope.listingData.party = $scope.user.party;
+                        $scope.listingData.musician = $scope.user.musician;
+                        $scope.listingData.artist = $scope.user.artist;
+                        $scope.listingData.vegan = $scope.user.vegan;
+                        $scope.listingData.bookworm = $scope.user.bookworm;
+                        $scope.listingData.athlete = $scope.user.athlete;
+                        $scope.listingData.gay = $scope.user.gay;
+                        $scope.listingData.redditor = $scope.user.redditor;
+                        $scope.listingData.live_sports = $scope.user.live_sports;
+                        $scope.listingData.early_riser = $scope.user.early_riser;
+                        $scope.listingData.night_owl = $scope.user.night_owl;
+                        $scope.listingData.shopaholic = $scope.user.shopaholic;
+                    }
+                });
             }else{
             $location.path('login');
         }
         });
     };
-
     $scope.saveProfile = function (formdata) {
 		UserService.update(formdata).success(function(data) {
-			console.log("Received Data", data);
+			// console.log("Received Data", data);
 			$scope.user = data;
             $scope.message = "Profile Information Updated";
             $scope.success = true;
@@ -77,9 +93,7 @@ angular.module('MovIn')
             $scope.success = false;
           }, 3000);
 		}).error(function(status, data) {
-			console.log(status);
-			console.log(data);
-            $scope.error = true;
+			$scope.error = true;
             $scope.message = "Profile Information Failed. Please try again.";
             $timeout(function () {
             $scope.error = false;
@@ -90,6 +104,7 @@ angular.module('MovIn')
 
     $scope.uploadFiles = function (files) {
         $scope.files = files;
+        // console.log($scope.files);
         if (files && files.length) {
             Upload.upload({
                 url: '/listing/uploads',
@@ -100,7 +115,7 @@ angular.module('MovIn')
                 },
                 method: 'POST'
             }).then(function (response) {
-                $scope.message = response.data;
+                // $scope.message = response.data;
                 $timeout(function () {
                     $scope.message = null;
                 }, 3000);
@@ -109,7 +124,7 @@ angular.module('MovIn')
                     $scope.errorMsg = response.status + ': ' + response.data;
                 }
             }, function (evt) {
-                $scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total, 10));
+                // $scope.progress = Math.min(100, parseInt(100.0 * evt.loaded / evt.total, 10));
             });
         }
     };
@@ -126,8 +141,14 @@ angular.module('MovIn')
     };
 
     $scope.saveListing = function (formdata) {
+        formdata.img_url = [];
+        if($scope.files){
+            for(var i in $scope.files){
+                formdata.img_url.push("../uploads/"+$scope.user._id+"-"+$scope.files[i].name);
+            }
+        }
+
         UserService.addPlace(formdata).success(function(data) {
-            // console.log("Received Data", data);
             $scope.listingData = data;
             $scope.message = "Property Information Added";
             $scope.success = true;
@@ -143,8 +164,9 @@ angular.module('MovIn')
             $scope.error = false;
           }, 3000);
         });
-        console.log(formdata);
-        $scope.aptInfo = !$scope.aptInfo; 
+        $scope.aptInfo = !$scope.aptInfo;
+        $scope.files = null;
+        $window.location.reload();
     };
     $scope.init();
   });

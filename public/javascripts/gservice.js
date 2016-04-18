@@ -79,8 +79,8 @@ angular.module('MovIn')
                         var user = response[i].user_id[j];
 
                         // Create popup windows for each record
-                        var  contentString = '<label>Rent: </label><b> $' + response[i].rent +' (Monthly) </b> <br> <label>Details:</label><b> '+ response[i].no_rooms + 'bd, ' + response[i].baths + 'ba </b>' +
-                                '<br>' + '<a href="#/viewListing/' + response[i]._id +'" target="_blank">' + 'Click Here' +'</a>';
+                        var  contentString = '<label>Rent: </label><b> $' + response[i].rent +' (Monthly) </b> <br/> <label>Details:</label><b> '+ response[i].no_rooms + 'bd, ' + response[i].baths + 'ba </b>' +
+                                '<br>' + '<label>Sq. Ft:</label><b> '+ response[i].sq_ft + '</b> <br/>'+'<a href="#/viewListing/' + response[i]._id +'" target="_blank">' + 'Click Here' +'</a>';
 
                         // Converts each of the JSON records into Google Maps Location format (Note Lat, Lng format).
                         // if (locations){

@@ -16,14 +16,14 @@ angular.module('MovIn')
         $scope.formData.originalpassword = $scope.formData.password;
         $scope.formData.age = Math.abs(new Date(Date.now() - $scope.dob.getTime()).getUTCFullYear() - 1970);
 		UserService.register(formdata).success(function(data, status) {
-			console.log("Received Data", data);
+			// console.log("Received Data", data);
 			$scope.user = data;
 			$location.path("/profile");
 		}).error(function(status, data) {
 			console.log(status);
 			console.log(data);
 		});
-        console.log(formdata);
+        // console.log(formdata);
     };
 
     $scope.dobOpen = function($event) {

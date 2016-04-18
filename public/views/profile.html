@@ -49,7 +49,7 @@
                         </tbody>
                     </table>
                     <button class="btn btn-default btn-primary" ng-click="personal = !personal">Edit Profile</button>
-                    <button class="btn btn-default btn-primary" ng-click="aptInfo = !aptInfo">Add Listing</button>
+                    <button class="btn btn-default btn-primary" ng-click="aptInfo = !aptInfo">Add/Edit Listing</button>
                 </div>
               </div>
             </div>
@@ -119,13 +119,13 @@
                             <span class="desc">Athlete</span>
                         </label>
                     </div>
-                    <div class="personInfo" ng-class="{highlightPersonInfo : formData.gay}">
+                    <!-- <div class="personInfo" ng-class="{highlightPersonInfo : formData.gay}">
                         <input type="checkbox" class="profileOptions" id="gay" value="gay" name="gay" ng-model="formData.gay">
                         <label for="gay">
                             <i class="fa fa-heart fa-3x"></i>
                             <span class="desc">Gay&nbsp;</span>
                         </label>
-                    </div>
+                    </div> -->
                     <div class="personInfo" ng-class="{highlightPersonInfo : formData.redditor}">
                         <input type="checkbox" class="profileOptions" id="redditor" value="redditor" name="redditor" ng-model="formData.redditor">
                         <label for="redditor">
@@ -199,21 +199,6 @@
               <h3 class="panel-title text-center">Property Information</h3>
             </div>
             <div class="panel-body">
-                <!-- <div class="row">
-                    <div class="text-center col-md-4 col-md-offset-4">
-                        <div class="form-group">
-                            <label for="propertyType" class="sr-only">Property Type:</label>
-                            <div class="input-group-addon">
-                                <label class="radio-inline optionsRadios">
-                                    <input type="radio" value="apt" name="apt" id="apt" ng-model="listingData.type" ng-required="!listingData.type"><i class="fa fa-building fa-2x"></i> Apartment
-                                </label>
-                                <label class="radio-inline optionsRadios">
-                                    <input type="radio" value="house" name="house" id="house" ng-model="listingData.type" ng-required="!listingData.type"><i class="fa fa-home fa-2x"></i> House
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
                 <div class="row">
                     <div class="col-md-6 col-md-offset-3">
                         <div class="form-group">
@@ -222,7 +207,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-map-marker"></i>
                                 </div>
-                                <input type="text" name="address" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="listingData.address" location="listingData.location" placeholder="Address"/>
+                                <input type="text" name="address" class="form-control" g-places-autocomplete options="autocompleteOptions" ng-model="place" address="listingData.address" location="listingData.location" placeholder="Address" ng-required="!place"/>
                             </div>
                         </div>
                     </div>
@@ -235,11 +220,11 @@
                         <div class="input-group-addon">
                             <!-- <div class="input-group-addon"> -->
                             <!-- <label class="radio-inline control-label">Type of Listing: </label> -->
-                            <label class="radio-inline optionsRadios">
+                            <label class="radio-inline listingType">
                                 <input type="radio" value="subLease" name="subLease" id="subLease" ng-model="listingData.isFor" ng-required="!listingData.isFor"><i class="fa fa-hotel fa-2x"></i> Sub-Lease
                             </label>
-                            <label class="radio-inline optionsRadios">
-                                <input type="radio" value="lease" name="lease" id="lease" ng-model="listingData.isFor" ng-required="!listingData.isFor"><i class="fa fa-home fa-2x"></i> Lease
+                            <label class="radio-inline listingType">
+                                <input type="radio" value="lease" name="lease" id="lease" ng-model="listingData.isFor"><i class="fa fa-home fa-2x"></i> Lease
                             </label>
                         </div>
                     </div>
@@ -248,34 +233,141 @@
                         <label for="firstname" class="sr-only">Rent</label>
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <i class="fa fa-dollar"></i>
+                                <label for="firstname">Rent</label>
                             </div>
-                            <input type="text" class="form-control" ng-model="listingData.rent" placeholder="Rent Per Month"/>
+                            <input type="text" class="form-control" ng-model="listingData.rent" placeholder="Rent Per Month" ng-required="!listingData.rent"/>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="utilities_included" class="sr-only">Utilities Included</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Utilities Included</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="utilities_included" id="utilities_included" value="1" ng-model="listingData.utilities_included">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="utilities_included" value="0" id="utilities_included" ng-model="listingData.utilities_included">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="no_rooms" class="sr-only">Number oF Room</label>
+                        <div class="input-group">
+                            <div class="input-group-addon">
+                                <label for="no_rooms">Number oF Room</label>
+                            </div>
+                            <input type="text" class="form-control" ng-model="listingData.no_rooms" placeholder="Number oF Rooms" ng-required="!listingData.no_rooms"/>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label for="firstname" class="sr-only">Number oF Room</label>
+                        <label for="baths" class="sr-only">Baths Available</label>
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <i class="fa fa-puzzle-piece"></i>
+                                <label for="baths">Baths Available</label>
                             </div>
-                            <input type="text" class="form-control" ng-model="listingData.no_rooms" placeholder="Number oF Rooms"/>
+                            <input type="text" class="form-control" ng-model="listingData.baths" placeholder="Number oF Bathrooms" ng-required="!listingData.baths"/>
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label for="firstname" class="sr-only">Baths Available</label>
+                        <label for="sq_ft" class="sr-only">Sq. Ft</label>
                         <div class="input-group">
                             <div class="input-group-addon">
-                                <i class="fa fa-puzzle-piece"></i>
+                                <label for="baths">Sq. Ft</label>
                             </div>
-                            <input type="text" class="form-control" ng-model="listingData.baths" placeholder="Number oF Bathrooms"/>
+                            <input type="text" class="form-control" ng-model="listingData.sq_ft" placeholder="Sq. Ft"/>
                         </div>
                     </div>
                 </div>
-
                 <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label for="Pool" class="sr-only">Has Pool</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has Pool</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="pool" value="1" ng-model="listingData.pool">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="pool" value="0" ng-model="listingData.pool">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="rooftop" class="sr-only">Has Roof-Top</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has Roof-Top</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="rooftop" value="1" ng-model="listingData.rooftop"/>Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="rooftop" value="0" ng-model="listingData.rooftop">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="laundry" class="sr-only">Has Laundry</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has Laundry</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="laundry" value="1" ng-model="listingData.laundry">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="laundry" value="0" ng-model="listingData.laundry">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="ac_heater" class="sr-only">Has AC</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has AC</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="ac_heater" value="1" ng-model="listingData.ac_heater">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="ac_heater" value="0" ng-model="listingData.ac_heater">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="fridge" class="sr-only">Has Fridge</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has Fridge</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="fridge" value="1" ng-model="listingData.fridge">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="fridge" value="0" ng-model="listingData.fridge">No
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="microwave" class="sr-only">Has Microwave</label>
+                        <div class="input-group-addon">
+                            <!-- <div class="input-group-addon"> -->
+                            <label class="radio-inline control-label">Has Microwave</label>
+                            <label class="radio-inline">
+                                <input type="radio" name="microwave" value="1" ng-model="listingData.microwave">Yes
+                            </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="microwave" value="0" ng-model="listingData.microwave">No
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <ul>
+                        <li ng-repeat="f in listingData.img_url" style="font:smaller" style="padding-bottom:5px">
+                            <img style="width:100px;" ngf-thumbnail="f"/>
+                            <label>{{f.split('-')[f.split('-').length -1]}}</label>   
+                        </li>
+                    </ul>
                     <input type="file" name="uploads" ngf-select="uploadFiles($files)" ngf-multiple="true" accept="image/*">
                     Files:
                     <ul>
@@ -284,45 +376,150 @@
                             <label>{{f.name}}</label>   
                         </li>
                     </ul>
-                    <progressbar class="progress-striped active tab-progress tab-content-progress" value="progress" type="success" ng-show="progress >= 0" >{{progress}}%</progressbar>
+                    <!-- <progressbar class="progress-striped active tab-progress tab-content-progress" value="progress" type="success" ng-show="progress >= 0" >{{progress}}%</progressbar>
                     <div ng-show="message" class="error-alert alert-warning error-box col-sm-4 col-md-4 col-md-offset-4" role="alert">
                         <p class="text-danger text-center">
                             <i class="fa fa-exclamation-circle fa-2x"></i>
                             <b>{{message}}</b>
                         </p>
+                    </div> -->
+                </div>
+            </div>
+            <div class="row">
+                <div class="panel panel-warning" ng-show="listingData.isFor === 'subLease' ">
+                    <div class="panel-heading">
+                      <h3 class="panel-title text-center">Roommate Description</h3>
                     </div>
-                    <!-- <form name="upload_form">
-                            Single Image with validations
-                        <input 
-                           type="file" 
-                           ngf-select 
-                           ng-model="up.file" 
-                           name="file" 
-                           ngf-pattern="'image/*'"
-                           accept="image/*" 
-                           ngf-max-size="20MB" 
-                           />
-                        Image thumbnail: <img style="width:100px;" ngf-thumbnail="up.file || '/thumb.jpg'"/>
-                        <i ng-show="up.upload_form.file.$error.required">*required</i><br>
-                        <i ng-show="up.upload_form.file.$error.maxSize">File too large 
-                        {{up.file.size / 1000000|number:1}}MB: max 20M</i>
-                        <button type="submit" ng-click="up.submit()">submit</button>
-                        <p>{{up.progress}}</p> -->
-                    </form>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="text-center col-md-11">
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.geek}">
+                                <input type="checkbox" class="listingOptions" id="listingData.geek" value="geek" name="listingData.geek" ng-model="listingData.geek">
+                                <label for="listingData.geek">
+                                    <i class="fa fa-code fa-3x"></i>
+                                    <span class="desc">Geek</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.gamer}">
+                                <input type="checkbox" class="listingOptions" id="listingData.gamer" value="gamer" name="listingData.gamer" ng-model="listingData.gamer">
+                                <label for="listingData.gamer">
+                                    <i class="fa fa-gamepad fa-3x"></i>
+                                    <span class="desc">Gamer</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.party}">
+                                <input type="checkbox" class="listingOptions" id="listingData.party" value="party" name="listingData.party" ng-model="listingData.party">
+                                <label for="listingData.party">
+                                    <i class="fa fa-beer fa-3x"></i>
+                                    <span class="desc">Party</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.musician}">
+                                <input type="checkbox" class="listingOptions" id="listingData.musician" value="musician" name="listingData.musician" ng-model="listingData.musician">
+                                <label for="listingData.musician">
+                                    <i class="fa fa-music fa-3x"></i>
+                                    <span class="desc">Musician</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.artist}">
+                                <input type="checkbox" class="listingOptions" id="listingData.artist" value="artist" name="listingData.artist" ng-model="listingData.artist">
+                                <label for="listingData.artist">
+                                    <i class="fa fa-paint-brush fa-3x"></i>
+                                    <span class="desc">Artist</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.vegan}">
+                                <input type="checkbox" class="listingOptions" id="listingData.vegan" value="vegan" name="listingData.vegan" ng-model="listingData.vegan">
+                                <label for="listingData.vegan">
+                                    <i class="fa fa-leaf fa-3x"></i>
+                                    <span class="desc">Vegan</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.bookworm}">
+                                <input type="checkbox" class="listingOptions" id="listingData.bookworm" value="bookworm" name="listingData.bookworm" ng-model="listingData.bookworm">
+                                <label for="listingData.bookworm">
+                                    <i class="fa fa-book fa-3x"></i>
+                                    <span class="desc">Bookworm</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.athlete}">
+                                <input type="checkbox" class="listingOptions" id="listingData.athlete" value="athlete" name="listingData.athlete" ng-model="listingData.athlete">
+                                <label for="listingData.athlete">
+                                    <i class="fa fa-soccer-ball-o fa-3x"></i>
+                                    <span class="desc">Athlete</span>
+                                </label>
+                            </div>
+                            <!-- <div class="listingInfo" ng-class="{highlighListingInfo : listingData.gay}">
+                                <input type="checkbox" class="listingOptions" id="listingData.gay" value="gay" name="listingData.gay" ng-model="listingData.gay">
+                                <label for="listingData.gay">
+                                    <i class="fa fa-heart fa-3x"></i>
+                                    <span class="desc">Gay&nbsp;</span>
+                                </label>
+                            </div> -->
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.redditor}">
+                                <input type="checkbox" class="listingOptions" id="listingData.redditor" value="redditor" name="listingData.redditor" ng-model="listingData.redditor">
+                                <label for="listingData.redditor">
+                                    <i class="fa fa-reddit fa-3x"></i>
+                                    <span class="desc">Redditor!</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.live_sports}">
+                                <input type="checkbox" class="listingOptions" id="listingData.live_sports" value="live_sports" name="listingData.live_sports" ng-model="listingData.live_sports">
+                                <label for="listingData.live_sports">
+                                    <i class="fa fa-television fa-3x"></i>
+                                    <span class="desc">Live Sports</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.early_riser}">
+                                <input type="checkbox" class="listingOptions" id="listingData.early_riser" value="early_riser" name="listingData.early_riser" ng-model="listingData.early_riser">
+                                <label for="listingData.early_riser">
+                                    <i class="fa fa-sun-o fa-3x"></i>
+                                    <span class="desc">Early Riser</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.night_owl}">
+                                <input type="checkbox" class="listingOptions" id="listingData.night_owl" value="night_owl" name="listingData.night_owl" ng-model="listingData.night_owl">
+                                <label for="listingData.night_owl">
+                                    <i class="fa fa-moon-o fa-3x"></i>
+                                    <span class="desc">Night Owl</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.shopaholic}">
+                                <input type="checkbox" class="listingOptions" id="listingData.shopaholic" value="shopaholic" name="listingData.shopaholic" ng-model="listingData.shopaholic">
+                                <label for="listingData.shopaholic">
+                                    <i class="fa fa-shopping-cart fa-3x"></i>
+                                    <span class="desc">Shopaholic</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.foodie}">
+                                <input type="checkbox" class="listingOptions" id="listingData.foodie" value="foodie" name="listingData.foodie" ng-model="listingData.foodie">
+                                <label for="listingData.foodie">
+                                    <i class="fa fa-cutlery fa-3x"></i>
+                                    <span class="desc">Foodie</span>
+                                </label>
+                            </div>
+                            <div class="listingInfo" ng-class="{highlighListingInfo : listingData.fitness}">
+                                <input type="checkbox" class="listingOptions" id="listingData.fitness" value="fitness" name="listingData.fitness" ng-model="listingData.fitness">
+                                <label for="listingData.fitness">
+                                    <i class="fa fa-heartbeat fa-3x"></i>
+                                    <span class="desc">Fitness</span>
+                                </label>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-1">
-                    <button class="btn btn-primary" ng-click="saveListing(listingData)">Save</button>
-                </div>
+            </div>
+            <div class="col-md-4 col-md-offset-4 text-center">
+                <button class="btn btn-primary" ng-click="saveListing(listingData)">Save Listing Information</button>
             </div>
         </div>
     </div>
-                    <!-- <a href="/unlink/local" class="btn btn-default">Unlink</a> 
-                    <a href="/connect/local" class="btn btn-default">Connect Local</a> -->
 </div>
 <footer class="footer">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
+            <div class="text-center">
                 <ul class="list-inline">
                     <li>
                         <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>

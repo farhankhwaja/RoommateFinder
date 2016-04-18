@@ -29,86 +29,129 @@
 </nav>
 </header>
 <section class="container-fluid mapDiv">
-    <div class="col-sm-3 col-lg-2 filter-options">
+    <div class="col-sm-4 col-md-2 filter-options">
         <div class="list-group">
             <form role="form">
+                <!-- <div class="form-group" ng-class="{smartSearchInfo : user === undefined}">
+                    <div ng-show="user === undefiend">
+                        You need to be Logged-In to use this feature!
+                    </div>
+                    <label for="SmartSearch">Smart Search</label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="Yes" ng-model="smartSearch.yes" ng-change="checkValue(smartSearch)" ng-disabled="user === undefined"><i class="fa fa-check fa-2x"></i>
+                    </label>
+                    <label class="checkbox-inline">
+                        <input type="checkbox" name="No" ng-model="smartSearch.no" ng-change="checkValue(smartSearch)" ng-disabled="user === undefined"><i class="fa fa-close fa-2x"></i>
+                    </label>
+                </div> -->
                 <div class="form-group">
                     <label for="distance">Max. Distance (miles)</label>
                     <input type="number" class="form-control" id="distance" placeholder="1" min="0" ng-model="formData.distance" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
                 </div>
                 <div class="form-group">
-                    <div class="dropdown">
-                        <label for="distance">Search Filter</label>
-                        <button class="btn btn-info dropdown-toggle dropdownBtn" type="button" data-toggle="dropdown">Smart Search
-                        <span class="caret"></span></button>
-                        <ul class="dropdown-menu">
-                          <li><a href="#">HTML</a></li>
-                          <li><a href="#">CSS</a></li>
-                          <li><a href="#">JavaScript</a></li>
-                        </ul>
+                    <div class="input-group-addon">
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="listingRadio" value="subLease" ng-model="formData.subLease" ng-change="queryUsers()">Sub-Lease
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="listingRadio" value="lease" ng-model="formData.lease"  ng-change="queryUsers()">Lease
+                        </label>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="gender">Gender </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="optionsRadios" id="checkmale" value="Male" ng-model="formData.male" ng-true-value = "'Male'" ng-change="queryUsers()"><i class="fa fa-male fa-2x"></i>
-                    </label>
-                    <label class="checkbox-inline">
-                        <input type="checkbox" name="optionsRadios" id="checkfemale" value="Female" ng-model="formData.female" ng-true-value="'Female'" ng-change="queryUsers()"><i class="fa fa-female fa-2x"></i>
-                    </label>
-                    <!-- </div> -->
+                    <div class="input-group-addon">
+                        <label for="gender" class="checkbox-inline control-label">Gender </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="optionsRadios" id="checkmale" value="Male" ng-model="formData.male" ng-change="queryUsers()"><i class="fa fa-male fa-2x"></i>
+                        </label>
+                        <label class="checkbox-inline">
+                            <input type="checkbox" name="optionsRadios" id="checkfemale" value="Female" ng-model="formData.female"  ng-change="queryUsers()"><i class="fa fa-female fa-2x"></i>
+                        </label>
+                    </div>
+                </div>
+                <h4 class="separation text-center">Amenities</h4>
+                <div class="form-group">
+                    <label for="Pool" class="sr-only">Pool</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">Pool</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pool" value="1" ng-model="formData.pool" ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="pool" value="0" ng-model="formData.pool" ng-change="queryUsers()">No
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="minage">Min. Age</label>
-                    <input type="number" class="form-control" id="minage" placeholder="18" ng-model="formData.minage" min="18" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                    <label for="rooftop" class="sr-only">Roof-Top</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">Roof-Top</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="rooftop" value="1" ng-model="formData.rooftop"/ ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="rooftop" value="0" ng-model="formData.rooftop" ng-change="queryUsers()">No
+                        </label>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label for="maxage">Max Age</label>
-                    <input type="number" class="form-control" id="maxage" placeholder="80" ng-model="formData.maxage" min="18" ng-change="queryUsers()" ng-model-options="{ debounce: 500 }">
+                    <label for="laundry" class="sr-only">Laundry</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">Laundry</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="laundry" value="1" ng-model="formData.laundry" ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="laundry" value="0" ng-model="formData.laundry" ng-change="queryUsers()">No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="ac_heater" class="sr-only">AC</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">AC</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="ac_heater" value="1" ng-model="formData.ac_heater" ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="ac_heater" value="0" ng-model="formData.ac_heater" ng-change="queryUsers()">No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="fridge" class="sr-only">Fridge</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">Fridge</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="fridge" value="1" ng-model="formData.fridge" ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="fridge" value="0" ng-model="formData.fridge" ng-change="queryUsers()">No
+                        </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="microwave" class="sr-only">Microwave</label>
+                    <div class="input-group-addon">
+                        <!-- <div class="input-group-addon"> -->
+                        <label class="radio-inline control-label">Microwave</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="microwave" value="1" ng-model="formData.microwave" ng-change="queryUsers()">Yes
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="microwave" value="0" ng-model="formData.microwave" ng-change="queryUsers()">No
+                        </label>
+                    </div>
                 </div>
             </form>
         </div>  
     </div>
-    <modal title="Login form" visible="showModal">
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-                  <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Listing Details</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class=" col-md-11 col-lg-11 "> 
-                            <table class="table table-user-information">
-                                <tbody>
-                                    <tr>
-                                        <td>Address:</td>
-                                        <td>{{place}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rent</td>
-                                        <td>${{listingData.rent}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Number of Rooms:</td>
-                                        <td>{{listingData.no_rooms}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Baths Available</td>
-                                        <td>{{listingData.baths}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-            </div>
-        </div>
-    </modal>
-    <div class="col-lg-10 col-sm-9 maps">
+    <div class="col-sm-8 col-md-10 maps">
         <div id="map" class="container"></div>
     </div>
 </section>
@@ -118,13 +161,13 @@
             <div class="col-lg-10 col-lg-offset-1 text-center">
                 <ul class="list-inline">
                     <li>
-                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                        <a href=""><i class="fa fa-facebook fa-fw fa-2x"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                        <a href=""><i class="fa fa-twitter fa-fw fa-2x"></i></a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
+                        <a href=""><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
                     </li>
                 </ul>
                 <p class="text-muted">Copyright &copy;2016 MovIn</p>

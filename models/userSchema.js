@@ -25,7 +25,6 @@ var UserSchema = new Schema({
 	provider: String,
     geek: Number,
 	gamer: Number,
-	gay: Number,
 	vegan: Number,
 	fitness: Number,
 	athlete: Number,
@@ -47,7 +46,7 @@ var UserSchema = new Schema({
     facebook: {},
     google: {},
     tumblr: {},
-    img_url: String,
+    img_url: [String],
     profileImg_url: String,
     search: [String]
 },{

@@ -14,7 +14,7 @@ Roommate Finder is a application built with MongoDB, Express, AngularJS and Node
 - [x] Handle Logout
 - [x] Add users management
 - [ ] Add Like to search item
-- [ ] Add recommendation model
+- [x] Add recommendation model
 - [ ] Improve recommendation based on likes.
 
 

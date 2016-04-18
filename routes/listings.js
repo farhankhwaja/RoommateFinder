@@ -8,7 +8,7 @@ var storage = multer.diskStorage({ //multers disk storage settings
         },
         filename: function (req, file, cb) {
             var datetimestamp = Date.now();
-            cb(null, req.user._id + '-' +file.originalname + '-' + datetimestamp + '.' + file.originalname.split('.')[file.originalname.split('.').length -1]);
+            cb(null, req.user._id + '-' + file.originalname);
         }
     });
 

@@ -146,13 +146,21 @@ exports.delete = function(req, res, next) {
 exports.searchUser = function(req, res){
 
 	//Grab all search terms
+	var user_id = req.body.user_id;
 	var distance = req.body.distance;
-	var	female = req.body.female;
-	var	male = req.body.male;
-
+	var female = req.body.female;
+	var male = req.body.male;
+	var type = req.body.type;
 	var lat = parseFloat(req.body.latitude);
 	var lng = parseFloat(req.body.longitude);
-
+	var pool = parseInt(req.body.pool, 10);
+	var laundry = parseInt(req.body.laundry, 10);
+	var microwave = parseInt(req.body.microwave, 10);
+	var ac_heater = parseInt(req.body.ac_heater, 10);
+	var fridge = parseInt(req.body.fridge, 10);
+	var rooftop = parseInt(req.body.rooftop, 10);
+	var subLease = req.body.subLease;
+	var lease = req.body.lease;
 	// console.log(male, female);
 	var result = {
 		users: {},
@@ -174,12 +182,131 @@ exports.searchUser = function(req, res){
 			maxDistance: distance * 1609.34, spherical: true});
 	}
 
+	if(pool){
+		query = query.where('pool').equals(pool);
+	}
+
+	if(laundry){
+		query = query.where('laundry').equals(laundry);
+	}
+	if(rooftop){
+		query = query.where('rooftop').equals(rooftop);
+	}
+	if(ac_heater){
+		query = query.where('ac_heater').equals(ac_heater);
+	}
+	if(fridge){
+		query = query.where('fridge').equals(fridge);
+	}
+	if(microwave){
+		query = query.where('microwave').equals(microwave);
+	}
+	if(subLease){
+		query = query.where('isFor').equals(subLease);
+	}
+	if(lease){
+		query = query.where('isFor').equals(lease);
+	}
+	
 	query.exec(function(err, apt){
 		if(err)
 			res.send(err);
 		else
 			res.json(apt);
 	});
+};
+
+exports.smartSearch = function(req, res){
+
+	console.log(req.body);
+	//Grab all search terms
+	var geek = req.body.geek;
+    var gamer = req.body.gamer;
+    var vegan = req.body.vegan;
+    var fitness = req.body.fitness;
+    var athlete = req.body.athlete;
+    var artist = req.body.artist;
+    var early_riser = req.body.early_riser;
+    var night_owl = req.body.night_owl;
+    var foodie = req.body.foodie;
+    var live_sports = req.body.live_sports;
+    var bookworm = req.body.bookworm;
+    var musician = req.body.musician;
+    var party = req.body.party;
+    var redditor = req.body.redditor;
+    var shopaholic = req.body.shopaholic;
+    
+    var distance = req.body.distance;
+
+	var female = req.body.female;
+	var male = req.body.male;
+	var lat = parseFloat(req.body.latitude);
+	var lng = parseFloat(req.body.longitude);
+	var locations;
+	// console.log(male, female);
+	var result = {
+		users: {},
+		aptInfo : {}
+	};
+
+	var query = AptInfo.find()
+				.where('geek').equals(geek)
+				.where('gamer').equals(gamer)
+				.where('vegan').equals(vegan)
+				.where('fitness').equals(fitness)
+				.where('athlete').equals(athlete)
+				.where('foodie').equals(foodie)
+				.where('night_owl').equals(night_owl)
+				.where('early_riser').equals(early_riser)
+				.where('artist').equals(artist)
+				.where('live_sports').equals(live_sports)
+				.where('bookworm').equals(bookworm)
+				.where('musician').equals(musician)
+				.where('party').equals(party)
+				.where('shopaholic').equals(shopaholic)
+				.where('redditor').equals(redditor);
+
+	query.exec(function(err, apt){
+		if(err){
+			res.send(err);
+		}else{
+			console.log(apt)
+			locations = apt;
+		}
+	});
+
+	console.log(locations);
+	// if(distance){
+	// 	query = query.where('location').near({center: {type: 'Point', coordinates: [lng, lat]},
+	// 		maxDistance: distance * 1609.34, spherical: true});
+	// }
+
+	// if(pool){
+	// 	query = query.where('pool').equals(pool);
+	// }
+
+	// if(laundry){
+	// 	query = query.where('laundry').equals(laundry);
+	// }
+	// if(rooftop){
+	// 	query = query.where('rooftop').equals(rooftop);
+	// }
+	// if(ac_heater){
+	// 	query = query.where('ac_heater').equals(ac_heater);
+	// }
+	// if(fridge){
+	// 	query = query.where('fridge').equals(fridge);
+	// }
+	// if(microwave){
+	// 	query = query.where('microwave').equals(microwave);
+	// }
+
+	// query.exec(function(err, apt){
+	// 	if(err)
+	// 		res.send(err);
+	// 	else
+	// 		res.json(apt);
+	// });
 };
 
 exports.createListing = function(req, res, next) {

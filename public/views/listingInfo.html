@@ -1,73 +1,129 @@
-<div class="header">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="row">
-                <a class="navbar-brand navbar-left" href="#/">
-                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    MovIn
-                </a>
-                <!-- <ul class="col-md-4 nav navbar input-group">
-                   <input type="text" class="form-control" placeholder="Search this site">
-                   <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">Go!</button>
-                   </span>
-                </ul> -->
-                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
-                    <li><a href ng-click="logOut()">Logout</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
-                    <li><a href="#/search" class="btn">Search</a></li>
-                </ul>
-                <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
-                    <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
-                </ul>
-                
-                
-            </div>
-    </nav>
-    <section>
-        <div class="container">
-            <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 col-xs-offset-0 col-sm-offset-0 col-md-offset-3 col-lg-offset-3 toppad" >
-                  <div class="panel panel-warning">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">Listing Details</h3>
-                    </div>
-                    <div class="panel-body">
-                      <div class="row">
-                        <div class=" col-md-11 col-lg-11 "> 
-                            <table class="table table-user-information">
-                                <tbody>
-                                    <tr>
-                                        <td>Address:</td>
-                                        <td>{{place}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Rent</td>
-                                        <td>${{listingData.rent}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Number of Rooms:</td>
-                                        <td>{{listingData.no_rooms}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Baths Available</td>
-                                        <td>{{listingData.baths}}</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="row">
+        <a class="navbar-brand navbar-left" href="#/">
+            <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+            MovIn
+        </a>
+        <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+            <li><a href ng-click="logOut()">Logout</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+            <li><a href="#/search" class="btn">Search</a></li>
+        </ul>
+        <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+            <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
+        </ul>
+    </div>
+</nav>
+<div class="container myProfile">
+    <div class="row">
+        <div class="toppad">
+            <div class="listingImg">
+                <carousel interval="myInterval">
+                    <slide ng-repeat="slide in listingData.img_url">
+                        <img ng-src="{{slide}}" class="listingImg">
+                        <div class="carousel-caption">
+                            <h4>Image {{$index+1}}</h4>
                         </div>
-                      </div>
+                    </slide>
+                </carousel>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-lg-6 col-sm-offset-1 col-md-offset-1 toppad" >
+          <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h3 class="panel-title">Listing Details</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+                <div class=" col-md-11 col-lg-11 "> 
+                    <table class="table table-user-information">
+                        <tbody>
+                            <tr>
+                                <td>Address:</td>
+                                <td>{{place}}</td>
+                            </tr>
+                            <tr>
+                                <td>Rent</td>
+                                <td>${{listingData.rent}}</td>
+                            </tr>
+                            <tr>
+                                <td>Utilities Included</td>
+                                <td ng-show="listingData.utilities_included">Yes</td>
+                                <td ng-show="!listingData.utilities_included">No</td>
+                            </tr>
+                            <tr>
+                                <td>Number of Rooms:</td>
+                                <td>{{listingData.no_rooms}}</td>
+                            </tr>
+                            <tr>
+                                <td>Baths Available</td>
+                                <td>{{listingData.baths}}</td>
+                            </tr>
+                            <tr>
+                                <td>Sq. Ft</td>
+                                <td ng-show="listingData.sq_ft">{{listingData.sq_ft}}</td>
+                                <td ng-show="!listingData.sq_ft">N/A</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-6 col-md-3 toppad" >
+              <div class="panel panel-warning text-center">
+                <div class="panel-heading">
+                    <h3 class="panel-title">Amenities</h3>
+                </div>
+                <div class="panel-body">
+                  <div class="row">
+                    <div class=" col-md-11 col-lg-11 "> 
+                        <table class="table table-user-information">
+                            <tbody>
+                                <tr>
+                                    <td ng-show="listingData.pool">Pool</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.rooftop">Roof-Top</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.laundry">Laundry</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.ac_heater">AC/Heater</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.fridge">Fridge</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.microwave">Microwave</td>
+                                </tr>
+                                <tr>
+                                    <td ng-show="listingData.fridge">Fridge</td>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
                   </div>
                 </div>
+              </div>
             </div>
         </div>
-    </section>
+        <div class="row">
+            <div class="col-sm-6 col-md-4 col-lg-4 col-md-offset-4 text-center" >
+                <a class="btn btn-default btn-primary" href="mailto:{{user.email}}"> <i class="fa fa-pencil-square-o"></i> Contact Owner</a>
+            </div>
+        </div>
+    </div>
 </div>
 <footer class="footer">
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
+            <div class="text-center">
                 <ul class="list-inline">
                     <li>
                         <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>

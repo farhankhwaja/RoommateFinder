@@ -325,7 +325,7 @@ html, body {
     padding: 1px;
 }
 
-.personInfo {
+.personInfo, .listingInfo {
     height: auto;
     width: 90px;
     background-color: #fff;
@@ -337,11 +337,11 @@ html, body {
     cursor: pointer;
 }
 
-.personInfo > * {
+.personInfo > *, .listingInfo > * {
     cursor: pointer;
 }
 
-.personInfo:hover {
+.personInfo:hover, .listingInfo:hover {
     background-color: #D6C7A5;
 }
 
@@ -365,15 +365,35 @@ html, body {
     display: none;
 }
 
+.listingInfo input[type="checkbox"] {
+    display: none;
+}
+
 .desc {
     padding-top: 5px;
 }
 
-input:checked + label {
+.personInfo input:checked + label {
+    color: #fff;
+}
+
+.listingInfo input:checked + label {
     color: #fff;
 }
 
 .highlightPersonInfo {
+    height: auto;
+    width: 90px;
+    background-color: #ff656c;
+    border-radius: 10px;
+    display: inline-block;
+    padding: 10px;
+    margin-bottom: 5px;
+    /*border: 1px solid #ff656c;*/
+    cursor: pointer;
+}
+
+.highlighListingInfo {
     height: auto;
     width: 90px;
     background-color: #ff656c;
@@ -417,4 +437,45 @@ input:checked + label {
   border-radius: 4px;
   background-color: #ff656c;
   color: #fff;
+}
+
+.listingImg{
+  max-height: 400px;
+  margin:auto;
+  width: auto;
+  /*max-height: 500px;*/
+}
+#slides_control {
+  position:absolute;
+  width: auto;
+  max-height: 500px;
+  /*height: 300px;*/
+  left:50%;
+  top:20px;
+  /*margin-left:-200px;*/
+}
+
+.carousel-control.right {
+    background-color: #fff;
+    font-weight: bold;
+}
+
+.smartSearchInfo {
+    /*font-size: 11px;*/
+    /*font-weight: bold;*/
+    border: 1px solid #ff656c;
+    border-radius: 4px;
+    padding: 5px;
+}
+
+.separation {
+    border: 1px solid #ff656c;
+    color: #000;
+    background-color: #D8D8D8;
+    border-radius: 4px;
+
+}
+
+.control-label {
+    padding-left: 0;
 }
