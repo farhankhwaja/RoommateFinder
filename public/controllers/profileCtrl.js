@@ -37,7 +37,9 @@ angular.module('MovIn')
                 
                 $scope.listingData.user_id = $scope.user._id;
                 $http.get('/listing').then(function(data){
+                    console.log(data);
                     $scope.place = data.data.address;
+
                     $scope.listingData.type = data.data.type;
                     $scope.listingData.isFor = data.data.isFor;
                     $scope.listingData.rent = data.data.rent;

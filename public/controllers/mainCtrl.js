@@ -4,6 +4,7 @@ angular.module('MovIn')
   .controller('MainCtrl', function($scope, $rootScope, $http, $location, UserService, $timeout, $route) {
     // This object will be filled by the form
     $scope.formData = {};
+    // $scope.user = undefined;
     $scope.queryBody = {
             longitude: undefined,
             latitude: undefined,
@@ -15,7 +16,6 @@ angular.module('MovIn')
         };
 
     $http.get('/user/loggedin').then(function(data){
-		// console.log("received Data",data);
 		if(data.data){ $scope.user = data.data;}
     });
 

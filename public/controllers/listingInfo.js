@@ -9,6 +9,7 @@ angular.module('MovIn')
     $scope.place = null;
     $scope.error = false;
     $scope.success = false;
+    $scope.showModal = false;
     $scope.autocompleteOptions = {
         // componentRestrictions: { },
         types: ['geocode']
@@ -44,6 +45,7 @@ angular.module('MovIn')
                     $scope.listingData.utilities_included = data.data.utilities_included;
                 });
             }else{
+            $rootScope.nextPath = $location.path();
             $location.path('login');
         }
         });
@@ -84,5 +86,6 @@ angular.module('MovIn')
             console.log(data);
         });
     };
+
     $scope.init();
   });

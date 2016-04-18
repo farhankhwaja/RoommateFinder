@@ -1,29 +1,31 @@
+<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container-fluid">
+    <div class="row">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#/">
+                <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                MovIn
+            </a>
+        </div>
+        <div class="nav pull-right">
+            <ul class="nav navbar-nav">
+                <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
+                <li><a href="#/login" class="btn" alt="Login">Login</i></a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right" ng-show="user === undefined">
+                <li><a href="#/signup" class="btn" alt="Register">Register</i></a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                <li><a href ng-click="logOut()">Logout</a></li>
+            </ul>
+            <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
+                <li><a href="#/profile" class="btn">Welcome {{user.name}}</a></li>
+            </ul>
+        </div>
+    </div>
+    </div>
+</nav>
 <header class="mainHeader">
-    <nav class="navbar navbar-default" role="navigation">
-        <div class="container-fluid">
-        <div class="row">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#/">
-                    <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
-                    MovIn
-                </a>
-            </div>
-            <div class="nav pull-right" ng-show="user != undefined">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/search">Search</a></li>
-                    <li><a href="#/profile">Welcome {{user.name}}</a></li>
-                    <li><a ng-click="logOut()"><i class="fa fa-lock fa-2x"></i></a></li>
-                </ul>
-            </div>
-            <div class="pull-right" ng-show="user === undefined">
-                <ul class="nav navbar-nav">
-                    <li><a href="#/signup">Register</a></li>
-                    <li><a href="#/login">Login</a></li>
-                </ul>
-            </div>
-        </div>
-        </div>
-    </nav>
     <div class="searchTemplate">
         <div class="text-vertical-center">
             <h1 class="searchTitle">Find a Place & MovIn!</h1>
@@ -38,23 +40,3 @@
         </div>
     </div>
 </header>
-<footer class="mainFooter">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-                <ul class="list-inline">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
-                    </li>
-                </ul>
-                <p class="text-muted">Copyright &copy;2016 MovIn</p>
-            </div>
-        </div>
-    </div>
-</footer>

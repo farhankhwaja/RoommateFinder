@@ -5,6 +5,8 @@ angular.module('MovIn')
 
         $scope.formData = {};
         $scope.formData.location = [];
+        $rootScope.showModal = false;
+        $rootScope.listingid;
         $scope.queryBody = {
             longitude: undefined,
             latitude: undefined,
@@ -25,6 +27,7 @@ angular.module('MovIn')
         $scope.init = function(){
             // console.log($scope.mainPgSrch);
             if($scope.mainPgSrch.location){
+                console.log($scope.mainPgSrch.location);
                 gservice.refresh(parseFloat($scope.mainPgSrch.location.coordinates[1]), parseFloat($scope.mainPgSrch.location.coordinates[0]), false, $scope.formData.distance);
                 $scope.formData.location = {type: 'Point', coordinates:[parseFloat($scope.mainPgSrch.location.coordinates[0]), parseFloat($scope.mainPgSrch.location.coordinates[1])]};
                 $scope.queryBody.male = 'Male';
@@ -96,7 +99,7 @@ angular.module('MovIn')
                 .success(function(queryResults){
 
                     // Pass the filtered results to the Google Map Service and refresh the map
-                    gservice.refresh($scope.queryBody.latitude, $scope.queryBody.longitude, queryResults, $scope.queryBody.distance);
+                    gservice.refresh($scope.queryBody.latitude, $scope.queryBody.longitude, queryResults, $scope.queryBody.distance, $scope);
                     // Count the number of records retrieved for the panel-footer
                     $scope.queryCount = queryResults.length;
                 })
@@ -113,5 +116,9 @@ angular.module('MovIn')
             $scope.popoverIsVisible = false;
         };
 
+        $rootScope.toggleModal = function(){
+            console.log("changed");
+            $rootScope.showModal = !$rootScope.showModal;
+        };
         $scope.init();
 });

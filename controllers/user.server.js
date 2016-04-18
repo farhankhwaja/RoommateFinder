@@ -153,7 +153,7 @@ exports.searchUser = function(req, res){
 	var lat = parseFloat(req.body.latitude);
 	var lng = parseFloat(req.body.longitude);
 
-	console.log(male, female);
+	// console.log(male, female);
 	var result = {
 		users: {},
 		aptInfo : {}
@@ -224,6 +224,16 @@ exports.deleteListing = function(req, res, next) {
 		}
 		else {
 			res.status(200);
+		}
+	});
+};
+
+exports.userListings = function(req, res) {
+	AptInfo.findOne({user_id: req.user._id}, function(err, apt){
+		if(err) {
+			return next(err);
+		}else{
+			res.json(apt);
 		}
 	});
 };
