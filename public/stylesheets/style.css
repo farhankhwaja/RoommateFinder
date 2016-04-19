@@ -9,7 +9,11 @@ html, body {
 
 .myProfile {
   padding: 60px 15px 0;
-  margin-bottom: 100px;
+  /*margin-bottom: 100px;*/
+  height: auto !important; /*Cause footer to stick to bottom in IE 6*/
+  /*height: 100%; */
+  /*margin: 0 auto -5%; Allow for footer height*/
+  vertical-align:bottom;
 }
 
 .searchTemplate {
@@ -23,23 +27,11 @@ html, body {
     -o-background-size: cover;
 }
 
-.shadow {
-    opacity: 1;
-    border: 10px solid #fff;
-    border-radius: 15px;
-    padding-left: 0;
-    padding-right: 0;
-}
-
 .searchTitle {
     font-weight: bold;
     font-size: 55px;
     color: #000;
     padding-bottom: 10px;
-}
-
-.navbar {
-	margin-bottom:0; 
 }
 
 .text-vertical-center {
@@ -67,16 +59,10 @@ html, body {
 }
 
 .header{
-    /*display: table;*/
-    width: 100%;
-    z-index: 50;
-    /*height: 100%;*/
-    /*overflow: auto;*/
+    background-color: #3366cc;
 }
-
-.mapwrapper {
-    margin-bottom: 150px;
-    height: 76%;
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand, .text-muted {
+    color: #fff;
 }
 
 .mainWrapper {
@@ -98,13 +84,14 @@ html, body {
 
 .footer {
     /*padding: 50px 0;*/
-    background-color: #f7f7f7;
-    padding: 5px 0;
+    background-color: #3366cc;
+    padding: 5px;
     width: 100%;
-    /*border-top: 1px solid #ff656c;*/
+    /*border-top: 1px solid #3366cc;*/
     position: fixed;
     bottom: 0; 
-    z-index: 50;
+    height: 30px;
+    /*z-index: 50;*/
 }
 
 .mainFooter {
@@ -191,7 +178,7 @@ html, body {
 {
     display: block;
     margin-top: 10px;
-    color: #ff656c;
+    color: #3366cc;
 }
 
 .new-account a:hover {
@@ -212,8 +199,8 @@ html, body {
     padding: 20px;
     background: #f7f7f7;
     border-radius: 5px;
-    border: 1px solid #ff656c;
-    border-top: 5px solid #ff656c;
+    border: 1px solid #3366cc;
+    border-top: 5px solid #3366cc;
     margin: 0 auto;
 }
 
@@ -236,17 +223,18 @@ html, body {
 }
 
 .login-block input:active, .login-block input:focus {
-    border: 1px solid #ff656c;
+    border: 1px solid #3366cc;
 }
 
 .login-block button {
-    border: 1px solid #ff656c;
+    border: 1px solid #3366cc;
     outline: none;
     cursor: pointer;
 }
 
 .login-block button:hover {
-    background: #ff7b81;
+    background: #D8D8D8;
+    color: #000;
 }
 
 .box {
@@ -256,14 +244,6 @@ html, body {
     padding: 10px;
  }
 
-#map, .angular-google-map-container { 
-    /*min-height: 500px; */
-    width: 100%;
-    margin-right: 5px;
-    height: 100%;
-    border: 1px solid #ff656c;
-}
-
 .filter-options {
     float: left;
     background: #fff;
@@ -272,9 +252,18 @@ html, body {
     /*min-height: 100%;*/
 }
 
-.maps {
-    padding: 5px;
+#map { 
+    /*min-height: 500px; */
+    width: 100%;
+    margin-right: 5px;
     height: 100%;
+    border: 1px solid #3366cc;
+}
+
+.maps {
+    padding: 0;
+    height: 100%;
+    /*margin-right: 5px;*/
     /*padding-bottom: 180px;*/
 }
 
@@ -285,10 +274,23 @@ html, body {
 
 .mapDiv {
     padding-left: 0;
-    padding-right: 0;
+    padding-right: 5px;
     height: 100%;
 }
 
+@media (max-width: 1440px) {
+    .mapDiv {
+        max-height: 89%;
+        width: auto;
+    }
+}
+
+@media (min-width: 1920px) {
+    .mapDiv {
+        max-height: 91%;
+        width: auto;
+    }
+}
 .error-box {
     margin-top: 10px;
     padding: 10px;
@@ -302,12 +304,6 @@ html, body {
     margin-top:20px;
 }
 
-@media (max-height: 778px) {
-  .mapDiv{
-    height: 83%;
-  }
-}
-
 .labels {
     color: red;
     background-color: white;
@@ -316,7 +312,7 @@ html, body {
     font-weight: bold;
     text-align: center;
     /*width: 40px;*/
-    border: 1px solid #ff656c;
+    border: 1px solid #3366cc;
     white-space: nowrap;
 }
 
@@ -333,7 +329,7 @@ html, body {
     display: inline-block;
     padding: 10px;
     margin-bottom: 5px;
-    /*border: 1px solid #ff656c;*/
+    /*border: 1px solid #3366cc;*/
     cursor: pointer;
 }
 
@@ -354,11 +350,11 @@ html, body {
 }
 
 #radiomale:checked + i.fa {
-    color: #ff656c;
+    color: #39B521;
 }
 
 #radiofemale:checked + i.fa {
-    color: #ff656c;
+    color: #39B521;
 }
 
 .personInfo input[type="checkbox"] {
@@ -384,24 +380,24 @@ html, body {
 .highlightPersonInfo {
     height: auto;
     width: 90px;
-    background-color: #ff656c;
+    background-color: #3366cc;
     border-radius: 10px;
     display: inline-block;
     padding: 10px;
     margin-bottom: 5px;
-    /*border: 1px solid #ff656c;*/
+    /*border: 1px solid #3366cc;*/
     cursor: pointer;
 }
 
 .highlighListingInfo {
     height: auto;
     width: 90px;
-    background-color: #ff656c;
+    background-color: #3366cc;
     border-radius: 10px;
     display: inline-block;
     padding: 10px;
     margin-bottom: 5px;
-    /*border: 1px solid #ff656c;*/
+    /*border: 1px solid #3366cc;*/
     cursor: pointer;
 }
 
@@ -418,13 +414,13 @@ html, body {
 }
 
 .optionsRadios > input:checked + i.fa {
-    color: #ff656c;
+    color: #3366cc;
 }
 
 .dropdownBtn {
     background: #fff;
-    color: #ff656c;
-    border: 1px solid #ff656c;
+    color: #3366cc;
+    border: 1px solid #3366cc;
 }
 
 .filterRange {
@@ -435,7 +431,7 @@ html, body {
   font-weight: bold;
   border: 1px solid #D8D8D8;
   border-radius: 4px;
-  background-color: #ff656c;
+  background-color: #3366cc;
   color: #fff;
 }
 
@@ -463,13 +459,13 @@ html, body {
 .smartSearchInfo {
     /*font-size: 11px;*/
     /*font-weight: bold;*/
-    border: 1px solid #ff656c;
+    border: 1px solid #3366cc;
     border-radius: 4px;
     padding: 5px;
 }
 
 .separation {
-    border: 1px solid #ff656c;
+    border: 1px solid #3366cc;
     color: #000;
     background-color: #D8D8D8;
     border-radius: 4px;
@@ -478,4 +474,12 @@ html, body {
 
 .control-label {
     padding-left: 0;
+}
+
+.navbar-default {
+    background-color: #3366cc;
+}
+
+.navbar {
+    margin-bottom: 5px;
 }
