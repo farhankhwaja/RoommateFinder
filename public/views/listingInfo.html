@@ -1,7 +1,7 @@
 <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
     <div class="row">
         <a class="navbar-brand navbar-left" href="#/">
-            <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+            &nbsp;<span class="glyphicon glyphicon glyphicon-home"></span>
             MovIn
         </a>
         <ul class="nav navbar-nav pull-right" ng-show="user != undefined">
@@ -38,32 +38,32 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class=" col-md-11 col-lg-11 "> 
+                <div class="col-sm-12 col-md-12 col-lg-12 "> 
                     <table class="table table-user-information">
                         <tbody>
                             <tr>
-                                <td>Address:</td>
+                                <td><b>Address</b></td>
                                 <td>{{place}}</td>
                             </tr>
                             <tr>
-                                <td>Rent</td>
+                                <td><b>Rent</b></td>
                                 <td>${{listingData.rent}}</td>
                             </tr>
                             <tr>
-                                <td>Utilities Included</td>
+                                <td><b>Utilities Included</b></td>
                                 <td ng-show="listingData.utilities_included">Yes</td>
                                 <td ng-show="!listingData.utilities_included">No</td>
                             </tr>
                             <tr>
-                                <td>Number of Rooms:</td>
+                                <td><b>Number of Rooms</b></td>
                                 <td>{{listingData.no_rooms}}</td>
                             </tr>
                             <tr>
-                                <td>Baths Available</td>
+                                <td><b>Baths Available</b></td>
                                 <td>{{listingData.baths}}</td>
                             </tr>
                             <tr>
-                                <td>Sq. Ft</td>
+                                <td><b>Sq. Ft</b></td>
                                 <td ng-show="listingData.sq_ft">{{listingData.sq_ft}}</td>
                                 <td ng-show="!listingData.sq_ft">N/A</td>
                             </tr>
@@ -81,7 +81,7 @@
                 </div>
                 <div class="panel-body">
                   <div class="row">
-                    <div class=" col-md-11 col-lg-11 "> 
+                    <div class="col-sm-12 col-md-12 col-lg-12 "> 
                         <table class="table table-user-information">
                             <tbody>
                                 <tr>
@@ -114,29 +114,9 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-sm-6 col-md-4 col-lg-4 col-md-offset-4 text-center" >
-                <a class="btn btn-default btn-primary" href="mailto:{{user.email}}"> <i class="fa fa-pencil-square-o"></i> Contact Owner</a>
+            <div class="col-sm-6 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 text-center input-group" >
+                <a class="btn btn-default contactBtn" href="mailto:{{user.email}}"> <i class="fa fa-pencil-square-o"></i> Contact Owner</a>
             </div>
         </div>
     </div>
 </div>
-<footer class="footer">
-    <div class="container">
-        <div class="row">
-            <div class="text-center">
-                <!-- <ul class="list-inline">
-                    <li>
-                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
-                    </li>
-                </ul> -->
-                <p class="text-muted">Copyright &copy;2016 MovIn</p>
-            </div>
-        </div>
-    </div>
-</footer>

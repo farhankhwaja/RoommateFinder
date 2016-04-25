@@ -3,7 +3,7 @@
     <div class="container-fluid">
         <div class="row">
             <a class="navbar-brand navbar-left" href="#/">
-                <span class="glyphicon glyphicon glyphicon-tree-deciduous"></span>
+                &nbsp;<span class="glyphicon glyphicon glyphicon-home"></span>
                 MovIn
             </a>
             <form class="navbar-form navbar-left" role="search" ng-submit="queryUsers()">
@@ -151,27 +151,153 @@
             </form>
         </div>  
     </div>
+    
     <div class="col-sm-8 col-md-10 maps">
-        <div id="map" class="container"></div>
+        <div my-map="" longitude="longitude" latitude="latitude" id="map" marks="marks" distance="distance" hit-me="hitMe"></div>
     </div>
 </section>
-<footer class="footer">
-    <div class="container-fluid">
+<modal title="Listing Details" visible="showModal">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-10 col-lg-offset-1 text-center">
-            <!--     <ul class="list-inline">
-                    <li>
-                        <a href=""><i class="fa fa-facebook fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-twitter fa-fw fa-2x"></i></a>
-                    </li>
-                    <li>
-                        <a href=""><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
-                    </li>
-                </ul> -->
-                <p class="text-muted">Copyright &copy;2016 MovIn</p>
+            <div class="col-sm-7 col-md-8">
+                <img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+            </div>
+            <div class="col-sm-5 col-md-4">
+                <h3>Description</h3>
+                <p>{{listingData.description}}</p>
             </div>
         </div>
+        <hr>
+        <div class="row" ng-show="!user">
+            <div class="col-sm-12 col-md-12">
+                <div class="well text-center" ng-show="!user">
+                    Please <a href ng-click='gotoLogin()'>login </a> to contact Owner! 
+                </div>
+                <div class="well text-center" ng-show="user">
+                    <a class="btn btn-default contactBtn" href="mailto:{{user.email}}"> <i class="fa fa-pencil-square-o"></i> Contact Owner</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-md-4">
+                <h3>Listing Details</h3>
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td><b>Apartment Number</b></td>
+                            <td>{{listingData.aptNo}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Rent</b></td>
+                            <td>${{listingData.rent}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Utilities Included</b></td>
+                            <td ng-show="listingData.utilities_included">Yes</td>
+                            <td ng-show="!listingData.utilities_included">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>Number of Rooms</b></td>
+                            <td>{{listingData.no_rooms}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Baths Available</b></td>
+                            <td>{{listingData.baths}}</td>
+                        </tr>
+                        <tr>
+                            <td><b>Sq. Ft</b></td>
+                            <td ng-show="listingData.sq_ft">{{listingData.sq_ft}}</td>
+                            <td ng-show="!listingData.sq_ft">N/A</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <h3>Amenities</h3>
+                <table class="table table-user-information">
+                    <tbody>
+                        <tr>
+                            <td><b>Pool</b></td>
+                            <td ng-show="listingData.pool">Yes</td>
+                            <td ng-show="!listingData.pool">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>Roof-Top</b></td>
+                            <td ng-show="listingData.rooftop">Yes</td>
+                            <td ng-show="!listingData.rooftop">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>Laundry</b></td>
+                            <td ng-show="listingData.laundry">Yes</td>
+                            <td ng-show="!listingData.laundry">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>AC/Heater</b></td>
+                            <td ng-show="listingData.ac_heater">Yes</td>
+                            <td ng-show="!listingData.ac_heater">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>Fridge</b></td>
+                            <td ng-show="listingData.fridge">Yes</td>
+                            <td ng-show="!listingData.fridge">No</td>
+                        </tr>
+                        <tr>
+                            <td><b>Microwave</b></td>
+                            <td ng-show="listingData.microwave">Yes</td>
+                            <td ng-show="!listingData.microwave">No</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-4 col-md-4">
+                <h3>Location</h3>
+                <static-gmap
+                    size="300x200"
+                    sensor="false"
+                    zoom="14"
+                    markers="{{markerData}}">
+                </static-gmap>
+            </div>
+        </div>    
     </div>
-</footer>
+    <div class="row" ng-show='!user'>
+        <div class="col-sm-6 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 text-center input-group" >
+            
+        </div>
+    </div>
+    <div class="row" ng-show='user'>
+        <div class="col-sm-6 col-md-4 col-lg-4 col-sm-offset-4 col-md-offset-4 text-center input-group" >
+            <a class="btn btn-default contactBtn" href="mailto:{{user.email}}"> <i class="fa fa-pencil-square-o"></i> Contact Owner</a>
+        </div>
+    </div>
+</modal>
+<modal title="Login" visible="loginShowModal">
+    <div class="row">
+        <div class="col-sm-6 col-md-6 col-sm-offset-3 col-md-offset-3">
+            <div class="login-block">
+                <form class="form-signin" ng-submit="login(formData.email, formData.password)">
+                <label for="email" class="sr-only">Email</label>
+                <input type="text" ng-model="formData.email" id="email" class="form-control" required autofocus placeholder="Email">
+                
+                <label for="password" class="sr-only">Password</label>
+                <input type="password" ng-model="formData.password" id="password" class="form-control" placeholder="Password">
+                
+                <button class="btn btn-lg btn-primary btn-block" type="submit">
+                    Login</button>
+                <!-- <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me">
+                    Remember me
+                </label>
+                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+                </form> -->
+            </div>
+            <a href="#/signup" class="text-center new-account">Create an account </a>
+        </div>
+    </div>
+    <div ng-show="message" class="error-alert alert-warning error-box col-sm-4 col-md-4 col-sm-offset-4 col-md-offset-4" role="alert">
+        <p class="text-danger text-center">
+            <i class="fa fa-exclamation-circle fa-2x"></i>
+            <b>{{message}}</b>
+        </p>
+    </div>
+</modal>

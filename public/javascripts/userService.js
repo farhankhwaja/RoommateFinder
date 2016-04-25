@@ -18,7 +18,15 @@ angular.module('MovIn').factory('UserService', function ($http) {
         },
 
         addPlace: function(formData) {
-            return $http.put('/listing/'+formData.user_id, formData);
+            return $http.post('/listing/'+formData.user_id, formData);
+        },
+
+        updPlace: function(formData) {
+            return $http.put('/listing/'+formData._id, formData);
+        },
+
+        deletePlace: function(formData) {
+            return $http.delete('/listing/'+formData._id, formData);
         }
     };
 });

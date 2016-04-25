@@ -18,7 +18,7 @@ var upload = multer({ //multer settings
 
 module.exports = function(app) {
 	app.route('/listing').get(users.userListings);
-    app.route('/listing/:id').put(users.updateListing).delete(users.deleteListing).get(users.readListing);
+    app.route('/listing/:id').post(users.addListing).put(users.updateListing).delete(users.deleteListing).get(users.readListing);
 
 
 	/** API path that will upload the files */

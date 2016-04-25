@@ -13,6 +13,8 @@ var AptInfo = new Schema ({
       coordinates: []
 	},
 	address: String,
+    aptNo: String,
+    description: String,
     type: String,
     isFor: String,
 	rent: String,

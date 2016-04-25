@@ -23,6 +23,8 @@ angular.module('MovIn')
         // console.log("received Data",loggedin);
             if(data.data){ 
                 $scope.user = data.data;
+                $rootScope.$broadcast('user-loggedin', {'user': data.data});
+                $rootScope.userData = data.data;
                 $scope.loc_id = $location.path().split('/')[2];
                 $http.get('/listing/'+$scope.loc_id).then(function(data){
                     $scope.place = data.data.address;

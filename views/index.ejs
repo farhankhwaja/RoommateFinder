@@ -4,44 +4,60 @@
     <title><%= title %></title>
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="/components/bootstrap/dist/css/bootstrap.min.css" />
-	<link rel="stylesheet" href="/components/components-font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" href="/components/components-font-awesome/css/font-awesome.min.css" />
 	<link rel="stylesheet" href="/stylesheets/style.css" />
 	<link rel="stylesheet" href="/stylesheets/autocomplete.css" />
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
-	<!-- FlatIcons -->
-	<!-- <link rel="stylesheet" href="/stylesheets/flaticons/font_web/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_fit/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_house/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_party/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_realEs/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_trans/flaticon.css" />
-	<link rel="stylesheet" href="/stylesheets/flaticons/font_home/flaticon.css" /> -->
   </head>
   <body ng-cloak>
     <ng-view></ng-view>
-   <!-- Libraries -->
+   <!-- Libraries --><footer class="footer">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1 text-center">
+                <!-- <ul class="list-inline">
+                    <li>
+                        <a href="#"><i class="fa fa-facebook fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fa fa-dribbble fa-fw fa-2x"></i></a>
+                    </li>
+                </ul> -->
+                <p class="text-muted">Copyright &copy;2016 MovIn</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
 	<script src="/components/jquery/dist/jquery.js"></script>
+	<script src="/components/angular/angular.js"></script>
+	<script src="/components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
 	<script src="/components/bootstrap/dist/js/bootstrap.js"></script>
 	<script src='/components/lodash/dist/lodash.min.js'></script>
 	<script src='http://maps.googleapis.com/maps/api/js?key=AIzaSyDp7z3EFQ6nAPqLEZPrhH--RVcOc-nRUoY&libraries=places'></script>
 	<script src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/markerwithlabel/src/markerwithlabel.js"></script>
-	<script src="/components/angular/angular.js"></script>
 	<script src="/components/angular-animate/angular-animate.js"></script>
 	<script src="/components/angular-cookies/angular-cookies.js"></script>
 	<script src="/components/angular-resource/angular-resource.js"></script>
 	<script src="/components/angular-route/angular-route.js"></script>
 	<script src="/components/angular-sanitize/angular-sanitize.js"></script>
-	<script src="/components/angularjs-geolocation/dist/angularjs-geolocation.min.js"></script>
 	<script src="/components/angular-touch/angular-touch.js"></script>
+	<script src="/components/angular-bootstrap/ui-bootstrap.js"></script>
 	<script src="/components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 	<script src="/components/angular-ui-router/release/angular-ui-router.js"></script>
 	<script src="/components/ng-file-upload/ng-file-upload.min.js"></script>
 	<script src="/components/ng-file-upload/ng-file-upload-shim.min.js"></script>
 	<script src='/components/angular-simple-logger/dist/angular-simple-logger.min.js'></script>
+	<script src="/components/angular-google-staticmaps/angular-google-staticmaps.js"></script>
 	
 	<script src="/app.js"></script>
 	<script src="/controllers/main.js"></script>
-	<script src="/javascripts/gservice.js"></script>
+	<script src="/javascripts/modal.js"></script>
+	<script src="/javascripts/jPages.js"></script>
 	<script src="/controllers/loginCtrl.js"></script>
 	<script src="/controllers/signupCtrl.js"></script>
 	<script src="/controllers/profileCtrl.js"></script>
@@ -50,5 +66,6 @@
 	<script src="/javascripts/userService.js"></script>
 	<script src="/controllers/queryCtrl.js"></script>
 	<script src="/javascripts/autocomplete.js"></script>
+	<script src="/javascripts/myMaps.js"></script>
   </body>
 </html>

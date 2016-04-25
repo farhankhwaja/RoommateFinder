@@ -14,6 +14,7 @@ html, body {
   /*height: 100%; */
   /*margin: 0 auto -5%; Allow for footer height*/
   vertical-align:bottom;
+  margin-bottom: 50px;
 }
 
 .searchTemplate {
@@ -91,7 +92,7 @@ html, body {
     position: fixed;
     bottom: 0; 
     height: 30px;
-    /*z-index: 50;*/
+    z-index: 50;
 }
 
 .mainFooter {
@@ -258,6 +259,7 @@ html, body {
     margin-right: 5px;
     height: 100%;
     border: 1px solid #3366cc;
+    background-color: rgb(229, 227, 223);
 }
 
 .maps {
@@ -302,6 +304,7 @@ html, body {
 
 .toppad {
     margin-top:20px;
+    /*margin-bottom: 50px;*/
 }
 
 .labels {
@@ -350,11 +353,11 @@ html, body {
 }
 
 #radiomale:checked + i.fa {
-    color: #39B521;
+    color: #3366cc;
 }
 
 #radiofemale:checked + i.fa {
-    color: #39B521;
+    color: #3366cc;
 }
 
 .personInfo input[type="checkbox"] {
@@ -369,11 +372,14 @@ html, body {
     padding-top: 5px;
 }
 
-.personInfo input:checked + label {
+.personInfo input[type="checkbox"]:checked + label {
     color: #fff;
 }
 
-.listingInfo input:checked + label {
+.whiteFA {
+    color: #fff;
+}
+.listingInfo input[type="checkbox"]:checked + label {
     color: #fff;
 }
 
@@ -482,4 +488,112 @@ html, body {
 
 .navbar {
     margin-bottom: 5px;
+}
+.navbar-default .navbar-brand:hover {
+    color: #fff;
+}
+
+.carousel-control.right, .carousel-control.left {
+    background-image: none;
+}
+
+.carousel-control .glyphicon-chevron-right,.carousel-control .glyphicon-chevron-left {
+    color: #3366cc;
+    font-size: 44px;
+}
+
+
+.panel-warning > .panel-heading {
+    color: #fff;
+    background-color: #3366cc;
+    border-color: #3366cc;
+}
+
+.panel-warning {
+    border-color: #3366cc;   
+}
+
+.table>tbody>tr>td, .table>tbody>tr>th, .table>tfoot>tr>td, .table>tfoot>tr>th, .table>thead>tr>td, .table>thead>tr>th{
+    border-top: 1px solid #3366cc;
+}
+
+.contactBtn {
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.contactBtn:hover {
+    background-color: #D6654D;
+    color: #fff;
+}
+
+.thumbnail .caption-full {
+    padding: 9px;
+    color: #333;
+}
+
+.flags {
+    padding-right: 10px;
+    padding-left: 10px;
+    color: #d17581;
+    cursor: pointer;
+}
+
+.flags #approve, #flag, #delete {
+    opacity: .6;
+}
+
+.flags #approve:hover, #flag:hover, #delete:hover {
+    opacity: 1;
+}
+
+.saveBtn {
+    color: #000;
+    background-color: #fff;
+}
+
+.images {
+   padding: 5px;
+}
+
+.panel-group .panel {
+      overflow: visible;
+}
+
+.navbar-default .navbar-nav>li>a, .navbar-default .navbar-brand, .text-muted {
+    margin-right: 5px;
+}
+
+.modal-dialog {
+    padding: 30px 30px 30px 30px;
+    text-align: center;
+    width: 100%;
+}
+
+
+.edit-title {
+    border: 1px solid #3366cc;
+    padding: 5px 5px;
+    background-color: #3366cc;
+    color: #fff;
+}
+
+.infoWindowHolder {
+    height: 28px;
+}
+
+.jp-next {
+    float: right;
+}
+
+.jp-previous {
+    float: left;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+.fa-arrow-circle-o-left, .fa-arrow-circle-o-right {
+    cursor: pointer;
 }

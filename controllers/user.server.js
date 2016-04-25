@@ -148,8 +148,8 @@ exports.searchUser = function(req, res){
 	//Grab all search terms
 	var user_id = req.body.user_id;
 	var distance = req.body.distance;
-	var female = req.body.female;
-	var male = req.body.male;
+	var female = req.body.female ? req.body.female : 'N/A';
+	var male = req.body.male ? req.body.male : 'N/A';
 	var type = req.body.type;
 	var lat = parseFloat(req.body.latitude);
 	var lng = parseFloat(req.body.longitude);
@@ -166,7 +166,6 @@ exports.searchUser = function(req, res){
 		users: {},
 		aptInfo : {}
 	};
-
 	var query = AptInfo.find()
 				.populate({
 					path: 'user_id',
@@ -321,8 +320,21 @@ exports.createListing = function(req, res, next) {
 	});
 };
 
+exports.addListing = function(req, res, next) {
+	var apt = new AptInfo(req.body);
+	// console.log("User", user);
+	apt.save(function(err) {
+		if (err) {
+			return res.send(err);
+		}else{
+			return res.json(apt);
+		}
+	});
+};
+
+
 exports.updateListing = function(req, res, next) {
-	AptInfo.findOneAndUpdate({user_id: req.body.user_id}, req.body, {upsert: true}, function(err, apt) {
+	AptInfo.findOneAndUpdate({_id: req.params.id}, req.body, function(err, apt) {
 		if (err) {
 			// console.log("Error");
 			return next(err);
@@ -337,7 +349,7 @@ exports.readListing = function(req, res) {
 	// console.log("request",req);
 	AptInfo.findOne({_id: req.params.id}, function(err, apt){
 		if(err) {
-			return next(err);
+			return res.sendStatus(404);
 		}else{
 			res.json(apt);
 		}
@@ -345,18 +357,19 @@ exports.readListing = function(req, res) {
 };
 
 exports.deleteListing = function(req, res, next) {
-	AptInfo.findOneAndRemove({user_id: req.user.id}, function(err, apt) {
+	// console.log(req.params);
+	AptInfo.findOneAndRemove({_id: req.params.id}, function(err, apt) {
 		if (err) {
 			return next(err);
 		}
 		else {
-			res.status(200);
+			res.sendStatus(200);
 		}
 	});
 };
 
 exports.userListings = function(req, res) {
-	AptInfo.findOne({user_id: req.user._id}, function(err, apt){
+	AptInfo.find({user_id: req.user._id}, function(err, apt){
 		if(err) {
 			return next(err);
 		}else{

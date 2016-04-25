@@ -6,6 +6,8 @@ angular.module('MovIn')
     var placeSearch, autocomplete;
     $scope.formData = {};
     $scope.listingData = {};
+    $scope.addedListing = [];
+    $scope.editListing = false;
     $scope.place = null;
     $scope.files = null;
     $scope.error = false;
@@ -29,7 +31,7 @@ angular.module('MovIn')
                 $scope.formData.vegan = $scope.user.vegan;
                 $scope.formData.bookworm = $scope.user.bookworm;
                 $scope.formData.athlete = $scope.user.athlete;
-                $scope.formData.gay = $scope.user.gay;
+                // $scope.formData.gay = $scope.user.gay;
                 $scope.formData.redditor = $scope.user.redditor;
                 $scope.formData.live_sports = $scope.user.live_sports;
                 $scope.formData.early_riser = $scope.user.early_riser;
@@ -39,50 +41,21 @@ angular.module('MovIn')
                 $scope.listingData.user_id = $scope.user._id;
                 $http.get('/listing').then(function(data){
                     if(data.data){
-                        // console.log(data);
-                        $scope.place = data.data.address;
-                        
-                        $scope.listingData.isFor = data.data.isFor;
-                        $scope.listingData.rent = data.data.rent;
-                        $scope.listingData.pool = data.data.pool;
-                        $scope.listingData.rooftop = data.data.rooftop;
-                        $scope.listingData.laundry = data.data.laundry;
-                        $scope.listingData.ac_heater = data.data.ac_heater;
-                        $scope.listingData.no_rooms = data.data.no_rooms;
-                        $scope.listingData.sq_ft = data.data.sq_ft;
-                        $scope.listingData.baths = data.data.baths;
-                        $scope.listingData.fridge = data.data.fridge;
-                        $scope.listingData.microwave = data.data.microwave;
-                        $scope.listingData.floor = data.data.floor;
-                        $scope.listingData.beds = data.data.beds;
-                        $scope.listingData.parking_area = data.data.parking_area;
-                        $scope.listingData.pet_friendly = data.data.pet_friendly;
-                        $scope.listingData.smoking = data.data.smoking;
-                        $scope.listingData.guys_only = data.data.guys_only;
-                        $scope.listingData.girls_only =  data.girls_only;
-                        $scope.listingData.utilities_included = data.data.utilities_included;
-                        $scope.listingData.img_url =  data.data.img_url;
-                        $scope.listingData.geek = $scope.user.geek;
-                        $scope.listingData.gamer = $scope.user.gamer;
-                        $scope.listingData.party = $scope.user.party;
-                        $scope.listingData.musician = $scope.user.musician;
-                        $scope.listingData.artist = $scope.user.artist;
-                        $scope.listingData.vegan = $scope.user.vegan;
-                        $scope.listingData.bookworm = $scope.user.bookworm;
-                        $scope.listingData.athlete = $scope.user.athlete;
-                        $scope.listingData.gay = $scope.user.gay;
-                        $scope.listingData.redditor = $scope.user.redditor;
-                        $scope.listingData.live_sports = $scope.user.live_sports;
-                        $scope.listingData.early_riser = $scope.user.early_riser;
-                        $scope.listingData.night_owl = $scope.user.night_owl;
-                        $scope.listingData.shopaholic = $scope.user.shopaholic;
+                        for(var d in data.data){
+                            $scope.addedListing.push(data.data[d]);
+                            $scope.addedListing[d]["isopen"] = false;
+                            $scope.addedListing[d]["editListing"] = false;
+                        }
                     }
+                    // console.log($scope.addedListing);
                 });
             }else{
-            $location.path('login');
-        }
+                $rootScope.nextPath = $location.path();
+                $location.path('login');
+            }
         });
     };
+
     $scope.saveProfile = function (formdata) {
 		UserService.update(formdata).success(function(data) {
 			// console.log("Received Data", data);
@@ -99,7 +72,7 @@ angular.module('MovIn')
             $scope.error = false;
           }, 3000);
 		});
-        $scope.personal = !$scope.personal; 
+        $scope.personal = !$scope.personal;
     };
 
     $scope.uploadFiles = function (files) {
@@ -147,26 +120,91 @@ angular.module('MovIn')
                 formdata.img_url.push("../uploads/"+$scope.user._id+"-"+$scope.files[i].name);
             }
         }
-
+        formdata.id = new Date().getTime();
+        $scope.addedListing.push(formdata);
         UserService.addPlace(formdata).success(function(data) {
-            $scope.listingData = data;
+            // console.log(data);
             $scope.message = "Property Information Added";
             $scope.success = true;
             $timeout(function () {
             $scope.success = false;
           }, 3000);
         }).error(function(status, data) {
-            console.log(status);
-            console.log(data);
             $scope.error = true;
-            $scope.message = "Property Information Failed. Please try again.";
+            $scope.message = "Failed. Please try again.";
             $timeout(function () {
             $scope.error = false;
           }, 3000);
         });
         $scope.aptInfo = !$scope.aptInfo;
         $scope.files = null;
-        $window.location.reload();
+        $scope.listingData = {};
     };
+
+    $scope.updateListing = function (aptId) {
+        for(var i in $scope.addedListing){
+            if($scope.addedListing[i]._id === aptId){
+                if($scope.files !== null || $scope.files !== undefined){
+                    $scope.addedListing[i].img_url = [];
+                    for(var j in $scope.files){
+                        $scope.addedListing[i].img_url.push("../uploads/"+$scope.user._id+"-"+$scope.files[j].name);
+                    }
+                }
+                var formData = $scope.addedListing[i];
+                delete formData.$$hashKey;
+                delete formData.__v;
+                UserService.updPlace(formData).success(function(data) {
+                    $scope.updMessage = "Property Information Updated";
+                    $scope.updSuccess = true;
+                    $timeout(function () {
+                        $scope.updSuccess = false;
+                    }, 3000);
+                }).error(function(status, data) {
+                    $scope.updError = true;
+                    $scope.updMessage = "Failed. Please try again.";
+                    $timeout(function () {
+                        $scope.updError = false;
+                    }, 3000);
+                });
+                // $scope.aptInfo = !$scope.aptInfo;
+                // $scope.isopen = !$scope.isopen;
+                $scope.files = null;
+                $scope.addedListing[i].editListing = false;
+            }
+        }
+    };
+
+    $scope.deleteListing = function (aptId) {
+        for(var i in $scope.addedListing){
+            if($scope.addedListing[i]._id === aptId){
+                if($scope.files !== null || $scope.files !== undefined){
+                    $scope.addedListing[i].img_url = [];
+                    for(var j in $scope.files){
+                        $scope.addedListing[i].img_url.push("../uploads/"+$scope.user._id+"-"+$scope.files[j].name);
+                    }
+                }
+                var formData = $scope.addedListing[i];
+                delete formData.$$hashKey;
+                delete formData.__v;
+                $scope.addedListing.splice(i, 1);
+                UserService.deletePlace(formData).success(function(data) {
+                    $scope.updMessage = "Property Information Deleted";
+                    $scope.updSuccess = true;
+                    $timeout(function () {
+                    $scope.updSuccess = false;
+                  }, 3000);
+                }).error(function(status, data) {
+                    $scope.updError = true;
+                    $scope.updMessage = "Failed. Please try again.";
+                    $timeout(function () {
+                    $scope.updError = false;
+                  }, 3000);
+                });
+                $scope.aptInfo = !$scope.aptInfo;
+                $scope.files = null;
+            }
+        }
+    };
+
     $scope.init();
   });

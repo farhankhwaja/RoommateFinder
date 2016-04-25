@@ -14,7 +14,8 @@ angular.module('MovIn', [
     'ui.bootstrap.datepicker',
     'google.places',
     'geolocation',
-    'ngFileUpload']);
+    'ngFileUpload',
+    'wu.staticGmap']);
 
 angular.module('MovIn')
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
@@ -39,13 +40,9 @@ angular.module('MovIn')
       .when('/search', {
         templateUrl: '/views/search.html',
         controller: 'queryCtrl'
-     })
-      .when('/viewListing/:id', {
-        templateUrl: '/views/listinginfo.html',
-        controller: 'ListingInfo'
      });
       // .otherwise({
-      //   redirectTo: '/'
+      //   redirectTo: '/search'
        // });
 
 
