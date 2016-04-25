@@ -39,7 +39,8 @@
 		                        <div class="input-group-addon">
 									<i class="fa fa-calendar fa-lg"></i>
 								</div>
-								<input type="text" class="form-control" datepicker-popup="MM-dd-yyyy" show-button-bar="false" ng-model="dob" is-open="dobToggle" show-weeks="false" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Date of Birth" ng-click="dobOpen($event)" name="dob" required/>
+								<!-- <input type="text" class="form-control" datepicker-popup="MM-dd-yyyy" show-button-bar="false" ng-model="dob" is-open="dobToggle" show-weeks="false" datepicker-options="dateOptions" ng-required="true" close-text="Close" placeholder="Date of Birth" ng-click="dobOpen($event)" name="dob" required/> -->
+								<input type="date" class="form-control" uib-datepicker-popup ng-model="dob" is-open="false" close-text="Close" init-date="dob" placeholder="Date of Birth" required name="dob"/>
 							</div>
 						</div>
 

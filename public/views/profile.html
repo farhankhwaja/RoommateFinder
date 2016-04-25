@@ -71,7 +71,7 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-xs-offset-0 col-sm-offset-0 col-md-offset-2 col-lg-offset-2 toppad" >
-            <uib-accordion class="accordion" close-others="true">
+            <uib-accordion class="accordion" close-others="true" is-open="list.isopen">
                 <uib-accordion-group ng-repeat="list in addedListing" id="{{$index}}">
                     <uib-accordion-heading>
                         {{list.address}}
@@ -287,8 +287,6 @@
             </uib-accordion>
         </div>
     </div>
-        </div>
-    </div>
     <div class="panel panel-warning" ng-show="personal">
             <div class="panel-heading">
               <h3 class="panel-title text-center">Describe Yourself</h3>
@@ -451,7 +449,7 @@
                                 <div class="input-group-addon">
                                     <i class="fa fa-pencil-square"></i>
                                 </div>
-                                <textarea name="decription" class="form-control" ng-model="listingData.description" placeholder="Address"></textarea>
+                                <textarea name="decription" class="form-control" ng-model="listingData.description" placeholder="Add Description"></textarea>
                             </div>
                         </div>
                     </div>

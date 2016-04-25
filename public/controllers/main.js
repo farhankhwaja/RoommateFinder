@@ -9,17 +9,15 @@ angular.module('MovIn', [
     'ngTouch',
     'ui.bootstrap.tabs',
     'ui.router',
-    'ui.bootstrap.tpls',
     'ui.bootstrap',
     'ui.bootstrap.datepicker',
+    'ui.bootstrap.tpls',
     'google.places',
     'geolocation',
-    'ngFileUpload',
-    'wu.staticGmap']);
+    'ngFileUpload']);
 
 angular.module('MovIn')
   .config(function ($routeProvider, $locationProvider, $httpProvider) {
-
     $routeProvider
       .when('/', {
         templateUrl: '/views/main.html',

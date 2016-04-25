@@ -223,7 +223,6 @@ angular.module('MovIn')
 
         $scope.toggleModal = function(aptId){
             $http.get('/listing/'+aptId).then(function(data){
-                console.log(data.data);
                 $scope.listingData.address = data.data.address;
                 $scope.listingData.description = data.data.description;
                 $scope.listingData.location = data.data.location;
@@ -249,11 +248,6 @@ angular.module('MovIn')
                 $scope.listingData.girls_only =  data.data.girls_only;
                 $scope.listingData.img_url =  data.data.img_url;
                 $scope.listingData.utilities_included = data.data.utilities_included;
-                $scope.markerData = [{
-                    color: 'red',
-                    label: 'X',
-                    coords: [$scope.listingData.location.coordinates[1], $scope.listingData.location.coordinates[0]]
-                }];
             });
             $scope.showModal = !$scope.showModal;
         };

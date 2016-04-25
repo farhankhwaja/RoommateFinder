@@ -11,6 +11,12 @@ angular.module('MovIn')
         types: ['geocode']
     };
 
+    // $scope.dob = new Date();
+    $scope.dateOptions = {
+        formatYear: 'yy',
+        startingDay: 1
+    };
+
     $scope.register = function (formdata) {
         $scope.formData.username = $scope.formData.email.split('@')[0];
         $scope.formData.originalpassword = $scope.formData.password;

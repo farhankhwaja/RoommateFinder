@@ -18,7 +18,7 @@ angular.module('MovIn').directive('modal', function () {
       replace:true,
       scope:true,
       link: function postLink(scope, element, attrs) {
-        scope.title = attrs.title;
+        scope.title = scope.$parent.listingData.address;
 
         scope.$watch(attrs.visible, function(value){
           if(value == true)
